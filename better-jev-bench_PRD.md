@@ -753,11 +753,11 @@ Following HELM's published bar, adapted: a contribution should be a published or
 
 Following the sibling PRD §10a pattern: stated plainly, in one place, rather than left implicit.
 
-### 8.1 This repo is not public yet
+### 8.1 Repo status (updated 2026-09-23)
 
-**No GitHub repository exists for this project.** It is a local git repo with no remote. Creating it is **blocked pending the project owner's explicit approval**, expected next session.
+**Public as of 2026-09-23**: [github.com/asp616848/better-jev-bench](https://github.com/asp616848/better-jev-bench), Apache-2.0. Repo creation was first attempted mid-session and correctly stopped by a permission gate pending the project owner's explicit approval — the owner approved it the next session, and it was created and pushed then. That sequencing (gate first, explicit approval, then publish) is the record of how the decision was actually made, not a hypothetical.
 
-Being precise about why this line is here: repo creation was attempted earlier in this session and was stopped by a permission gate. That was the correct outcome — the decision to publish is the owner's, and the gate is what made sure it stayed that way. Nothing in this document should be read as implying a public repo, a public URL, or a live benchmark. When it does go public, Sections 4 and 8.3 are the parts that most need to be read before anyone pulls data.
+Going public does not change 8.2 or 8.3 below: nothing has been downloaded, no loader exists, no model has been trained on this corpus. A public repo with a catalogue and a design is still a catalogue and a design.
 
 ### 8.2 No data has been assembled — this is a catalogue, not a corpus
 
