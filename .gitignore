@@ -23,3 +23,9 @@ raw_downloads/
 # in bench/receipts/, so a rebuild that does not reproduce it is detected.
 data/public/
 exports/
+
+# The content-addressed image cache (PRD §13.5): never committed, for the same
+# reason data/public/ isn't -- it is pixels, not the corpus's own artifact. The
+# corpus commits only the sha256 of each image (bench/receipts/<name>.images.
+# sha256.jsonl.gz); a rebuild that does not reproduce those hashes is detected.
+data/images/

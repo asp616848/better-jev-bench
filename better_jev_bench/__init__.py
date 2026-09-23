@@ -23,6 +23,7 @@ from .types import (
     MIN_ITEMS_TO_ACCEPT,
     PRIMITIVES,
     WIDTH_STRATA,
+    ImageRef,
     Item,
     Provenance,
     Question,
@@ -37,6 +38,7 @@ SPEC_VERSION = "bjb-score-1.0"
 
 __all__ = [
     "BenchmarkDataset",
+    "ImageRef",
     "Item",
     "Manifest",
     "ManifestError",

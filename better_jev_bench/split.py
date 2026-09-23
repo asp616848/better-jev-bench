@@ -31,6 +31,15 @@ hosted infrastructure that does not exist yet and is on the roadmap. Freezing
 first and sealing later is the right order: a split created after a training run
 is a split someone has to be trusted about, and that is the failure §7.5 exists
 to prevent.
+
+**4. The bucket key is `Item.split_key`, not always `state_hash` (PRD §13.6).**
+For every text item and for an ordinary one-image-per-state vision item,
+`split_key` *is* `state_hash` -- content-determined, as above. Atari-HEAD is the
+one real exception: adjacent frames within a human trial are near-duplicate
+images with near-duplicate state text, so a frame-level split leaks trivially
+between neighbours. Its loader sets `Item.split_key_override` to a per-trial key
+so every frame from one trial buckets identically. This module stays ignorant of
+*why* a key was overridden; it only ever needs `item.split_key`.
 """
 
 from __future__ import annotations
@@ -47,14 +56,16 @@ SPLIT_SALT = "better-jev-bench/split/v1"
 _BUCKETS = 1_000_000
 
 
-def bucket(state_hash: str, *, salt: str = SPLIT_SALT) -> int:
-    digest = hashlib.sha256(f"{salt}\x1f{state_hash}".encode("utf-8")).digest()
+def bucket(split_key: str, *, salt: str = SPLIT_SALT) -> int:
+    digest = hashlib.sha256(f"{salt}\x1f{split_key}".encode("utf-8")).digest()
     return int.from_bytes(digest[:8], "big") % _BUCKETS
 
 
 def side(item: Item, heldout_fraction: float, *, salt: str = SPLIT_SALT) -> str:
-    """"heldout" or "public". Deterministic in the item's state text alone."""
-    return "heldout" if bucket(item.state_hash, salt=salt) < heldout_fraction * _BUCKETS else "public"
+    """"heldout" or "public". Deterministic in `item.split_key` alone -- the
+    item's own state+image content hash by default, or a loader's explicit
+    override (PRD §13.6)."""
+    return "heldout" if bucket(item.split_key, salt=salt) < heldout_fraction * _BUCKETS else "public"
 
 
 def label_commitment(items: Iterable[Item]) -> str:

@@ -33,9 +33,24 @@ import importlib
 from abc import ABC, abstractmethod
 from collections.abc import Iterable, Iterator
 from dataclasses import dataclass, field
+from pathlib import Path
 from typing import Any
 
-from .types import Item, Provenance, Question
+from .types import ImageRef, Item, Provenance, Question
+
+
+def _default_repo_root() -> Path:
+    """Same auto-detection `cli.py._repo_root` uses, duplicated rather than
+    imported to keep `dataset.py` free of a `cli` dependency: walk up from cwd
+    looking for the `datasets/` + `better_jev_bench/` pair that marks the repo
+    root. Used only when a loader is instantiated without an explicit
+    `repo_root` (e.g. ad-hoc scripting); `build.py` and `validate.py` always
+    pass one explicitly."""
+    here = Path.cwd().resolve()
+    for cand in (here, *here.parents):
+        if (cand / "datasets").is_dir() and (cand / "better_jev_bench").is_dir():
+            return cand
+    return here
 
 
 @dataclass(frozen=True, slots=True)
@@ -96,11 +111,15 @@ class BenchmarkDataset(ABC):
     #: Optional hard cap applied by `build.py`; a loader may also self-limit.
     max_items_per_task: int | None = None
 
-    def __init__(self, canary: str = "", license_tier: str = "") -> None:
+    def __init__(self, canary: str = "", license_tier: str = "", repo_root: Path | None = None) -> None:
         if canary:
             self.canary = canary
         if license_tier:
             self.license_tier = license_tier
+        #: PRD §13.5. Where `self.image(...)` materialises downloaded image
+        #: bytes into the content-addressed cache. Always set -- explicitly by
+        #: `build.py`/`validate.py`, or auto-detected for ad-hoc use.
+        self.repo_root: Path = repo_root if repo_root is not None else _default_repo_root()
 
     # -- required ------------------------------------------------------
 
@@ -141,10 +160,18 @@ class BenchmarkDataset(ABC):
         provenance: Provenance | None = None,
         modality: str = "text",
         instructions: str | None = None,
+        images: tuple[ImageRef, ...] = (),
+        split_key_override: str | None = None,
     ) -> Item:
         """`instructions` may be overridden per item for a task whose question
         text is parameterised by the row -- CUAD's `noul` asks about a different
-        named clause category each time, which is the question, not decoration."""
+        named clause category each time, which is the question, not decoration.
+
+        `images` (PRD §13.4) is normally built by `self.image()` just below.
+        `split_key_override` (PRD §13.6) lets a loader bucket the public/
+        held-out split on something other than this item's own state+image
+        content -- Atari-HEAD's per-trial split is the one real user of it.
+        """
         spec = self.spec(task)
         question = spec.question(options)
         if instructions is not None:
@@ -166,13 +193,28 @@ class BenchmarkDataset(ABC):
             license_tier=self.license_tier,
             modality=modality,
             provenance=provenance or Provenance(),
+            images=images,
+            split_key_override=split_key_override,
         )
+
+    def image(self, data: bytes, *, source_uri: str) -> ImageRef:
+        """Materialise downloaded image bytes into the repo's content-addressed
+        cache and return the `ImageRef` an `Item` carries (PRD §13.5). Thin
+        wrapper over `imagecache.store_image_bytes` so a loader never has to
+        know the cache's on-disk layout -- or guess a media type from a
+        filename extension, which `store_image_bytes` deliberately never
+        trusts (see its docstring)."""
+        from .imagecache import store_image_bytes
+
+        return store_image_bytes(self.repo_root, self.name, data, source_uri=source_uri)
 
 
 # -- registry ----------------------------------------------------------
 
 
-def load_plugin(spec: str, *, canary: str = "", license_tier: str = "") -> BenchmarkDataset:
+def load_plugin(
+    spec: str, *, canary: str = "", license_tier: str = "", repo_root: Path | None = None
+) -> BenchmarkDataset:
     """Resolve a `module:Class` loader pointer from a manifest into an instance."""
     if ":" not in spec:
         raise ValueError(f"loader spec {spec!r} must be 'module.path:ClassName'")
@@ -187,4 +229,4 @@ def load_plugin(spec: str, *, canary: str = "", license_tier: str = "") -> Bench
         raise ImportError(f"{mod_name} has no attribute {cls_name!r}") from exc
     if not (isinstance(cls, type) and issubclass(cls, BenchmarkDataset)):
         raise TypeError(f"{spec} is not a BenchmarkDataset subclass")
-    return cls(canary=canary, license_tier=license_tier)
+    return cls(canary=canary, license_tier=license_tier, repo_root=repo_root)
