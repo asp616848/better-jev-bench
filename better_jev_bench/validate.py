@@ -18,20 +18,31 @@ does not survive contact with a real corpus:
 A new dataset's PR gets `--loaders` run on it once (that is what the
 `loader-smoke` CI job does, restricted to changed datasets), and the frozen
 artifacts it ships are what every later PR is checked against.
+
+**PRD §13.7 adds three multimodal checks**, run offline like the rest: every
+image a dataset's shipped items reference resolves to a hash in that dataset's
+own committed `sha256_manifest` (and vice versa -- no manifest entry nobody
+references, no local cache file nobody's manifest lists); a hash claimed by two
+different datasets must carry the same license (no license laundering through a
+shared image); and `modality`/`images`/`mod_multimodal` agree on every shipped
+item, which is mostly `Item.__post_init__` making the illegal state
+unconstructable, re-checked here against what is actually on disk.
 """
 
 from __future__ import annotations
 
 import collections
+import gzip
 import json
 from dataclasses import dataclass, field
 from pathlib import Path
 
 from .build import read_jsonl_gz
 from .dataset import load_plugin
+from .imagecache import cache_root
 from .manifest import Manifest, ManifestError, load_manifest
 from .split import label_commitment, side
-from .types import MIN_ITEMS_TO_ACCEPT, is_valid_canary
+from .types import MIN_ITEMS_TO_ACCEPT, ImageRef, Item, is_valid_canary
 
 
 @dataclass(slots=True)
@@ -62,6 +73,88 @@ class Report:
         return "\n".join(out)
 
 
+def _read_image_sha256_manifest(path: Path) -> dict[str, ImageRef]:
+    out: dict[str, ImageRef] = {}
+    with gzip.open(path, "rt", encoding="utf-8") as fh:
+        for line in fh:
+            if line.strip():
+                ref = ImageRef.from_json(json.loads(line))
+                out[ref.sha256] = ref
+    return out
+
+
+def _check_multimodal(
+    rep: Report,
+    m: Manifest,
+    repo_root: Path,
+    items: list[Item],
+    image_hash_registry: dict[str, tuple[str, str, str]],
+) -> None:
+    """PRD §13.7's three multimodal additions, all offline: the manifest's
+    committed `sha256_manifest` against what the shipped items actually
+    reference (both directions -- neither may have an entry the other lacks),
+    the local image cache against the same manifest (no orphaned cache file),
+    cross-dataset hash/license agreement, and modality/strata consistency."""
+    manifest_path = repo_root / m.image_sha256_manifest
+    if not manifest_path.exists():
+        rep.fail(f"gate images [{m.name}]: no sha256_manifest at {m.image_sha256_manifest} (PRD §13.5/§13.7)")
+        return
+    declared = _read_image_sha256_manifest(manifest_path)
+
+    referenced: dict[str, ImageRef] = {}
+    for it in items:
+        # Modality/strata consistency (PRD §13.4/§13.7 gate 2). `Item.__post_init__`
+        # already makes the illegal combination unconstructable on read, so this
+        # is a defense-in-depth re-check against what actually landed on disk,
+        # not a load-bearing gate on its own.
+        has_images = bool(it.images)
+        if (it.modality != "text") != has_images:
+            rep.fail(f"gate images [{m.name}]: item {it.item_id} has modality={it.modality!r} but images={'some' if has_images else 'none'}")
+        if has_images != ("mod_multimodal" in it.strata):
+            rep.fail(f"gate images [{m.name}]: item {it.item_id} images/strata disagree on mod_multimodal")
+        for img in it.images:
+            referenced[img.sha256] = img
+
+    missing_from_manifest = sorted(set(referenced) - set(declared))
+    if missing_from_manifest:
+        rep.fail(
+            f"gate images [{m.name}]: {len(missing_from_manifest)} image(s) referenced by shipped items are "
+            f"not in the committed sha256_manifest, e.g. {missing_from_manifest[0]}"
+        )
+    orphaned_in_manifest = sorted(set(declared) - set(referenced))
+    if orphaned_in_manifest:
+        rep.fail(
+            f"gate images [{m.name}]: {len(orphaned_in_manifest)} sha256_manifest entries are not referenced "
+            f"by any shipped item, e.g. {orphaned_in_manifest[0]}"
+        )
+
+    # Local cache orphan check -- only meaningful on a machine that actually ran
+    # `bjb build` for this dataset; the cache itself is gitignored (PRD §13.5),
+    # so its absence here is normal (a fresh CI checkout) and not a failure.
+    local_dir = cache_root(repo_root) / m.name
+    if local_dir.exists():
+        cached_hashes = {p.stem for p in local_dir.rglob("*") if p.is_file()}
+        orphaned_cache_files = sorted(cached_hashes - set(declared))
+        if orphaned_cache_files:
+            rep.fail(
+                f"gate images [{m.name}]: {len(orphaned_cache_files)} local cache file(s) are not referenced "
+                f"by the sha256_manifest, e.g. {orphaned_cache_files[0]} -- stale or corrupt cache entry"
+            )
+
+    # Cross-dataset: a hash claimed by two different datasets must carry the
+    # same license -- otherwise the corpus would be laundering one dataset's
+    # more permissive tier onto another's image via a coincidental duplicate.
+    for sha in declared:
+        prior = image_hash_registry.get(sha)
+        this = (m.name, m.tier, m.spdx)
+        if prior is not None and prior[1:] != this[1:] and prior[0] != m.name:
+            rep.fail(
+                f"gate images [{m.name}]: image {sha} is also claimed by {prior[0]} under a different "
+                f"license ({prior[1]}/{prior[2]} vs {m.tier}/{m.spdx})"
+            )
+        image_hash_registry.setdefault(sha, this)
+
+
 def validate_repo(repo_root: Path, *, run_loaders: bool = False, only: list[str] | None = None) -> Report:
     rep = Report()
     repo_root = Path(repo_root)
@@ -90,6 +183,11 @@ def validate_repo(repo_root: Path, *, run_loaders: bool = False, only: list[str]
             rep.fail(f"gate 6 [{m.name}]: canary reused from {seen[m.canary]} (PRD §5.5 rule 2)")
         else:
             seen[m.canary] = m.name
+
+    # PRD §13.7: a hash claimed by two different datasets must carry the same
+    # license -- populated and checked by `_check_multimodal` as each
+    # multimodal manifest is processed below.
+    image_hash_registry: dict[str, tuple[str, str, str]] = {}
 
     for m in manifests:
         rec_path = repo_root / "bench" / "receipts" / f"{m.name}.build.json"
@@ -176,11 +274,23 @@ def validate_repo(repo_root: Path, *, run_loaders: bool = False, only: list[str]
                 if overlap:
                     rep.fail(f"gate 7 [{m.name}]: {len(overlap)} public-preview items share a state with the held-out slice")
             pub_path = repo_root / "data" / "public" / f"{m.name}.jsonl.gz"
+            pub: list[Item] = []
             if pub_path.exists():
                 pub = read_jsonl_gz(pub_path)
-                overlap = {it.state_hash for it in pub} & {it.state_hash for it in heldout}
+                # split_key rather than state_hash (PRD §13.6/§13.7 gate 3): for
+                # every item without an override the two are identical, so this
+                # is the original check for all eight text datasets; for
+                # Atari-HEAD's per-trial override it additionally re-verifies,
+                # from the committed files alone, that no trial straddles the
+                # public/held-out line.
+                overlap = {it.split_key for it in pub} & {it.split_key for it in heldout}
                 if overlap:
-                    rep.fail(f"gate 7 [{m.name}]: {len(overlap)} states appear in BOTH the public and held-out slices")
+                    rep.fail(f"gate 7 [{m.name}]: {len(overlap)} split keys appear in BOTH the public and held-out slices")
+
+            # -- PRD §13.7: multimodal gates (image hash, modality/strata) --
+            if m.modality != "text":
+                rep.checks_run += 1
+                _check_multimodal(rep, m, repo_root, pub + heldout, image_hash_registry)
 
         # -- receipt presence + internal agreement --------------------------
         rep.checks_run += 1
@@ -218,7 +328,7 @@ def validate_repo(repo_root: Path, *, run_loaders: bool = False, only: list[str]
         if run_loaders:
             rep.checks_run += 1
             try:
-                loader = load_plugin(m.loader, canary=m.canary, license_tier=m.tier)
+                loader = load_plugin(m.loader, canary=m.canary, license_tier=m.tier, repo_root=repo_root)
                 if loader.name != m.name:
                     rep.fail(f"gate 2 [{m.name}]: loader.name is {loader.name!r}")
                 declared = {s.task for s in loader.schema()}
