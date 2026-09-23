@@ -134,9 +134,11 @@ class MyDataset(BenchmarkDataset):
 redistributed into this repo**. That is what makes research-only and access-gated sources usable
 at all: the loader is shared, the data never is.
 
-Then `datasets/my_dataset/manifest.toml`, and CI runs the eight gates from PRD §7.4:
+Then `datasets/my_dataset/manifest.toml`, and `bjb validate` runs the eight gates from PRD §7.4:
 manifest schema, loader smoke test, schema/manifest agreement, **license tier (`tier = "D"`
 fails the build)**, sensitivity gate, canary uniqueness, leakage check, held-out commitment.
+
+(`ci/github-workflow-ci.yml` wires these into GitHub Actions; `ci/README.md` has the one step needed to activate it.)
 
 See [`better-jev-bench_PRD.md` §7](better-jev-bench_PRD.md) for the full contribution
 framework, including the two-reviewer minimum and the acceptance criteria.
