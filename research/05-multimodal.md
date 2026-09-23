@@ -27,3 +27,40 @@ All entries verified live (HuggingFace dataset pages, GitHub source repos, or of
 This space is genuinely sparser and messier than pure-text classification. The document/diagram/chart/scene-classification corner (RVL-CDIP, ScienceQA, AI2D, EuroSAT, RESISC45, GTSRB, MedMNIST, HAM10000, Speech Commands) is real, verifiable, and mostly maps cleanly onto `choice` with minimal transform work — these are the ones to trust for a v1 slate. But almost every entry carries *some* asterisk: RVL-CDIP inherits ambiguous tobacco-industry-document terms; ChartQA's dataset license is oddly GPL-3.0 while its actual chart images are third-party copyrighted; RESISC45 and GTSRB have license info that varies by mirror; ESC-50 is a patchwork of per-clip Freesound licenses; MedMNIST's aggregate CC BY 4.0 doesn't guarantee every constituent subset is equally permissive. None of this is fabrication — it's the actual state of vision-dataset licensing, far less standardized than the HF-hub-native text-classification world.
 
 **v1 recommendation**: scope the multimodal slice conservatively — lean on the handful with unambiguous, single-source licenses (EuroSAT/MIT, ScienceQA-image/CC-BY-SA with NC-SA caution, AI2D/CC-BY-SA, SROIE/CC-BY-4.0, Speech Commands/CC-BY-4.0, HAM10000/CC0, deepghs-NSFW/MIT), treat MedMNIST as the anchor medical-image choice corpus (human-in-the-loop caveat on every row), and hold RVL-CDIP, ChartQA, RESISC45, GTSRB, ESC-50, FUNSD as "v1.1 candidates pending a license-confirmation pass with original maintainers" rather than blocking on them now. The vision_choice / ekvachan-vision tier is real and buildable from what's here, but the corpus should ship with per-dataset license provenance notes rather than a blanket "open" claim.
+
+---
+
+## Extension pass, 2026-09-24: the on-distribution slice this survey was missing
+
+The 16 entries above hold up — every license claim re-read on 2026-09-24 still matches what the
+primary sources say, and the "honest assessment" framing is still the right one. One gap is worth
+naming explicitly rather than leaving implicit in the table: **everything above is generic image
+classification** (satellite scenes, traffic signs, dermatoscopy, document types, science diagrams,
+environmental audio). None of it is a GUI screenshot, a game frame, or an agent action choice —
+i.e. none of it is the distribution that ekVachan PRD §4.0's actual users (agent-framework routing,
+computer-use, game AI) operate in. That slice exists; it just wasn't surveyed here. This pass adds
+it, with the same live-checked standard.
+
+| Name | Source URL | Modality | License (verified how) | Approx size | Real label/class set | Primitive | Transform difficulty | Caveat |
+|---|---|---|---|---|---|---|---|---|
+| **Atari-HEAD** | zenodo.org/records/3451322 | Game frame (image) + action | **CC BY 4.0** — stated on the Zenodo record itself ("Creative Commons Attribution 4.0 International"), the authoritative deposit | 117 h over 20 games, ~8M action demonstrations, 328M gaze samples, 12.1 GB | The game's legal Atari action set (≤18), from `action_enums.txt`; per frame also reward + reaction time | `choice` | Easy — already {frame, human action}; native 160×210 is only ~70 image tokens | **Must split by trial, never by frame** — adjacent frames are near-duplicates and a frame-level split leaks catastrophically |
+| **ScreenSpot-v2** | huggingface.co/datasets/OS-Copilot/ScreenSpot-v2 | GUI screenshot + instruction | **Apache-2.0** (HF dataset card) | ~1.2k items, 1.33 GB | Target element bbox per instruction; `data_type` icon/text | `choice` (target vs. same-screenshot distractors) | Medium — needs distractor construction from the screenshot's other annotated elements | **Too small to train on** (below a sane training floor); its value is as a third-party, zero-exposure *eval* set |
+| **OS-Atlas-data** | huggingface.co/datasets/OS-Copilot/OS-Atlas-data | GUI screenshots, desktop + mobile + web | Declares **apache-2.0** — but it is an aggregation of AMEX, UIBert, RICO/Widget-Captioning, SeeClick and FineWeb-crawled data, each keeping its own terms | 2.3M screenshots, 13M GUI elements, 816 GB | Instruction / referring expression → element bbox (normalised) | `choice` | Medium — same distractor construction; 816 GB means pull a subset | **Aggregate license ≠ subset license** — the identical asterisk this survey already put on MedMNIST v2. Verify the specific subset pulled |
+| **GUIAct / GUICourse** | huggingface.co/datasets/yiye2023/GUIAct | GUI screenshot + element metadata | HF card declares **apache-2.0**; the GUICourse paper states CC BY 4.0 — **a discrepancy**, same class as ScienceQA's above | 67k single-step web + 9.1k smartphone steps (GUICourse suite also has GUIEnv ~10.7M and GUIChat 50k) | Element position/type + action | `choice` | Medium | Record the discrepancy; resolve with maintainers before redistribution |
+| **Mind2Web** | huggingface.co/datasets/osunlp/Mind2Web | HTML (no images) | **CC BY 4.0** — stated on the card | 6.74 GB; ~2,350 tasks over 137 websites | `pos_candidates` / `neg_candidates` + operation (CLICK / TYPE / SELECT) | `choice` — **already literally in this shape**, no transform needed | Easy | **Not multimodal** — belongs in the text corpus. The closest public analogue of the `browser-use/jev-ultrafast` decision pattern |
+| **Multimodal-Mind2Web** | huggingface.co/datasets/osunlp/Multimodal-Mind2Web | Screenshot + HTML | **`openrail`** — a use-restricted license, not permissive | 13.6 GB, 14,193 action steps (7,775 train) | Same candidate structure, with screenshots | `choice` | Easy | **Not Tier A.** The dataset that best fits the goal is the one that can't ship permissively. Report it, don't smuggle it in |
+| **Android in the Wild (AitW)** | github.com/google-research/google-research/tree/master/android_in_the_wild | Android screenshots + actions | **No LICENSE file in the dataset directory and no terms in its README** — checked 2026-09-24. The parent monorepo's Apache-2.0 covers code, not this data deposit | 715k episodes, 30k instructions, Android v10–13, 8 device types | Dual-point gestures, type, button presses, status actions | `choice` | Easy if licensed | **Blocked.** 715k episodes is not a reason to relax the rule that excluded Food-101 and DocVQA above |
+| **ShowUI-desktop** | huggingface.co/datasets/showlab/ShowUI-desktop | Desktop screenshot + instruction | **No license stated on the card**; content is GPT-4o-augmented OmniACT — derivative of OmniACT *and* a provider-ToS question about training a competing model | 7,496 samples | bbox + point + instruction + attribute type | `choice` | Easy if licensed | **Blocked on two independent grounds** |
+
+**Self-generated, not a dataset**: ViZDoom, `phyous/tsai-sc` and `browser-use/jev-ultrafast` are all
+MIT (already verified in ekVachan PRD §7.4) and are *generators* of on-policy frames and actions via
+the DAgger recipe in that PRD's §5.3b. They are deliberately **out of scope for this corpus** — data
+whose distribution is a function of the model being trained cannot be frozen into an honest held-out
+slice. See better-jev-bench PRD §13.1.
+
+**Net recommendation for the on-distribution slice**: **Atari-HEAD + OS-Atlas/GUIAct to train,
+ScreenSpot-v2 to evaluate**, with the 16 entries above as label-space breadth. The two largest and
+richest computer-use corpora in the field — Multimodal-Mind2Web and AitW — are unusable at Tier A,
+one use-restricted and one unlicensed. That is a finding worth publishing, not a gap to hide: it is
+the same story this survey told in 2026-09-22 about vision-dataset licensing generally, and it is
+sharper in the agent/computer-use corner than anywhere else.
