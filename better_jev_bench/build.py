@@ -51,7 +51,7 @@ from . import __version__
 from .dataset import BenchmarkDataset, load_plugin
 from .manifest import Manifest, ManifestError, discover, load_manifest
 from .split import SPLIT_SALT, file_digest, label_commitment, side
-from .types import MIN_ITEMS_TO_ACCEPT, Item, width_stratum
+from .types import MIN_ITEMS_TO_ACCEPT, ImageRef, Item, width_stratum
 
 #: Per-task caps. Deliberately different for the two slices -- see module docstring.
 DEFAULT_PUBLIC_CAP = 40_000
@@ -121,6 +121,33 @@ def _observed_chance(items: list[Item], mode: str) -> float:
     return sum(1.0 / len(it.question.options) for it in items) / len(items)
 
 
+def _write_image_sha256_manifest(m: Manifest, repo_root: Path, items: list[Item]) -> dict[str, Any]:
+    """PRD §13.5: the corpus commits image *hashes*, never pixels. Every
+    distinct `ImageRef` referenced by this dataset's built items (public and
+    held-out together -- a hash's presence here is not a claim about which
+    slice it landed in) is written, sorted by sha256, to the manifest-declared
+    `images.sha256_manifest` path. Small (a few dozen bytes per image) and
+    exactly what a third party needs to confirm the corpus's held-out
+    commitment covers real, specific image content without ever downloading
+    the images themselves.
+    """
+    seen: dict[str, ImageRef] = {}
+    for it in items:
+        for img in it.images:
+            seen[img.sha256] = img
+    refs = [seen[h] for h in sorted(seen)]
+    out_path = repo_root / m.image_sha256_manifest
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    with gzip.GzipFile(out_path, "wb", compresslevel=9, mtime=0) as fh:
+        for ref in refs:
+            fh.write((json.dumps(ref.to_json(), sort_keys=True, ensure_ascii=False) + "\n").encode("utf-8"))
+    return {
+        "path": str(out_path.relative_to(repo_root)),
+        "sha256": file_digest(out_path),
+        "n_distinct_images": len(refs),
+    }
+
+
 def build_dataset(
     m: Manifest,
     repo_root: Path,
@@ -129,7 +156,7 @@ def build_dataset(
     heldout_cap: int = DEFAULT_HELDOUT_CAP,
     write: bool = True,
 ) -> BuildResult:
-    loader: BenchmarkDataset = load_plugin(m.loader, canary=m.canary, license_tier=m.tier)
+    loader: BenchmarkDataset = load_plugin(m.loader, canary=m.canary, license_tier=m.tier, repo_root=repo_root)
     if loader.name != m.name:
         raise ManifestError(f"{m.name}: loader class .name is {loader.name!r}; the two must agree")
 
@@ -205,10 +232,16 @@ def build_dataset(
     public.sort(key=lambda it: it.item_id)
     heldout.sort(key=lambda it: it.item_id)
 
-    pub_states = {it.state_hash for it in public}
-    leaked = pub_states & {it.state_hash for it in heldout}
+    # PRD §7.4 gate 7, generalised by §13.6: two tasks over the same state must
+    # never straddle the split, and (for Atari-HEAD) neither may two frames from
+    # the same trial. Both are "the same split_key on both sides", so checking
+    # split_key rather than state_hash catches both with one rule; for every
+    # item without an override the two are identical, so this is byte-for-byte
+    # the original check for all eight text datasets.
+    pub_keys = {it.split_key for it in public}
+    leaked = pub_keys & {it.split_key for it in heldout}
     if leaked:
-        raise ManifestError(f"{m.name}: {len(leaked)} states appear in BOTH slices (PRD §7.4 gate 7)")
+        raise ManifestError(f"{m.name}: {len(leaked)} split keys appear in BOTH slices (PRD §7.4 gate 7)")
 
     commitment = label_commitment(heldout)
     receipt: dict[str, Any] = {
@@ -255,6 +288,8 @@ def build_dataset(
             "heldout": {"path": str(ho_path.relative_to(repo_root)), "sha256": _write_jsonl_gz(ho_path, heldout),
                         "n": len(heldout), "bytes": ho_path.stat().st_size},
         }
+        if m.modality != "text":
+            receipt["images"] = _write_image_sha256_manifest(m, repo_root, public + heldout)
         prev = repo_root / "bench" / "preview" / f"{m.name}.json"
         prev.parent.mkdir(parents=True, exist_ok=True)
         stride = max(1, len(public) // PREVIEW_ITEMS)
