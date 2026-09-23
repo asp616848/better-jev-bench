@@ -38,6 +38,23 @@ The default is `public`, and exporting the held-out slice into a training mix
 prints a warning naming PRD §7.5 and G3, because the single thing this corpus
 promised from day one is that its eval slice was reserved before any training
 run existed to leak into it.
+
+**4. An image-bearing record gets a ninth key, `images`, additively (PRD §13.4).**
+`Item.to_ekvachan_record()` accepts `image_paths` -- a `{sha256: local_path}`
+map -- and refuses to emit a record for an item that carries images without
+one. This module builds that map with `imagecache.verify_cached()`, which
+resolves each image's content-addressed cache path *and* re-hashes the file on
+disk before handing the path out: a training consumer downstream (the
+sibling's `training/build_vision_slice.py`, PRD §5.2b item 3) is told exactly
+this same thing to assert, so failing here, loudly, before export even
+finishes, is strictly better than failing there.
+
+**5. An `eval_only` dataset (ScreenSpot-v2) never enters the `public` slice.**
+Same role CLINC150 plays for the text corpus's zero-shot-schema regression
+check (`training/build_benchcorpus_slice.py` drops it explicitly), but
+enforced here in code rather than left to a consumer's discipline: `bjb
+export --slice public` skips it outright and says why. `--slice heldout`
+still exports it -- that is its only legitimate use.
 """
 
 from __future__ import annotations
@@ -49,6 +66,7 @@ from pathlib import Path
 from typing import Any, Iterable
 
 from .build import read_jsonl_gz
+from .imagecache import verify_cached
 from .manifest import Manifest, discover
 from .types import Item
 
@@ -107,11 +125,20 @@ def export(
     records: list[dict[str, Any]] = []
     per_task: dict[str, int] = collections.Counter()
     narrowed = 0
+    n_image_records = 0
+    distinct_images: set[str] = set()
     by_dataset: dict[str, dict[str, Any]] = {}
     obligations: set[str] = set()
     attribution: list[dict[str, str]] = []
 
     for m in manifests:
+        if slice_name == "public" and m.eval_only:
+            print(
+                f"[export] skip {m.name}: dataset.eval_only = true -- never exported to the public/training "
+                "slice (PRD §13.3); use --slice heldout to evaluate against it",
+                flush=True,
+            )
+            continue
         path = repo_root / sub / f"{m.name}.jsonl.gz"
         if not path.exists():
             print(f"[export] skip {m.name}: {path} not built (run `bjb build`)", flush=True)
@@ -127,7 +154,18 @@ def export(
             opts = narrow_options(it, max_options, rng)
             if len(opts) != len(it.question.options):
                 narrowed += 1
-            records.append(it.to_ekvachan_record(options=opts))
+            image_paths = None
+            if it.images:
+                # Resolve + verify every image against the local content-
+                # addressed cache before it ever reaches a record (point 4
+                # above). A missing or hash-mismatched image fails the export
+                # outright rather than silently shipping a dangling reference.
+                image_paths = {
+                    img.sha256: str(verify_cached(repo_root, m.name, img)) for img in it.images
+                }
+                n_image_records += 1
+                distinct_images.update(image_paths)
+            records.append(it.to_ekvachan_record(options=opts, image_paths=image_paths))
             per_task[key] += 1
             kept += 1
         if not kept:
@@ -160,6 +198,8 @@ def export(
         "max_options_cap": max_options,
         "n_items_narrowed_to_cap": narrowed,
         "seed": seed,
+        "n_image_records": n_image_records,
+        "n_distinct_images": len(distinct_images),
         "record_schema": [
             "state", "question_key", "question_type", "instructions",
             "options", "label", "label_idx", "source",
@@ -167,6 +207,13 @@ def export(
         "record_schema_source": (
             "better-jev-for-all/training/data.py and training/build_primitives_slice.py -- "
             "exact key set consumed by ekVachan's real training runs"
+        ),
+        "image_record_schema_note": (
+            "an image-bearing record gains a ninth key, 'images': a list of "
+            "{sha256, path, media_type, width, height}, 'path' already resolved and "
+            "hash-verified against the local content-addressed cache (PRD §13.4/§13.5). "
+            "A text record has no 'images' key at all -- the eight-key shape above is "
+            "byte-for-byte unchanged."
         ),
         "ordinal_note": (
             "score rows keep their canonical ascending scale order and are never shuffled or "
