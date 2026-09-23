@@ -1,0 +1,97 @@
+{
+  "dataset": "banking77",
+  "display_name": "BANKING77",
+  "domain": "nlp",
+  "bjb_version": "0.1.0",
+  "built_on": "2026-09-23T14:43:37Z",
+  "build_seconds": 241.2,
+  "host": "localhost",
+  "loader": "better_jev_bench.datasets.banking77:BankingIntents",
+  "source": {
+    "kind": "http_csv",
+    "urls": [
+      "https://raw.githubusercontent.com/PolyAI-LDN/task-specific-datasets/master/banking_data/train.csv",
+      "https://raw.githubusercontent.com/PolyAI-LDN/task-specific-datasets/master/banking_data/test.csv"
+    ],
+    "note": "The same two files PolyAI's own HF loading script downloads."
+  },
+  "source_url": "https://huggingface.co/datasets/PolyAI/banking77",
+  "license": {
+    "tier": "A",
+    "spdx": "CC-BY-4.0",
+    "obligations": [
+      "attribution"
+    ],
+    "verified_how": "HF Hub API: HfApi().dataset_info('PolyAI/banking77').cardData['license'] == ['cc-by-4.0'], queried on the lab server 2026-09-23. Rows are fetched from the same PolyAI GitHub CSVs the official HF loading script uses, because datasets>=3 will not execute dataset scripts and this repo has no refs/convert/parquet branch (404, checked same day).",
+    "verified_on": "2026-09-23"
+  },
+  "split": {
+    "salt": "better-jev-bench/split/v1",
+    "heldout_fraction_declared": 0.15,
+    "heldout_fraction_realised": 0.1534,
+    "public_cap": 40000,
+    "heldout_cap": 2000,
+    "heldout_label_commitment": "sha256:f04d92e989ce99234877a2436abcdbfefe76a5856b68c079d0d315b23211fda9"
+  },
+  "totals": {
+    "n_items": 13071,
+    "n_public": 11040,
+    "n_heldout": 2000,
+    "n_tasks": 1
+  },
+  "tasks": {
+    "intent": {
+      "primitive": "choice",
+      "question_key": "intent",
+      "ordinal": false,
+      "n_loaded": 13083,
+      "n_duplicates_dropped": 12,
+      "n_items": 13071,
+      "n_public": 11040,
+      "n_heldout": 2000,
+      "option_counts_observed": [
+        77
+      ],
+      "strata_observed": [
+        "mod_text",
+        "prim_choice",
+        "width_wide"
+      ],
+      "width_stratum": "width_wide",
+      "chance_mode": "uniform",
+      "chance_observed": 0.012987,
+      "chance_declared": 0.012987,
+      "n_distinct_labels": 77,
+      "label_balance_top10": {
+        "card_payment_fee_charged": 227,
+        "direct_debit_payment_not_recognised": 222,
+        "balance_not_updated_after_cheque_or_cash_deposit": 221,
+        "wrong_amount_of_cash_received": 220,
+        "cash_withdrawal_charge": 217,
+        "transaction_charged_twice": 215,
+        "declined_cash_withdrawal": 213,
+        "transfer_fee_charged": 212,
+        "transfer_not_received_by_recipient": 211,
+        "balance_not_updated_after_bank_transfer": 211
+      },
+      "majority_class_fraction": 0.017367,
+      "calibration_bearing": true,
+      "mean_state_chars": 76.2,
+      "max_state_chars": 447
+    }
+  },
+  "files": {
+    "public": {
+      "path": "data/public/banking77.jsonl.gz",
+      "sha256": "sha256:2ff4535d529c8cc70278e5273e63e51073ea91d56ea549f4773a32f23d491611",
+      "n": 11040,
+      "bytes": 1191279
+    },
+    "heldout": {
+      "path": "bench/heldout/banking77.jsonl.gz",
+      "sha256": "sha256:6285410c4b45efb781c933e7aa9732422fd6a6e8814c4592bfa57c9d5d3ffab9",
+      "n": 2000,
+      "bytes": 216685
+    }
+  }
+}

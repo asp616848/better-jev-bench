@@ -1,0 +1,96 @@
+{
+  "dataset": "cfpb_complaints",
+  "display_name": "CFPB Consumer Complaints",
+  "domain": "finance",
+  "bjb_version": "0.1.0",
+  "built_on": "2026-09-23T14:44:00Z",
+  "build_seconds": 21.5,
+  "host": "localhost",
+  "loader": "better_jev_bench.datasets.cfpb:CfpbComplaints",
+  "source": {
+    "kind": "hf_dataset",
+    "hf_repo": "BEE-spoke-data/consumer-finance-complaints",
+    "hf_config": "has-text",
+    "primary_source": "https://files.consumerfinance.gov/ccdb/complaints.csv.zip",
+    "primary_source_etag": "f0d2ec2367bd2ae60f044b782ad85f43-42",
+    "primary_source_checked": "2026-09-23",
+    "note": "Upstream republishes daily and the primary bulk export carries no narrative column; this source is a moving target by construction, which is why the built slices are hash-committed rather than assumed reproducible."
+  },
+  "source_url": "https://huggingface.co/datasets/BEE-spoke-data/consumer-finance-complaints",
+  "license": {
+    "tier": "A",
+    "spdx": "CC0-1.0",
+    "obligations": [],
+    "verified_how": "Three primary checks on 2026-09-23: (1) the CFPB's own public API returns _meta.license = 'CC0'; (2) CFPB/consumer-finance-complaints on the Hub declares cc0-1.0; (3) the mirror actually read here, BEE-spoke-data/consumer-finance-complaints, declares cc0-1.0. The CFPB bulk export was downloaded in full the same day (346,404,253 bytes, ETag f0d2ec2367bd2ae60f044b782ad85f43-42) and its 15-column header does NOT contain 'Consumer complaint narrative', and the public search API no longer returns complaint_what_happened -- so the narrative field is not obtainable from the primary distribution today. See the loader docstring.",
+    "verified_on": "2026-09-23"
+  },
+  "split": {
+    "salt": "better-jev-bench/split/v1",
+    "heldout_fraction_declared": 0.15,
+    "heldout_fraction_realised": 0.0476,
+    "public_cap": 40000,
+    "heldout_cap": 2000,
+    "heldout_label_commitment": "sha256:e7256a7e74ff1f79c97aff5991853372865095bce25552135e58b59ab53c7c87"
+  },
+  "totals": {
+    "n_items": 54923,
+    "n_public": 40000,
+    "n_heldout": 2000,
+    "n_tasks": 1
+  },
+  "tasks": {
+    "product": {
+      "primitive": "choice",
+      "question_key": "product",
+      "ordinal": false,
+      "n_loaded": 59463,
+      "n_duplicates_dropped": 4540,
+      "n_items": 54923,
+      "n_public": 40000,
+      "n_heldout": 2000,
+      "option_counts_observed": [
+        10
+      ],
+      "strata_observed": [
+        "mod_text",
+        "prim_choice",
+        "width_medium"
+      ],
+      "width_stratum": "width_medium",
+      "chance_mode": "majority",
+      "chance_observed": 0.541103,
+      "chance_declared": 0.541103,
+      "n_distinct_labels": 10,
+      "label_balance_top10": {
+        "Credit reporting or other personal consumer reports": 29719,
+        "Debt collection": 8170,
+        "Credit card or prepaid card": 4932,
+        "Mortgage": 4043,
+        "Checking or savings account": 3611,
+        "Student loan": 1427,
+        "Money transfer, virtual currency, or money service": 1326,
+        "Vehicle loan or lease": 1023,
+        "Payday loan, title loan, personal loan, or advance loan": 665,
+        "Debt or credit management": 7
+      },
+      "majority_class_fraction": 0.541103,
+      "calibration_bearing": true,
+      "mean_state_chars": 935.4,
+      "max_state_chars": 2432
+    }
+  },
+  "files": {
+    "public": {
+      "path": "data/public/cfpb_complaints.jsonl.gz",
+      "sha256": "sha256:35b4dbd370c4b02d5de0ee398da577cb1728801e85ac0b055ed771da72517c3f",
+      "n": 40000,
+      "bytes": 16087327
+    },
+    "heldout": {
+      "path": "bench/heldout/cfpb_complaints.jsonl.gz",
+      "sha256": "sha256:d7295a5aae04af661c5037580e70ee82b70c128a1fba2ba5f5b472b77d7dd71f",
+      "n": 2000,
+      "bytes": 807004
+    }
+  }
+}

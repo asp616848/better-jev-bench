@@ -1,0 +1,921 @@
+{
+  "bjb_version": "0.1.0",
+  "built_on": "2026-09-23T14:45:44Z",
+  "split_salt": "better-jev-bench/split/v1",
+  "caps": {
+    "public_per_task": 40000,
+    "heldout_per_task": 2000
+  },
+  "datasets": {
+    "banking77": {
+      "dataset": "banking77",
+      "display_name": "BANKING77",
+      "domain": "nlp",
+      "bjb_version": "0.1.0",
+      "built_on": "2026-09-23T14:43:37Z",
+      "build_seconds": 241.2,
+      "host": "localhost",
+      "loader": "better_jev_bench.datasets.banking77:BankingIntents",
+      "source": {
+        "kind": "http_csv",
+        "urls": [
+          "https://raw.githubusercontent.com/PolyAI-LDN/task-specific-datasets/master/banking_data/train.csv",
+          "https://raw.githubusercontent.com/PolyAI-LDN/task-specific-datasets/master/banking_data/test.csv"
+        ],
+        "note": "The same two files PolyAI's own HF loading script downloads."
+      },
+      "source_url": "https://huggingface.co/datasets/PolyAI/banking77",
+      "license": {
+        "tier": "A",
+        "spdx": "CC-BY-4.0",
+        "obligations": [
+          "attribution"
+        ],
+        "verified_how": "HF Hub API: HfApi().dataset_info('PolyAI/banking77').cardData['license'] == ['cc-by-4.0'], queried on the lab server 2026-09-23. Rows are fetched from the same PolyAI GitHub CSVs the official HF loading script uses, because datasets>=3 will not execute dataset scripts and this repo has no refs/convert/parquet branch (404, checked same day).",
+        "verified_on": "2026-09-23"
+      },
+      "split": {
+        "salt": "better-jev-bench/split/v1",
+        "heldout_fraction_declared": 0.15,
+        "heldout_fraction_realised": 0.1534,
+        "public_cap": 40000,
+        "heldout_cap": 2000,
+        "heldout_label_commitment": "sha256:f04d92e989ce99234877a2436abcdbfefe76a5856b68c079d0d315b23211fda9"
+      },
+      "totals": {
+        "n_items": 13071,
+        "n_public": 11040,
+        "n_heldout": 2000,
+        "n_tasks": 1
+      },
+      "tasks": {
+        "intent": {
+          "primitive": "choice",
+          "question_key": "intent",
+          "ordinal": false,
+          "n_loaded": 13083,
+          "n_duplicates_dropped": 12,
+          "n_items": 13071,
+          "n_public": 11040,
+          "n_heldout": 2000,
+          "option_counts_observed": [
+            77
+          ],
+          "strata_observed": [
+            "mod_text",
+            "prim_choice",
+            "width_wide"
+          ],
+          "width_stratum": "width_wide",
+          "chance_mode": "uniform",
+          "chance_observed": 0.012987,
+          "chance_declared": 0.012987,
+          "n_distinct_labels": 77,
+          "label_balance_top10": {
+            "card_payment_fee_charged": 227,
+            "direct_debit_payment_not_recognised": 222,
+            "balance_not_updated_after_cheque_or_cash_deposit": 221,
+            "wrong_amount_of_cash_received": 220,
+            "cash_withdrawal_charge": 217,
+            "transaction_charged_twice": 215,
+            "declined_cash_withdrawal": 213,
+            "transfer_fee_charged": 212,
+            "transfer_not_received_by_recipient": 211,
+            "balance_not_updated_after_bank_transfer": 211
+          },
+          "majority_class_fraction": 0.017367,
+          "calibration_bearing": true,
+          "mean_state_chars": 76.2,
+          "max_state_chars": 447
+        }
+      },
+      "files": {
+        "public": {
+          "path": "data/public/banking77.jsonl.gz",
+          "sha256": "sha256:2ff4535d529c8cc70278e5273e63e51073ea91d56ea549f4773a32f23d491611",
+          "n": 11040,
+          "bytes": 1191279
+        },
+        "heldout": {
+          "path": "bench/heldout/banking77.jsonl.gz",
+          "sha256": "sha256:6285410c4b45efb781c933e7aa9732422fd6a6e8814c4592bfa57c9d5d3ffab9",
+          "n": 2000,
+          "bytes": 216685
+        }
+      }
+    },
+    "cfpb_complaints": {
+      "dataset": "cfpb_complaints",
+      "display_name": "CFPB Consumer Complaints",
+      "domain": "finance",
+      "bjb_version": "0.1.0",
+      "built_on": "2026-09-23T14:44:00Z",
+      "build_seconds": 21.5,
+      "host": "localhost",
+      "loader": "better_jev_bench.datasets.cfpb:CfpbComplaints",
+      "source": {
+        "kind": "hf_dataset",
+        "hf_repo": "BEE-spoke-data/consumer-finance-complaints",
+        "hf_config": "has-text",
+        "primary_source": "https://files.consumerfinance.gov/ccdb/complaints.csv.zip",
+        "primary_source_etag": "f0d2ec2367bd2ae60f044b782ad85f43-42",
+        "primary_source_checked": "2026-09-23",
+        "note": "Upstream republishes daily and the primary bulk export carries no narrative column; this source is a moving target by construction, which is why the built slices are hash-committed rather than assumed reproducible."
+      },
+      "source_url": "https://huggingface.co/datasets/BEE-spoke-data/consumer-finance-complaints",
+      "license": {
+        "tier": "A",
+        "spdx": "CC0-1.0",
+        "obligations": [],
+        "verified_how": "Three primary checks on 2026-09-23: (1) the CFPB's own public API returns _meta.license = 'CC0'; (2) CFPB/consumer-finance-complaints on the Hub declares cc0-1.0; (3) the mirror actually read here, BEE-spoke-data/consumer-finance-complaints, declares cc0-1.0. The CFPB bulk export was downloaded in full the same day (346,404,253 bytes, ETag f0d2ec2367bd2ae60f044b782ad85f43-42) and its 15-column header does NOT contain 'Consumer complaint narrative', and the public search API no longer returns complaint_what_happened -- so the narrative field is not obtainable from the primary distribution today. See the loader docstring.",
+        "verified_on": "2026-09-23"
+      },
+      "split": {
+        "salt": "better-jev-bench/split/v1",
+        "heldout_fraction_declared": 0.15,
+        "heldout_fraction_realised": 0.0476,
+        "public_cap": 40000,
+        "heldout_cap": 2000,
+        "heldout_label_commitment": "sha256:e7256a7e74ff1f79c97aff5991853372865095bce25552135e58b59ab53c7c87"
+      },
+      "totals": {
+        "n_items": 54923,
+        "n_public": 40000,
+        "n_heldout": 2000,
+        "n_tasks": 1
+      },
+      "tasks": {
+        "product": {
+          "primitive": "choice",
+          "question_key": "product",
+          "ordinal": false,
+          "n_loaded": 59463,
+          "n_duplicates_dropped": 4540,
+          "n_items": 54923,
+          "n_public": 40000,
+          "n_heldout": 2000,
+          "option_counts_observed": [
+            10
+          ],
+          "strata_observed": [
+            "mod_text",
+            "prim_choice",
+            "width_medium"
+          ],
+          "width_stratum": "width_medium",
+          "chance_mode": "majority",
+          "chance_observed": 0.541103,
+          "chance_declared": 0.541103,
+          "n_distinct_labels": 10,
+          "label_balance_top10": {
+            "Credit reporting or other personal consumer reports": 29719,
+            "Debt collection": 8170,
+            "Credit card or prepaid card": 4932,
+            "Mortgage": 4043,
+            "Checking or savings account": 3611,
+            "Student loan": 1427,
+            "Money transfer, virtual currency, or money service": 1326,
+            "Vehicle loan or lease": 1023,
+            "Payday loan, title loan, personal loan, or advance loan": 665,
+            "Debt or credit management": 7
+          },
+          "majority_class_fraction": 0.541103,
+          "calibration_bearing": true,
+          "mean_state_chars": 935.4,
+          "max_state_chars": 2432
+        }
+      },
+      "files": {
+        "public": {
+          "path": "data/public/cfpb_complaints.jsonl.gz",
+          "sha256": "sha256:35b4dbd370c4b02d5de0ee398da577cb1728801e85ac0b055ed771da72517c3f",
+          "n": 40000,
+          "bytes": 16087327
+        },
+        "heldout": {
+          "path": "bench/heldout/cfpb_complaints.jsonl.gz",
+          "sha256": "sha256:d7295a5aae04af661c5037580e70ee82b70c128a1fba2ba5f5b472b77d7dd71f",
+          "n": 2000,
+          "bytes": 807004
+        }
+      }
+    },
+    "civil_comments": {
+      "dataset": "civil_comments",
+      "display_name": "Civil Comments",
+      "domain": "nlp",
+      "bjb_version": "0.1.0",
+      "built_on": "2026-09-23T14:44:31Z",
+      "build_seconds": 25.1,
+      "host": "localhost",
+      "loader": "better_jev_bench.datasets.civil_comments:CivilComments",
+      "source": {
+        "kind": "hf_dataset",
+        "hf_repo": "google/civil_comments",
+        "hf_revision": "f2970eb3"
+      },
+      "source_url": "https://huggingface.co/datasets/google/civil_comments",
+      "license": {
+        "tier": "A",
+        "spdx": "CC0-1.0",
+        "obligations": [],
+        "verified_how": "HF Hub API: cardData['license'] == 'cc0-1.0' for google/civil_comments, queried 2026-09-23. CC0 carries no attribution or share-alike obligation, so this is the one large first-batch source with no conditions propagating to a derived corpus.",
+        "verified_on": "2026-09-23"
+      },
+      "split": {
+        "salt": "better-jev-bench/split/v1",
+        "heldout_fraction_declared": 0.15,
+        "heldout_fraction_realised": 0.0476,
+        "public_cap": 40000,
+        "heldout_cap": 2000,
+        "heldout_label_commitment": "sha256:770ddd6c3f401f607728db332e42bc718510225cb1c46eb6d0a107f5b018d7f6"
+      },
+      "totals": {
+        "n_items": 150230,
+        "n_public": 80000,
+        "n_heldout": 4000,
+        "n_tasks": 2
+      },
+      "tasks": {
+        "is_toxic": {
+          "primitive": "noul",
+          "question_key": "is_toxic",
+          "ordinal": false,
+          "n_loaded": 75189,
+          "n_duplicates_dropped": 80,
+          "n_items": 75109,
+          "n_public": 40000,
+          "n_heldout": 2000,
+          "option_counts_observed": [
+            2
+          ],
+          "strata_observed": [
+            "mod_text",
+            "prim_noul",
+            "width_binary"
+          ],
+          "width_stratum": "width_binary",
+          "chance_mode": "majority",
+          "chance_observed": 0.920729,
+          "chance_declared": 0.920729,
+          "n_distinct_labels": 2,
+          "label_balance_top10": {
+            "No": 69155,
+            "Yes": 5954
+          },
+          "majority_class_fraction": 0.920729,
+          "calibration_bearing": true,
+          "mean_state_chars": 308.7,
+          "max_state_chars": 1015
+        },
+        "toxicity_level": {
+          "primitive": "score",
+          "question_key": "toxicity",
+          "ordinal": true,
+          "n_loaded": 75189,
+          "n_duplicates_dropped": 68,
+          "n_items": 75121,
+          "n_public": 40000,
+          "n_heldout": 2000,
+          "option_counts_observed": [
+            5
+          ],
+          "strata_observed": [
+            "mod_text",
+            "prim_score",
+            "width_small"
+          ],
+          "width_stratum": "width_small",
+          "chance_mode": "majority",
+          "chance_observed": 0.792774,
+          "chance_declared": 0.792774,
+          "n_distinct_labels": 5,
+          "label_balance_top10": {
+            "not toxic": 59554,
+            "slightly toxic": 7211,
+            "moderately toxic": 4410,
+            "toxic": 2685,
+            "severely toxic": 1261
+          },
+          "majority_class_fraction": 0.792774,
+          "calibration_bearing": true,
+          "mean_state_chars": 308.7,
+          "max_state_chars": 1015
+        }
+      },
+      "files": {
+        "public": {
+          "path": "data/public/civil_comments.jsonl.gz",
+          "sha256": "sha256:cdd08817005cbaa419330632087518bc1167aa8bdf5b46f37fec46257066d416",
+          "n": 80000,
+          "bytes": 17440237
+        },
+        "heldout": {
+          "path": "bench/heldout/civil_comments.jsonl.gz",
+          "sha256": "sha256:16a5be85e38bc0c10f5199c4368c9ce19a45cf65decddc20695f505b0d258450",
+          "n": 4000,
+          "bytes": 877939
+        }
+      }
+    },
+    "clinc150": {
+      "dataset": "clinc150",
+      "display_name": "CLINC150 (clinc_oos, plus)",
+      "domain": "nlp",
+      "bjb_version": "0.1.0",
+      "built_on": "2026-09-23T14:44:48Z",
+      "build_seconds": 7.9,
+      "host": "localhost",
+      "loader": "better_jev_bench.datasets.clinc150:ClincIntents",
+      "source": {
+        "kind": "hf_dataset",
+        "hf_repo": "clinc/clinc_oos",
+        "hf_config": "plus",
+        "hf_revision": "155b9c71"
+      },
+      "source_url": "https://huggingface.co/datasets/clinc/clinc_oos",
+      "license": {
+        "tier": "A",
+        "spdx": "CC-BY-3.0",
+        "obligations": [
+          "attribution"
+        ],
+        "verified_how": "HF Hub API: cardData['license'] == ['cc-by-3.0'] for clinc/clinc_oos, queried 2026-09-23. The 'plus' config is used for its larger out-of-scope population.",
+        "verified_on": "2026-09-23"
+      },
+      "split": {
+        "salt": "better-jev-bench/split/v1",
+        "heldout_fraction_declared": 0.15,
+        "heldout_fraction_realised": 0.0897,
+        "public_cap": 40000,
+        "heldout_cap": 2000,
+        "heldout_label_commitment": "sha256:4ffeaafff616d909a093d7fd634c8a9853784f70fff4fa8cbde5529839f3dc19"
+      },
+      "totals": {
+        "n_items": 23849,
+        "n_public": 20304,
+        "n_heldout": 2000,
+        "n_tasks": 1
+      },
+      "tasks": {
+        "intent": {
+          "primitive": "choice",
+          "question_key": "intent",
+          "ordinal": false,
+          "n_loaded": 23850,
+          "n_duplicates_dropped": 1,
+          "n_items": 23849,
+          "n_public": 20304,
+          "n_heldout": 2000,
+          "option_counts_observed": [
+            151
+          ],
+          "strata_observed": [
+            "mod_text",
+            "prim_choice",
+            "width_wide"
+          ],
+          "width_stratum": "width_wide",
+          "chance_mode": "uniform",
+          "chance_observed": 0.006623,
+          "chance_declared": 0.006623,
+          "n_distinct_labels": 151,
+          "label_balance_top10": {
+            "oos": 1350,
+            "mpg": 150,
+            "definition": 150,
+            "order": 150,
+            "how_busy": 150,
+            "transfer": 150,
+            "who_do_you_work_for": 150,
+            "pin_change": 150,
+            "card_declined": 150,
+            "last_maintenance": 150
+          },
+          "majority_class_fraction": 0.056606,
+          "calibration_bearing": true,
+          "mean_state_chars": 53.9,
+          "max_state_chars": 150
+        }
+      },
+      "files": {
+        "public": {
+          "path": "data/public/clinc150.jsonl.gz",
+          "sha256": "sha256:f846127e5b7d761ea5229fac0270482a785ddb4b96e9816abfe7330c198ca973",
+          "n": 20304,
+          "bytes": 2089114
+        },
+        "heldout": {
+          "path": "bench/heldout/clinc150.jsonl.gz",
+          "sha256": "sha256:6df59a390d4005ebc6fb55b5617226ebd1fff6665da34e41171249ca4b9a0621",
+          "n": 2000,
+          "bytes": 208105
+        }
+      }
+    },
+    "cuad": {
+      "dataset": "cuad",
+      "display_name": "CUAD",
+      "domain": "operational",
+      "bjb_version": "0.1.0",
+      "built_on": "2026-09-23T14:44:51Z",
+      "build_seconds": 1.3,
+      "host": "localhost",
+      "loader": "better_jev_bench.datasets.cuad:Cuad",
+      "source": {
+        "kind": "hf_file",
+        "hf_repo": "theatticusproject/cuad",
+        "hf_revision": "a3c393f5",
+        "files": [
+          "CUAD_v1/CUAD_v1.json"
+        ]
+      },
+      "source_url": "https://huggingface.co/datasets/theatticusproject/cuad",
+      "license": {
+        "tier": "A",
+        "spdx": "CC-BY-4.0",
+        "obligations": [
+          "attribution"
+        ],
+        "verified_how": "HF Hub API: cardData['license'] == 'cc-by-4.0' for theatticusproject/cuad, queried 2026-09-23. Rows read from CUAD_v1/CUAD_v1.json in that repo.",
+        "verified_on": "2026-09-23"
+      },
+      "split": {
+        "salt": "better-jev-bench/split/v1",
+        "heldout_fraction_declared": 0.15,
+        "heldout_fraction_realised": 0.1333,
+        "public_cap": 40000,
+        "heldout_cap": 2000,
+        "heldout_label_commitment": "sha256:bc56db694b40a58a2bb859e83c12ef2de418b7114ef86df61b9e7b66de28a529"
+      },
+      "totals": {
+        "n_items": 24161,
+        "n_public": 20639,
+        "n_heldout": 3174,
+        "n_tasks": 2
+      },
+      "tasks": {
+        "clause_present": {
+          "primitive": "noul",
+          "question_key": "clause_present",
+          "ordinal": false,
+          "n_loaded": 16278,
+          "n_duplicates_dropped": 172,
+          "n_items": 16106,
+          "n_public": 13758,
+          "n_heldout": 2000,
+          "option_counts_observed": [
+            2
+          ],
+          "strata_observed": [
+            "mod_text",
+            "prim_noul",
+            "width_binary"
+          ],
+          "width_stratum": "width_binary",
+          "chance_mode": "uniform",
+          "chance_observed": 0.5,
+          "chance_declared": 0.5,
+          "n_distinct_labels": 2,
+          "label_balance_top10": {
+            "Yes": 8053,
+            "No": 8053
+          },
+          "majority_class_fraction": 0.5,
+          "calibration_bearing": true,
+          "mean_state_chars": 331.9,
+          "max_state_chars": 1830
+        },
+        "clause_type": {
+          "primitive": "choice",
+          "question_key": "clause_type",
+          "ordinal": false,
+          "n_loaded": 8139,
+          "n_duplicates_dropped": 84,
+          "n_items": 8055,
+          "n_public": 6881,
+          "n_heldout": 1174,
+          "option_counts_observed": [
+            41
+          ],
+          "strata_observed": [
+            "mod_text",
+            "prim_choice",
+            "width_medium"
+          ],
+          "width_stratum": "width_medium",
+          "chance_mode": "uniform",
+          "chance_observed": 0.02439,
+          "chance_declared": 0.02439,
+          "n_distinct_labels": 41,
+          "label_balance_top10": {
+            "Audit Rights": 628,
+            "Anti-Assignment": 580,
+            "Insurance": 540,
+            "Cap On Liability": 527,
+            "Governing Law": 446,
+            "Revenue/Profit Sharing": 397,
+            "Post-Termination Services": 391,
+            "Minimum Commitment": 386,
+            "License Grant": 371,
+            "Expiration Date": 350
+          },
+          "majority_class_fraction": 0.077964,
+          "calibration_bearing": true,
+          "mean_state_chars": 331.8,
+          "max_state_chars": 1830
+        }
+      },
+      "files": {
+        "public": {
+          "path": "data/public/cuad.jsonl.gz",
+          "sha256": "sha256:212dd272ee2b462f4f2060bc681863c8db950cf18d7a4710d3aa8239dd808b01",
+          "n": 20639,
+          "bytes": 4568522
+        },
+        "heldout": {
+          "path": "bench/heldout/cuad.jsonl.gz",
+          "sha256": "sha256:254408d1af57eb8e69d166f72f979348fd7dfdaf04ee84e7d14ee27cd5f8313c",
+          "n": 3174,
+          "bytes": 722981
+        }
+      }
+    },
+    "go_emotions": {
+      "dataset": "go_emotions",
+      "display_name": "GoEmotions (simplified)",
+      "domain": "nlp",
+      "bjb_version": "0.1.0",
+      "built_on": "2026-09-23T14:45:05Z",
+      "build_seconds": 9.6,
+      "host": "localhost",
+      "loader": "better_jev_bench.datasets.go_emotions:GoEmotions",
+      "source": {
+        "kind": "hf_dataset",
+        "hf_repo": "google-research-datasets/go_emotions",
+        "hf_config": "simplified",
+        "hf_revision": "add49224"
+      },
+      "source_url": "https://huggingface.co/datasets/google-research-datasets/go_emotions",
+      "license": {
+        "tier": "A",
+        "spdx": "Apache-2.0",
+        "obligations": [],
+        "verified_how": "HF Hub API: cardData['license'] == ['apache-2.0'] for google-research-datasets/go_emotions, queried 2026-09-23.",
+        "verified_on": "2026-09-23"
+      },
+      "split": {
+        "salt": "better-jev-bench/split/v1",
+        "heldout_fraction_declared": 0.15,
+        "heldout_fraction_realised": 0.0494,
+        "public_cap": 40000,
+        "heldout_cap": 2000,
+        "heldout_label_commitment": "sha256:d636f4b7ad44aaa8a03de41d63d24dbb38ba935fa9c66db8cecd781e690e57c1"
+      },
+      "totals": {
+        "n_items": 45270,
+        "n_public": 38445,
+        "n_heldout": 2000,
+        "n_tasks": 1
+      },
+      "tasks": {
+        "emotion": {
+          "primitive": "choice",
+          "question_key": "emotion",
+          "ordinal": false,
+          "n_loaded": 45446,
+          "n_duplicates_dropped": 176,
+          "n_items": 45270,
+          "n_public": 38445,
+          "n_heldout": 2000,
+          "option_counts_observed": [
+            28
+          ],
+          "strata_observed": [
+            "mod_text",
+            "prim_choice",
+            "width_medium"
+          ],
+          "width_stratum": "width_medium",
+          "chance_mode": "majority",
+          "chance_observed": 0.353104,
+          "chance_declared": 0.353104,
+          "n_distinct_labels": 28,
+          "label_balance_top10": {
+            "neutral": 15985,
+            "admiration": 3373,
+            "approval": 2365,
+            "gratitude": 2319,
+            "amusement": 2045,
+            "annoyance": 1808,
+            "disapproval": 1808,
+            "love": 1730,
+            "curiosity": 1726,
+            "anger": 1262
+          },
+          "majority_class_fraction": 0.353104,
+          "calibration_bearing": true,
+          "mean_state_chars": 83.3,
+          "max_state_chars": 719
+        }
+      },
+      "files": {
+        "public": {
+          "path": "data/public/go_emotions.jsonl.gz",
+          "sha256": "sha256:640c8400c5566dbb20e1467c875da71b7278c60eea46413aa6e185e7ae73fe13",
+          "n": 38445,
+          "bytes": 4045083
+        },
+        "heldout": {
+          "path": "bench/heldout/go_emotions.jsonl.gz",
+          "sha256": "sha256:cd535de03925a89e6b1cf1cda7a1758bdc82eb2dd5b691915dff317dbb2cf03f",
+          "n": 2000,
+          "bytes": 211488
+        }
+      }
+    },
+    "ledgar": {
+      "dataset": "ledgar",
+      "display_name": "LEDGAR (via LexGLUE)",
+      "domain": "operational",
+      "bjb_version": "0.1.0",
+      "built_on": "2026-09-23T14:45:25Z",
+      "build_seconds": 15.3,
+      "host": "localhost",
+      "loader": "better_jev_bench.datasets.ledgar:Ledgar",
+      "source": {
+        "kind": "hf_dataset",
+        "hf_repo": "coastalcph/lex_glue",
+        "hf_config": "ledgar",
+        "hf_revision": "c23fdff1"
+      },
+      "source_url": "https://huggingface.co/datasets/coastalcph/lex_glue",
+      "license": {
+        "tier": "A",
+        "spdx": "CC-BY-4.0",
+        "obligations": [
+          "attribution"
+        ],
+        "verified_how": "HF Hub API: cardData['license'] == ['cc-by-4.0'] for coastalcph/lex_glue, queried 2026-09-23. The nlpaueb/ledgar repo cited in some write-ups returns 401 and is not used.",
+        "verified_on": "2026-09-23"
+      },
+      "split": {
+        "salt": "better-jev-bench/split/v1",
+        "heldout_fraction_declared": 0.15,
+        "heldout_fraction_realised": 0.0476,
+        "public_cap": 40000,
+        "heldout_cap": 2000,
+        "heldout_label_commitment": "sha256:943fa0c1844b7b82a0c95d10cd09b2c593b1512c07077cb5aef5143fcdcc85d5"
+      },
+      "totals": {
+        "n_items": 78497,
+        "n_public": 40000,
+        "n_heldout": 2000,
+        "n_tasks": 1
+      },
+      "tasks": {
+        "provision_type": {
+          "primitive": "choice",
+          "question_key": "provision_type",
+          "ordinal": false,
+          "n_loaded": 80000,
+          "n_duplicates_dropped": 1503,
+          "n_items": 78497,
+          "n_public": 40000,
+          "n_heldout": 2000,
+          "option_counts_observed": [
+            100
+          ],
+          "strata_observed": [
+            "mod_text",
+            "prim_choice",
+            "width_wide"
+          ],
+          "width_stratum": "width_wide",
+          "chance_mode": "uniform",
+          "chance_observed": 0.01,
+          "chance_declared": 0.01,
+          "n_distinct_labels": 100,
+          "label_balance_top10": {
+            "Governing Laws": 4175,
+            "Counterparts": 3247,
+            "Notices": 3236,
+            "Entire Agreements": 3070,
+            "Severability": 2483,
+            "Amendments": 1934,
+            "Survival": 1896,
+            "Assignments": 1700,
+            "Expenses": 1560,
+            "Terms": 1475
+          },
+          "majority_class_fraction": 0.053187,
+          "calibration_bearing": true,
+          "mean_state_chars": 691.1,
+          "max_state_chars": 2032
+        }
+      },
+      "files": {
+        "public": {
+          "path": "data/public/ledgar.jsonl.gz",
+          "sha256": "sha256:71268d9e330224b8232e8feefead233bf0b8e2486f85760ee1125c8b739056d8",
+          "n": 40000,
+          "bytes": 12941635
+        },
+        "heldout": {
+          "path": "bench/heldout/ledgar.jsonl.gz",
+          "sha256": "sha256:53de9965645a8f62387911d13bd4e1f5e8152a8374650df21a580f68a3a65208",
+          "n": 2000,
+          "bytes": 639216
+        }
+      }
+    },
+    "massive": {
+      "dataset": "massive",
+      "display_name": "MASSIVE (en-US)",
+      "domain": "nlp",
+      "bjb_version": "0.1.0",
+      "built_on": "2026-09-23T14:45:43Z",
+      "build_seconds": 9.6,
+      "host": "localhost",
+      "loader": "better_jev_bench.datasets.massive:MassiveIntents",
+      "source": {
+        "kind": "hf_parquet",
+        "hf_repo": "AmazonScience/massive",
+        "hf_revision": "refs/convert/parquet",
+        "files": [
+          "en-US/train/0000.parquet",
+          "en-US/validation/0000.parquet",
+          "en-US/test/0000.parquet"
+        ],
+        "note": "Hub-generated parquet conversion of the same repo; the repo's own main branch is script-based and datasets>=3 will not run it."
+      },
+      "source_url": "https://huggingface.co/datasets/AmazonScience/massive",
+      "license": {
+        "tier": "A",
+        "spdx": "CC-BY-4.0",
+        "obligations": [
+          "attribution"
+        ],
+        "verified_how": "HF Hub API: cardData['license'] == ['cc-by-4.0'] for AmazonScience/massive, queried 2026-09-23. Rows read from the Hub-generated refs/convert/parquet branch of that same repo (163 parquet files, verified same day) because datasets>=3 will not execute the repo's loading script.",
+        "verified_on": "2026-09-23"
+      },
+      "split": {
+        "salt": "better-jev-bench/split/v1",
+        "heldout_fraction_declared": 0.15,
+        "heldout_fraction_realised": 0.1247,
+        "public_cap": 40000,
+        "heldout_cap": 2000,
+        "heldout_label_commitment": "sha256:1b217d312ccf45e8c98a3d387d1d0580121cd0d11edaaf7be87b6fed066d911b"
+      },
+      "totals": {
+        "n_items": 32877,
+        "n_public": 28085,
+        "n_heldout": 4000,
+        "n_tasks": 2
+      },
+      "tasks": {
+        "intent": {
+          "primitive": "choice",
+          "question_key": "intent",
+          "ordinal": false,
+          "n_loaded": 16521,
+          "n_duplicates_dropped": 82,
+          "n_items": 16439,
+          "n_public": 14043,
+          "n_heldout": 2000,
+          "option_counts_observed": [
+            60
+          ],
+          "strata_observed": [
+            "mod_text",
+            "prim_choice",
+            "width_wide"
+          ],
+          "width_stratum": "width_wide",
+          "chance_mode": "uniform",
+          "chance_observed": 0.016667,
+          "chance_declared": 0.016667,
+          "n_distinct_labels": 60,
+          "label_balance_top10": {
+            "calendar_set": 1147,
+            "play_music": 934,
+            "weather_query": 848,
+            "general_quirky": 827,
+            "calendar_query": 793,
+            "qa_factoid": 769,
+            "news_query": 707,
+            "email_query": 604,
+            "email_sendemail": 530,
+            "datetime_query": 493
+          },
+          "majority_class_fraction": 0.069773,
+          "calibration_bearing": true,
+          "mean_state_chars": 59.9,
+          "max_state_chars": 390
+        },
+        "scenario": {
+          "primitive": "choice",
+          "question_key": "scenario",
+          "ordinal": false,
+          "n_loaded": 16521,
+          "n_duplicates_dropped": 83,
+          "n_items": 16438,
+          "n_public": 14042,
+          "n_heldout": 2000,
+          "option_counts_observed": [
+            18
+          ],
+          "strata_observed": [
+            "mod_text",
+            "prim_choice",
+            "width_medium"
+          ],
+          "width_stratum": "width_medium",
+          "chance_mode": "uniform",
+          "chance_observed": 0.055556,
+          "chance_declared": 0.055556,
+          "n_distinct_labels": 18,
+          "label_balance_top10": {
+            "calendar": 2362,
+            "play": 2016,
+            "qa": 1674,
+            "email": 1374,
+            "iot": 1105,
+            "general": 958,
+            "weather": 848,
+            "transport": 802,
+            "lists": 789,
+            "news": 707
+          },
+          "majority_class_fraction": 0.143691,
+          "calibration_bearing": true,
+          "mean_state_chars": 59.9,
+          "max_state_chars": 390
+        }
+      },
+      "files": {
+        "public": {
+          "path": "data/public/massive.jsonl.gz",
+          "sha256": "sha256:94857ef9fbfbd75cde2a4340ac461e8a6c944c07cf247c78a35bc9c4b5683414",
+          "n": 28085,
+          "bytes": 2391143
+        },
+        "heldout": {
+          "path": "bench/heldout/massive.jsonl.gz",
+          "sha256": "sha256:bffafe53a5f5b859eef1577783713ab16ea9a976dfda85620915b322f50cb5f2",
+          "n": 4000,
+          "bytes": 344296
+        }
+      }
+    }
+  },
+  "totals": {
+    "n_datasets": 8,
+    "n_tasks": 11,
+    "n_items": 422878,
+    "n_public": 278513,
+    "n_heldout": 21174
+  },
+  "strata_population": {
+    "mod_text": {
+      "items": 422878,
+      "heldout": 21174,
+      "calibration_bearing": true
+    },
+    "prim_choice": {
+      "items": 256542,
+      "heldout": 15174,
+      "calibration_bearing": true
+    },
+    "prim_noul": {
+      "items": 91215,
+      "heldout": 4000,
+      "calibration_bearing": true
+    },
+    "prim_score": {
+      "items": 75121,
+      "heldout": 2000,
+      "calibration_bearing": true
+    },
+    "width_binary": {
+      "items": 91215,
+      "heldout": 4000,
+      "calibration_bearing": true
+    },
+    "width_medium": {
+      "items": 124686,
+      "heldout": 7174,
+      "calibration_bearing": true
+    },
+    "width_small": {
+      "items": 75121,
+      "heldout": 2000,
+      "calibration_bearing": true
+    },
+    "width_wide": {
+      "items": 131856,
+      "heldout": 8000,
+      "calibration_bearing": true
+    }
+  }
+}

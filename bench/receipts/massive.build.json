@@ -1,0 +1,139 @@
+{
+  "dataset": "massive",
+  "display_name": "MASSIVE (en-US)",
+  "domain": "nlp",
+  "bjb_version": "0.1.0",
+  "built_on": "2026-09-23T14:45:43Z",
+  "build_seconds": 9.6,
+  "host": "localhost",
+  "loader": "better_jev_bench.datasets.massive:MassiveIntents",
+  "source": {
+    "kind": "hf_parquet",
+    "hf_repo": "AmazonScience/massive",
+    "hf_revision": "refs/convert/parquet",
+    "files": [
+      "en-US/train/0000.parquet",
+      "en-US/validation/0000.parquet",
+      "en-US/test/0000.parquet"
+    ],
+    "note": "Hub-generated parquet conversion of the same repo; the repo's own main branch is script-based and datasets>=3 will not run it."
+  },
+  "source_url": "https://huggingface.co/datasets/AmazonScience/massive",
+  "license": {
+    "tier": "A",
+    "spdx": "CC-BY-4.0",
+    "obligations": [
+      "attribution"
+    ],
+    "verified_how": "HF Hub API: cardData['license'] == ['cc-by-4.0'] for AmazonScience/massive, queried 2026-09-23. Rows read from the Hub-generated refs/convert/parquet branch of that same repo (163 parquet files, verified same day) because datasets>=3 will not execute the repo's loading script.",
+    "verified_on": "2026-09-23"
+  },
+  "split": {
+    "salt": "better-jev-bench/split/v1",
+    "heldout_fraction_declared": 0.15,
+    "heldout_fraction_realised": 0.1247,
+    "public_cap": 40000,
+    "heldout_cap": 2000,
+    "heldout_label_commitment": "sha256:1b217d312ccf45e8c98a3d387d1d0580121cd0d11edaaf7be87b6fed066d911b"
+  },
+  "totals": {
+    "n_items": 32877,
+    "n_public": 28085,
+    "n_heldout": 4000,
+    "n_tasks": 2
+  },
+  "tasks": {
+    "intent": {
+      "primitive": "choice",
+      "question_key": "intent",
+      "ordinal": false,
+      "n_loaded": 16521,
+      "n_duplicates_dropped": 82,
+      "n_items": 16439,
+      "n_public": 14043,
+      "n_heldout": 2000,
+      "option_counts_observed": [
+        60
+      ],
+      "strata_observed": [
+        "mod_text",
+        "prim_choice",
+        "width_wide"
+      ],
+      "width_stratum": "width_wide",
+      "chance_mode": "uniform",
+      "chance_observed": 0.016667,
+      "chance_declared": 0.016667,
+      "n_distinct_labels": 60,
+      "label_balance_top10": {
+        "calendar_set": 1147,
+        "play_music": 934,
+        "weather_query": 848,
+        "general_quirky": 827,
+        "calendar_query": 793,
+        "qa_factoid": 769,
+        "news_query": 707,
+        "email_query": 604,
+        "email_sendemail": 530,
+        "datetime_query": 493
+      },
+      "majority_class_fraction": 0.069773,
+      "calibration_bearing": true,
+      "mean_state_chars": 59.9,
+      "max_state_chars": 390
+    },
+    "scenario": {
+      "primitive": "choice",
+      "question_key": "scenario",
+      "ordinal": false,
+      "n_loaded": 16521,
+      "n_duplicates_dropped": 83,
+      "n_items": 16438,
+      "n_public": 14042,
+      "n_heldout": 2000,
+      "option_counts_observed": [
+        18
+      ],
+      "strata_observed": [
+        "mod_text",
+        "prim_choice",
+        "width_medium"
+      ],
+      "width_stratum": "width_medium",
+      "chance_mode": "uniform",
+      "chance_observed": 0.055556,
+      "chance_declared": 0.055556,
+      "n_distinct_labels": 18,
+      "label_balance_top10": {
+        "calendar": 2362,
+        "play": 2016,
+        "qa": 1674,
+        "email": 1374,
+        "iot": 1105,
+        "general": 958,
+        "weather": 848,
+        "transport": 802,
+        "lists": 789,
+        "news": 707
+      },
+      "majority_class_fraction": 0.143691,
+      "calibration_bearing": true,
+      "mean_state_chars": 59.9,
+      "max_state_chars": 390
+    }
+  },
+  "files": {
+    "public": {
+      "path": "data/public/massive.jsonl.gz",
+      "sha256": "sha256:94857ef9fbfbd75cde2a4340ac461e8a6c944c07cf247c78a35bc9c4b5683414",
+      "n": 28085,
+      "bytes": 2391143
+    },
+    "heldout": {
+      "path": "bench/heldout/massive.jsonl.gz",
+      "sha256": "sha256:bffafe53a5f5b859eef1577783713ab16ea9a976dfda85620915b322f50cb5f2",
+      "n": 4000,
+      "bytes": 344296
+    }
+  }
+}

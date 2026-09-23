@@ -1,0 +1,118 @@
+{
+  "dataset": "civil_comments",
+  "display_name": "Civil Comments",
+  "domain": "nlp",
+  "bjb_version": "0.1.0",
+  "built_on": "2026-09-23T14:44:31Z",
+  "build_seconds": 25.1,
+  "host": "localhost",
+  "loader": "better_jev_bench.datasets.civil_comments:CivilComments",
+  "source": {
+    "kind": "hf_dataset",
+    "hf_repo": "google/civil_comments",
+    "hf_revision": "f2970eb3"
+  },
+  "source_url": "https://huggingface.co/datasets/google/civil_comments",
+  "license": {
+    "tier": "A",
+    "spdx": "CC0-1.0",
+    "obligations": [],
+    "verified_how": "HF Hub API: cardData['license'] == 'cc0-1.0' for google/civil_comments, queried 2026-09-23. CC0 carries no attribution or share-alike obligation, so this is the one large first-batch source with no conditions propagating to a derived corpus.",
+    "verified_on": "2026-09-23"
+  },
+  "split": {
+    "salt": "better-jev-bench/split/v1",
+    "heldout_fraction_declared": 0.15,
+    "heldout_fraction_realised": 0.0476,
+    "public_cap": 40000,
+    "heldout_cap": 2000,
+    "heldout_label_commitment": "sha256:770ddd6c3f401f607728db332e42bc718510225cb1c46eb6d0a107f5b018d7f6"
+  },
+  "totals": {
+    "n_items": 150230,
+    "n_public": 80000,
+    "n_heldout": 4000,
+    "n_tasks": 2
+  },
+  "tasks": {
+    "is_toxic": {
+      "primitive": "noul",
+      "question_key": "is_toxic",
+      "ordinal": false,
+      "n_loaded": 75189,
+      "n_duplicates_dropped": 80,
+      "n_items": 75109,
+      "n_public": 40000,
+      "n_heldout": 2000,
+      "option_counts_observed": [
+        2
+      ],
+      "strata_observed": [
+        "mod_text",
+        "prim_noul",
+        "width_binary"
+      ],
+      "width_stratum": "width_binary",
+      "chance_mode": "majority",
+      "chance_observed": 0.920729,
+      "chance_declared": 0.920729,
+      "n_distinct_labels": 2,
+      "label_balance_top10": {
+        "No": 69155,
+        "Yes": 5954
+      },
+      "majority_class_fraction": 0.920729,
+      "calibration_bearing": true,
+      "mean_state_chars": 308.7,
+      "max_state_chars": 1015
+    },
+    "toxicity_level": {
+      "primitive": "score",
+      "question_key": "toxicity",
+      "ordinal": true,
+      "n_loaded": 75189,
+      "n_duplicates_dropped": 68,
+      "n_items": 75121,
+      "n_public": 40000,
+      "n_heldout": 2000,
+      "option_counts_observed": [
+        5
+      ],
+      "strata_observed": [
+        "mod_text",
+        "prim_score",
+        "width_small"
+      ],
+      "width_stratum": "width_small",
+      "chance_mode": "majority",
+      "chance_observed": 0.792774,
+      "chance_declared": 0.792774,
+      "n_distinct_labels": 5,
+      "label_balance_top10": {
+        "not toxic": 59554,
+        "slightly toxic": 7211,
+        "moderately toxic": 4410,
+        "toxic": 2685,
+        "severely toxic": 1261
+      },
+      "majority_class_fraction": 0.792774,
+      "calibration_bearing": true,
+      "mean_state_chars": 308.7,
+      "max_state_chars": 1015
+    }
+  },
+  "files": {
+    "public": {
+      "path": "data/public/civil_comments.jsonl.gz",
+      "sha256": "sha256:cdd08817005cbaa419330632087518bc1167aa8bdf5b46f37fec46257066d416",
+      "n": 80000,
+      "bytes": 17440237
+    },
+    "heldout": {
+      "path": "bench/heldout/civil_comments.jsonl.gz",
+      "sha256": "sha256:16a5be85e38bc0c10f5199c4368c9ce19a45cf65decddc20695f505b0d258450",
+      "n": 4000,
+      "bytes": 877939
+    }
+  }
+}

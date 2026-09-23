@@ -1,0 +1,95 @@
+{
+  "dataset": "clinc150",
+  "display_name": "CLINC150 (clinc_oos, plus)",
+  "domain": "nlp",
+  "bjb_version": "0.1.0",
+  "built_on": "2026-09-23T14:44:48Z",
+  "build_seconds": 7.9,
+  "host": "localhost",
+  "loader": "better_jev_bench.datasets.clinc150:ClincIntents",
+  "source": {
+    "kind": "hf_dataset",
+    "hf_repo": "clinc/clinc_oos",
+    "hf_config": "plus",
+    "hf_revision": "155b9c71"
+  },
+  "source_url": "https://huggingface.co/datasets/clinc/clinc_oos",
+  "license": {
+    "tier": "A",
+    "spdx": "CC-BY-3.0",
+    "obligations": [
+      "attribution"
+    ],
+    "verified_how": "HF Hub API: cardData['license'] == ['cc-by-3.0'] for clinc/clinc_oos, queried 2026-09-23. The 'plus' config is used for its larger out-of-scope population.",
+    "verified_on": "2026-09-23"
+  },
+  "split": {
+    "salt": "better-jev-bench/split/v1",
+    "heldout_fraction_declared": 0.15,
+    "heldout_fraction_realised": 0.0897,
+    "public_cap": 40000,
+    "heldout_cap": 2000,
+    "heldout_label_commitment": "sha256:4ffeaafff616d909a093d7fd634c8a9853784f70fff4fa8cbde5529839f3dc19"
+  },
+  "totals": {
+    "n_items": 23849,
+    "n_public": 20304,
+    "n_heldout": 2000,
+    "n_tasks": 1
+  },
+  "tasks": {
+    "intent": {
+      "primitive": "choice",
+      "question_key": "intent",
+      "ordinal": false,
+      "n_loaded": 23850,
+      "n_duplicates_dropped": 1,
+      "n_items": 23849,
+      "n_public": 20304,
+      "n_heldout": 2000,
+      "option_counts_observed": [
+        151
+      ],
+      "strata_observed": [
+        "mod_text",
+        "prim_choice",
+        "width_wide"
+      ],
+      "width_stratum": "width_wide",
+      "chance_mode": "uniform",
+      "chance_observed": 0.006623,
+      "chance_declared": 0.006623,
+      "n_distinct_labels": 151,
+      "label_balance_top10": {
+        "oos": 1350,
+        "mpg": 150,
+        "definition": 150,
+        "order": 150,
+        "how_busy": 150,
+        "transfer": 150,
+        "who_do_you_work_for": 150,
+        "pin_change": 150,
+        "card_declined": 150,
+        "last_maintenance": 150
+      },
+      "majority_class_fraction": 0.056606,
+      "calibration_bearing": true,
+      "mean_state_chars": 53.9,
+      "max_state_chars": 150
+    }
+  },
+  "files": {
+    "public": {
+      "path": "data/public/clinc150.jsonl.gz",
+      "sha256": "sha256:f846127e5b7d761ea5229fac0270482a785ddb4b96e9816abfe7330c198ca973",
+      "n": 20304,
+      "bytes": 2089114
+    },
+    "heldout": {
+      "path": "bench/heldout/clinc150.jsonl.gz",
+      "sha256": "sha256:6df59a390d4005ebc6fb55b5617226ebd1fff6665da34e41171249ca4b9a0621",
+      "n": 2000,
+      "bytes": 208105
+    }
+  }
+}

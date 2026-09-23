@@ -1,0 +1,93 @@
+{
+  "dataset": "go_emotions",
+  "display_name": "GoEmotions (simplified)",
+  "domain": "nlp",
+  "bjb_version": "0.1.0",
+  "built_on": "2026-09-23T14:45:05Z",
+  "build_seconds": 9.6,
+  "host": "localhost",
+  "loader": "better_jev_bench.datasets.go_emotions:GoEmotions",
+  "source": {
+    "kind": "hf_dataset",
+    "hf_repo": "google-research-datasets/go_emotions",
+    "hf_config": "simplified",
+    "hf_revision": "add49224"
+  },
+  "source_url": "https://huggingface.co/datasets/google-research-datasets/go_emotions",
+  "license": {
+    "tier": "A",
+    "spdx": "Apache-2.0",
+    "obligations": [],
+    "verified_how": "HF Hub API: cardData['license'] == ['apache-2.0'] for google-research-datasets/go_emotions, queried 2026-09-23.",
+    "verified_on": "2026-09-23"
+  },
+  "split": {
+    "salt": "better-jev-bench/split/v1",
+    "heldout_fraction_declared": 0.15,
+    "heldout_fraction_realised": 0.0494,
+    "public_cap": 40000,
+    "heldout_cap": 2000,
+    "heldout_label_commitment": "sha256:d636f4b7ad44aaa8a03de41d63d24dbb38ba935fa9c66db8cecd781e690e57c1"
+  },
+  "totals": {
+    "n_items": 45270,
+    "n_public": 38445,
+    "n_heldout": 2000,
+    "n_tasks": 1
+  },
+  "tasks": {
+    "emotion": {
+      "primitive": "choice",
+      "question_key": "emotion",
+      "ordinal": false,
+      "n_loaded": 45446,
+      "n_duplicates_dropped": 176,
+      "n_items": 45270,
+      "n_public": 38445,
+      "n_heldout": 2000,
+      "option_counts_observed": [
+        28
+      ],
+      "strata_observed": [
+        "mod_text",
+        "prim_choice",
+        "width_medium"
+      ],
+      "width_stratum": "width_medium",
+      "chance_mode": "majority",
+      "chance_observed": 0.353104,
+      "chance_declared": 0.353104,
+      "n_distinct_labels": 28,
+      "label_balance_top10": {
+        "neutral": 15985,
+        "admiration": 3373,
+        "approval": 2365,
+        "gratitude": 2319,
+        "amusement": 2045,
+        "annoyance": 1808,
+        "disapproval": 1808,
+        "love": 1730,
+        "curiosity": 1726,
+        "anger": 1262
+      },
+      "majority_class_fraction": 0.353104,
+      "calibration_bearing": true,
+      "mean_state_chars": 83.3,
+      "max_state_chars": 719
+    }
+  },
+  "files": {
+    "public": {
+      "path": "data/public/go_emotions.jsonl.gz",
+      "sha256": "sha256:640c8400c5566dbb20e1467c875da71b7278c60eea46413aa6e185e7ae73fe13",
+      "n": 38445,
+      "bytes": 4045083
+    },
+    "heldout": {
+      "path": "bench/heldout/go_emotions.jsonl.gz",
+      "sha256": "sha256:cd535de03925a89e6b1cf1cda7a1758bdc82eb2dd5b691915dff317dbb2cf03f",
+      "n": 2000,
+      "bytes": 211488
+    }
+  }
+}

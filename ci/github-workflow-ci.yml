@@ -1,0 +1,51 @@
+name: ci
+
+# The PRD §7.4 gates, split the way `bjb validate` splits them.
+#
+# `validate` is offline and runs on every push and PR: it checks manifests, the
+# frozen held-out slices, the build receipts and the held-out label commitments
+# against each other. It needs no Hugging Face token and downloads nothing, so it
+# is fast enough to be a required check.
+#
+# `loader-smoke` is gate 2 -- it actually executes each loader against its real
+# source. That is bandwidth-bound (Civil Comments and CFPB are ~1GB each), so it
+# runs on a schedule and on manual dispatch rather than on every PR. A PR adding
+# a new dataset should have it run once, via workflow_dispatch.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+jobs:
+  validate:
+    name: "§7.4 gates (offline)"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install
+        run: pip install -e .
+      - name: Validate manifests, frozen slices and commitments
+        run: bjb validate
+      - name: Catalogue renders
+        run: bjb catalogue && bjb stats
+
+  loader-smoke:
+    name: "§7.4 gate 2 (loaders, network)"
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install
+        run: pip install -e .
+      - name: Run every loader against its real source
+        run: bjb validate --loaders

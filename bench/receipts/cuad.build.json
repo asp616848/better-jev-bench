@@ -1,0 +1,128 @@
+{
+  "dataset": "cuad",
+  "display_name": "CUAD",
+  "domain": "operational",
+  "bjb_version": "0.1.0",
+  "built_on": "2026-09-23T14:44:51Z",
+  "build_seconds": 1.3,
+  "host": "localhost",
+  "loader": "better_jev_bench.datasets.cuad:Cuad",
+  "source": {
+    "kind": "hf_file",
+    "hf_repo": "theatticusproject/cuad",
+    "hf_revision": "a3c393f5",
+    "files": [
+      "CUAD_v1/CUAD_v1.json"
+    ]
+  },
+  "source_url": "https://huggingface.co/datasets/theatticusproject/cuad",
+  "license": {
+    "tier": "A",
+    "spdx": "CC-BY-4.0",
+    "obligations": [
+      "attribution"
+    ],
+    "verified_how": "HF Hub API: cardData['license'] == 'cc-by-4.0' for theatticusproject/cuad, queried 2026-09-23. Rows read from CUAD_v1/CUAD_v1.json in that repo.",
+    "verified_on": "2026-09-23"
+  },
+  "split": {
+    "salt": "better-jev-bench/split/v1",
+    "heldout_fraction_declared": 0.15,
+    "heldout_fraction_realised": 0.1333,
+    "public_cap": 40000,
+    "heldout_cap": 2000,
+    "heldout_label_commitment": "sha256:bc56db694b40a58a2bb859e83c12ef2de418b7114ef86df61b9e7b66de28a529"
+  },
+  "totals": {
+    "n_items": 24161,
+    "n_public": 20639,
+    "n_heldout": 3174,
+    "n_tasks": 2
+  },
+  "tasks": {
+    "clause_present": {
+      "primitive": "noul",
+      "question_key": "clause_present",
+      "ordinal": false,
+      "n_loaded": 16278,
+      "n_duplicates_dropped": 172,
+      "n_items": 16106,
+      "n_public": 13758,
+      "n_heldout": 2000,
+      "option_counts_observed": [
+        2
+      ],
+      "strata_observed": [
+        "mod_text",
+        "prim_noul",
+        "width_binary"
+      ],
+      "width_stratum": "width_binary",
+      "chance_mode": "uniform",
+      "chance_observed": 0.5,
+      "chance_declared": 0.5,
+      "n_distinct_labels": 2,
+      "label_balance_top10": {
+        "Yes": 8053,
+        "No": 8053
+      },
+      "majority_class_fraction": 0.5,
+      "calibration_bearing": true,
+      "mean_state_chars": 331.9,
+      "max_state_chars": 1830
+    },
+    "clause_type": {
+      "primitive": "choice",
+      "question_key": "clause_type",
+      "ordinal": false,
+      "n_loaded": 8139,
+      "n_duplicates_dropped": 84,
+      "n_items": 8055,
+      "n_public": 6881,
+      "n_heldout": 1174,
+      "option_counts_observed": [
+        41
+      ],
+      "strata_observed": [
+        "mod_text",
+        "prim_choice",
+        "width_medium"
+      ],
+      "width_stratum": "width_medium",
+      "chance_mode": "uniform",
+      "chance_observed": 0.02439,
+      "chance_declared": 0.02439,
+      "n_distinct_labels": 41,
+      "label_balance_top10": {
+        "Audit Rights": 628,
+        "Anti-Assignment": 580,
+        "Insurance": 540,
+        "Cap On Liability": 527,
+        "Governing Law": 446,
+        "Revenue/Profit Sharing": 397,
+        "Post-Termination Services": 391,
+        "Minimum Commitment": 386,
+        "License Grant": 371,
+        "Expiration Date": 350
+      },
+      "majority_class_fraction": 0.077964,
+      "calibration_bearing": true,
+      "mean_state_chars": 331.8,
+      "max_state_chars": 1830
+    }
+  },
+  "files": {
+    "public": {
+      "path": "data/public/cuad.jsonl.gz",
+      "sha256": "sha256:212dd272ee2b462f4f2060bc681863c8db950cf18d7a4710d3aa8239dd808b01",
+      "n": 20639,
+      "bytes": 4568522
+    },
+    "heldout": {
+      "path": "bench/heldout/cuad.jsonl.gz",
+      "sha256": "sha256:254408d1af57eb8e69d166f72f979348fd7dfdaf04ee84e7d14ee27cd5f8313c",
+      "n": 3174,
+      "bytes": 722981
+    }
+  }
+}
