@@ -1,19 +1,112 @@
 {
   "bjb_version": "0.1.0",
-  "built_on": "2026-09-23T14:45:44Z",
+  "built_on": "2026-09-23T21:26:15Z",
   "split_salt": "better-jev-bench/split/v1",
   "caps": {
     "public_per_task": 40000,
     "heldout_per_task": 2000
   },
   "datasets": {
+    "atari_head": {
+      "dataset": "atari_head",
+      "display_name": "Atari-HEAD (breakout)",
+      "domain": "multimodal",
+      "bjb_version": "0.1.0",
+      "built_on": "2026-09-23T21:23:49Z",
+      "build_seconds": 50.0,
+      "host": "localhost",
+      "loader": "better_jev_bench.datasets.atari_head:AtariHead",
+      "source": {
+        "kind": "http_archive",
+        "url": "https://zenodo.org/records/3451322/files/breakout.zip?download=1",
+        "doi": "10.5281/zenodo.3451322"
+      },
+      "source_url": "https://zenodo.org/records/3451322",
+      "license": {
+        "tier": "A",
+        "spdx": "CC-BY-4.0",
+        "obligations": [
+          "attribution"
+        ],
+        "verified_how": "Zenodo REST API: GET https://zenodo.org/api/records/3451322 -> metadata.license.id == 'cc-by-4.0', queried 2026-09-24 (better-jev-bench_PRD.md §13.3).",
+        "verified_on": "2026-09-24"
+      },
+      "split": {
+        "salt": "better-jev-bench/split/v1",
+        "heldout_fraction_declared": 0.15,
+        "heldout_fraction_realised": 0.116,
+        "public_cap": 40000,
+        "heldout_cap": 2000,
+        "heldout_label_commitment": "sha256:cb14040f298dfb1f1787e15222236c6c33a97f2d04a4e08e69cf7eb286704195"
+      },
+      "totals": {
+        "n_items": 10355,
+        "n_public": 9154,
+        "n_heldout": 1201,
+        "n_tasks": 1
+      },
+      "tasks": {
+        "action": {
+          "primitive": "choice",
+          "question_key": "action",
+          "ordinal": false,
+          "n_loaded": 10465,
+          "n_duplicates_dropped": 110,
+          "n_items": 10355,
+          "n_public": 9154,
+          "n_heldout": 1201,
+          "option_counts_observed": [
+            18
+          ],
+          "strata_observed": [
+            "mod_multimodal",
+            "prim_choice",
+            "width_medium"
+          ],
+          "width_stratum": "width_medium",
+          "chance_mode": "uniform",
+          "chance_observed": 0.055556,
+          "chance_declared": 0.055556,
+          "n_distinct_labels": 4,
+          "label_balance_top10": {
+            "NOOP": 8161,
+            "LEFT": 1098,
+            "RIGHT": 1068,
+            "FIRE": 28
+          },
+          "majority_class_fraction": 0.788122,
+          "calibration_bearing": true,
+          "mean_state_chars": 82.0,
+          "max_state_chars": 82
+        }
+      },
+      "files": {
+        "public": {
+          "path": "data/public/atari_head.jsonl.gz",
+          "sha256": "sha256:dd1a3d3a0c905247d9a5efb8c75f36d9347e7da4cbd5e8127be8fe26400b5b12",
+          "n": 9154,
+          "bytes": 1024114
+        },
+        "heldout": {
+          "path": "bench/heldout/atari_head.jsonl.gz",
+          "sha256": "sha256:b8ecf14f51351c282f6f92a0523b31eaf9c2ea2c3bf682dbcac48d9d081750ae",
+          "n": 1201,
+          "bytes": 125002
+        }
+      },
+      "images": {
+        "path": "bench/receipts/atari_head.images.sha256.jsonl.gz",
+        "sha256": "sha256:9f8db3ebcd2a69ab1fdfad9aa76663291f288c5e9b05f4b9244e5595f2a40eca",
+        "n_distinct_images": 10345
+      }
+    },
     "banking77": {
       "dataset": "banking77",
       "display_name": "BANKING77",
       "domain": "nlp",
       "bjb_version": "0.1.0",
-      "built_on": "2026-09-23T14:43:37Z",
-      "build_seconds": 241.2,
+      "built_on": "2026-09-23T21:23:51Z",
+      "build_seconds": 1.1,
       "host": "localhost",
       "loader": "better_jev_bench.datasets.banking77:BankingIntents",
       "source": {
@@ -109,8 +202,8 @@
       "display_name": "CFPB Consumer Complaints",
       "domain": "finance",
       "bjb_version": "0.1.0",
-      "built_on": "2026-09-23T14:44:00Z",
-      "build_seconds": 21.5,
+      "built_on": "2026-09-23T21:24:13Z",
+      "build_seconds": 20.3,
       "host": "localhost",
       "loader": "better_jev_bench.datasets.cfpb:CfpbComplaints",
       "source": {
@@ -205,8 +298,8 @@
       "display_name": "Civil Comments",
       "domain": "nlp",
       "bjb_version": "0.1.0",
-      "built_on": "2026-09-23T14:44:31Z",
-      "build_seconds": 25.1,
+      "built_on": "2026-09-23T21:24:42Z",
+      "build_seconds": 24.6,
       "host": "localhost",
       "loader": "better_jev_bench.datasets.civil_comments:CivilComments",
       "source": {
@@ -323,8 +416,8 @@
       "display_name": "CLINC150 (clinc_oos, plus)",
       "domain": "nlp",
       "bjb_version": "0.1.0",
-      "built_on": "2026-09-23T14:44:48Z",
-      "build_seconds": 7.9,
+      "built_on": "2026-09-23T21:24:59Z",
+      "build_seconds": 8.5,
       "host": "localhost",
       "loader": "better_jev_bench.datasets.clinc150:ClincIntents",
       "source": {
@@ -418,7 +511,7 @@
       "display_name": "CUAD",
       "domain": "operational",
       "bjb_version": "0.1.0",
-      "built_on": "2026-09-23T14:44:51Z",
+      "built_on": "2026-09-23T21:25:03Z",
       "build_seconds": 1.3,
       "host": "localhost",
       "loader": "better_jev_bench.datasets.cuad:Cuad",
@@ -546,8 +639,8 @@
       "display_name": "GoEmotions (simplified)",
       "domain": "nlp",
       "bjb_version": "0.1.0",
-      "built_on": "2026-09-23T14:45:05Z",
-      "build_seconds": 9.6,
+      "built_on": "2026-09-23T21:25:18Z",
+      "build_seconds": 10.0,
       "host": "localhost",
       "loader": "better_jev_bench.datasets.go_emotions:GoEmotions",
       "source": {
@@ -639,8 +732,8 @@
       "display_name": "LEDGAR (via LexGLUE)",
       "domain": "operational",
       "bjb_version": "0.1.0",
-      "built_on": "2026-09-23T14:45:25Z",
-      "build_seconds": 15.3,
+      "built_on": "2026-09-23T21:25:39Z",
+      "build_seconds": 17.3,
       "host": "localhost",
       "loader": "better_jev_bench.datasets.ledgar:Ledgar",
       "source": {
@@ -734,8 +827,8 @@
       "display_name": "MASSIVE (en-US)",
       "domain": "nlp",
       "bjb_version": "0.1.0",
-      "built_on": "2026-09-23T14:45:43Z",
-      "build_seconds": 9.6,
+      "built_on": "2026-09-23T21:25:57Z",
+      "build_seconds": 10.1,
       "host": "localhost",
       "loader": "better_jev_bench.datasets.massive:MassiveIntents",
       "source": {
@@ -867,24 +960,227 @@
           "bytes": 344296
         }
       }
+    },
+    "os_atlas": {
+      "dataset": "os_atlas",
+      "display_name": "OS-Atlas-data (desktop/linux subset)",
+      "domain": "multimodal",
+      "bjb_version": "0.1.0",
+      "built_on": "2026-09-23T21:26:08Z",
+      "build_seconds": 9.9,
+      "host": "localhost",
+      "loader": "better_jev_bench.datasets.os_atlas:OSAtlasDesktopLinux",
+      "source": {
+        "kind": "hf_dataset",
+        "hf_repo": "OS-Copilot/OS-Atlas-data",
+        "hf_revision": "e3a4c90c5f6129c25efdaa0671b08a11f7cb8f3f"
+      },
+      "source_url": "https://huggingface.co/datasets/OS-Copilot/OS-Atlas-data",
+      "license": {
+        "tier": "A",
+        "spdx": "Apache-2.0",
+        "obligations": [
+          "attribution"
+        ],
+        "verified_how": "HF Hub API: cardData['license'] == 'apache-2.0' for OS-Copilot/OS-Atlas-data, queried 2026-09-24. Repo-level license only -- verified this specific subset (desktop_domain/linux_splited.json + linux_images.zip) is the OS-Atlas authors' own collected/captioned Linux desktop screenshots, not a repackage of AMEX/UIBert/RICO/SeeClick/FineWeb (each of which keeps its own separate license and is NOT pulled by this loader). better-jev-bench_PRD.md §13.3.",
+        "verified_on": "2026-09-24"
+      },
+      "split": {
+        "salt": "better-jev-bench/split/v1",
+        "heldout_fraction_declared": 0.15,
+        "heldout_fraction_realised": 0.0553,
+        "public_cap": 40000,
+        "heldout_cap": 2000,
+        "heldout_label_commitment": "sha256:39b7e46483900cbcc36b3481e8945082d18f11dab90b9e79d1d37bad05aae527"
+      },
+      "totals": {
+        "n_items": 40308,
+        "n_public": 34184,
+        "n_heldout": 2000,
+        "n_tasks": 1
+      },
+      "tasks": {
+        "target_element": {
+          "primitive": "choice",
+          "question_key": "target_element",
+          "ordinal": false,
+          "n_loaded": 42753,
+          "n_duplicates_dropped": 2445,
+          "n_items": 40308,
+          "n_public": 34184,
+          "n_heldout": 2000,
+          "option_counts_observed": [
+            2
+          ],
+          "strata_observed": [
+            "mod_multimodal",
+            "prim_choice",
+            "width_binary"
+          ],
+          "width_stratum": "width_binary",
+          "chance_mode": "uniform",
+          "chance_observed": 0.5,
+          "chance_declared": 0.5,
+          "n_distinct_labels": 12108,
+          "label_balance_top10": {
+            "push-button centred at (1.4%, 42.2%) of the screenshot": 189,
+            "push-button centred at (2.8%, 84.3%) of the screenshot": 174,
+            "push-button centred at (1.4%, 18.5%) of the screenshot": 150,
+            "menu centred at (97.6%, 0.9%) of the screenshot": 150,
+            "push-button centred at (1.4%, 13.9%) of the screenshot": 150,
+            "push-button centred at (1.4%, 28.0%) of the screenshot": 150,
+            "push-button centred at (1.4%, 37.4%) of the screenshot": 149,
+            "toggle-button centred at (1.4%, 97.6%) of the screenshot": 149,
+            "push-button centred at (1.4%, 9.1%) of the screenshot": 148,
+            "push-button centred at (1.4%, 4.4%) of the screenshot": 147
+          },
+          "majority_class_fraction": 0.004689,
+          "calibration_bearing": true,
+          "mean_state_chars": 36.1,
+          "max_state_chars": 331
+        }
+      },
+      "files": {
+        "public": {
+          "path": "data/public/os_atlas.jsonl.gz",
+          "sha256": "sha256:e1e619225fa3e5eaa19054cbdc286acae7fefc07b36712e2be8bbc9437007a4b",
+          "n": 34184,
+          "bytes": 4689655
+        },
+        "heldout": {
+          "path": "bench/heldout/os_atlas.jsonl.gz",
+          "sha256": "sha256:01b711a2307bd92a67824c60021bd8119b296c31521604f2be94c641640b535c",
+          "n": 2000,
+          "bytes": 277027
+        }
+      },
+      "images": {
+        "path": "bench/receipts/os_atlas.images.sha256.jsonl.gz",
+        "sha256": "sha256:5ffb7439b18f646f121ba21871cb1f0724661c93a7c194abc6d45099e8ab5963",
+        "n_distinct_images": 967
+      }
+    },
+    "screenspot_v2": {
+      "dataset": "screenspot_v2",
+      "display_name": "ScreenSpot-v2 (OS-Copilot)",
+      "domain": "multimodal",
+      "bjb_version": "0.1.0",
+      "built_on": "2026-09-23T21:26:15Z",
+      "build_seconds": 3.5,
+      "host": "localhost",
+      "loader": "better_jev_bench.datasets.screenspot_v2:ScreenSpotV2",
+      "source": {
+        "kind": "hf_dataset",
+        "hf_repo": "OS-Copilot/ScreenSpot-v2",
+        "hf_revision": "5efbb1f1b5463a575f2eb7bc30fe29e49c15f93c"
+      },
+      "source_url": "https://huggingface.co/datasets/OS-Copilot/ScreenSpot-v2",
+      "license": {
+        "tier": "A",
+        "spdx": "Apache-2.0",
+        "obligations": [
+          "attribution"
+        ],
+        "verified_how": "HF Hub API: cardData['license'] == 'apache-2.0' for OS-Copilot/ScreenSpot-v2, queried 2026-09-24 (better-jev-bench_PRD.md §13.3).",
+        "verified_on": "2026-09-24"
+      },
+      "split": {
+        "salt": "better-jev-bench/split/v1",
+        "heldout_fraction_declared": 0.95,
+        "heldout_fraction_realised": 0.9555,
+        "public_cap": 40000,
+        "heldout_cap": 2000,
+        "heldout_label_commitment": "sha256:f86116d3318af406636320c935f3089e0b11d49a39a41b50ae18f92ab5372413"
+      },
+      "totals": {
+        "n_items": 898,
+        "n_public": 40,
+        "n_heldout": 858,
+        "n_tasks": 1
+      },
+      "tasks": {
+        "target_element": {
+          "primitive": "choice",
+          "question_key": "target_element",
+          "ordinal": false,
+          "n_loaded": 898,
+          "n_duplicates_dropped": 0,
+          "n_items": 898,
+          "n_public": 40,
+          "n_heldout": 858,
+          "option_counts_observed": [
+            2
+          ],
+          "strata_observed": [
+            "mod_multimodal",
+            "prim_choice",
+            "width_binary"
+          ],
+          "width_stratum": "width_binary",
+          "chance_mode": "uniform",
+          "chance_observed": 0.5,
+          "chance_declared": 0.5,
+          "n_distinct_labels": 898,
+          "label_balance_top10": {
+            "icon at (x=852, y=1081), size 182x57px": 1,
+            "text at (x=40, y=1192), size 1009x167px": 1,
+            "icon at (x=908, y=2220), size 134x130px": 1,
+            "icon at (x=1601, y=350), size 116x66px": 1,
+            "icon at (x=1859, y=424), size 509x761px": 1,
+            "text at (x=707, y=245), size 146x46px": 1,
+            "icon at (x=100, y=501), size 1232x82px": 1,
+            "text at (x=312, y=2188), size 199x155px": 1,
+            "icon at (x=354, y=1127), size 413x62px": 1,
+            "icon at (x=223, y=2038), size 220x207px": 1
+          },
+          "majority_class_fraction": 0.001114,
+          "calibration_bearing": true,
+          "mean_state_chars": 35.1,
+          "max_state_chars": 85
+        }
+      },
+      "files": {
+        "public": {
+          "path": "data/public/screenspot_v2.jsonl.gz",
+          "sha256": "sha256:fc51618366d08c8bf03bb1446bfc797618821ac17ba53ae382fdd11d67bd0d06",
+          "n": 40,
+          "bytes": 7756
+        },
+        "heldout": {
+          "path": "bench/heldout/screenspot_v2.jsonl.gz",
+          "sha256": "sha256:b15f477f9f42701c78ca50a98b5c8bfde3db2c1bbc4a2f70cb40a5e5789230d3",
+          "n": 858,
+          "bytes": 149361
+        }
+      },
+      "images": {
+        "path": "bench/receipts/screenspot_v2.images.sha256.jsonl.gz",
+        "sha256": "sha256:3c00a805060fe191320fb08e990d629ccc061c6eea964cc2d3e8d03a7aabcaa0",
+        "n_distinct_images": 356
+      }
     }
   },
   "totals": {
-    "n_datasets": 8,
-    "n_tasks": 11,
-    "n_items": 422878,
-    "n_public": 278513,
-    "n_heldout": 21174
+    "n_datasets": 11,
+    "n_tasks": 14,
+    "n_items": 474439,
+    "n_public": 321891,
+    "n_heldout": 25233
   },
   "strata_population": {
+    "mod_multimodal": {
+      "items": 51561,
+      "heldout": 4059,
+      "calibration_bearing": true
+    },
     "mod_text": {
       "items": 422878,
       "heldout": 21174,
       "calibration_bearing": true
     },
     "prim_choice": {
-      "items": 256542,
-      "heldout": 15174,
+      "items": 308103,
+      "heldout": 19233,
       "calibration_bearing": true
     },
     "prim_noul": {
@@ -898,13 +1194,13 @@
       "calibration_bearing": true
     },
     "width_binary": {
-      "items": 91215,
-      "heldout": 4000,
+      "items": 132421,
+      "heldout": 6858,
       "calibration_bearing": true
     },
     "width_medium": {
-      "items": 124686,
-      "heldout": 7174,
+      "items": 135041,
+      "heldout": 8375,
       "calibration_bearing": true
     },
     "width_small": {

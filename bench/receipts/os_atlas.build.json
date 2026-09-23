@@ -1,0 +1,99 @@
+{
+  "dataset": "os_atlas",
+  "display_name": "OS-Atlas-data (desktop/linux subset)",
+  "domain": "multimodal",
+  "bjb_version": "0.1.0",
+  "built_on": "2026-09-23T21:26:08Z",
+  "build_seconds": 9.9,
+  "host": "localhost",
+  "loader": "better_jev_bench.datasets.os_atlas:OSAtlasDesktopLinux",
+  "source": {
+    "kind": "hf_dataset",
+    "hf_repo": "OS-Copilot/OS-Atlas-data",
+    "hf_revision": "e3a4c90c5f6129c25efdaa0671b08a11f7cb8f3f"
+  },
+  "source_url": "https://huggingface.co/datasets/OS-Copilot/OS-Atlas-data",
+  "license": {
+    "tier": "A",
+    "spdx": "Apache-2.0",
+    "obligations": [
+      "attribution"
+    ],
+    "verified_how": "HF Hub API: cardData['license'] == 'apache-2.0' for OS-Copilot/OS-Atlas-data, queried 2026-09-24. Repo-level license only -- verified this specific subset (desktop_domain/linux_splited.json + linux_images.zip) is the OS-Atlas authors' own collected/captioned Linux desktop screenshots, not a repackage of AMEX/UIBert/RICO/SeeClick/FineWeb (each of which keeps its own separate license and is NOT pulled by this loader). better-jev-bench_PRD.md §13.3.",
+    "verified_on": "2026-09-24"
+  },
+  "split": {
+    "salt": "better-jev-bench/split/v1",
+    "heldout_fraction_declared": 0.15,
+    "heldout_fraction_realised": 0.0553,
+    "public_cap": 40000,
+    "heldout_cap": 2000,
+    "heldout_label_commitment": "sha256:39b7e46483900cbcc36b3481e8945082d18f11dab90b9e79d1d37bad05aae527"
+  },
+  "totals": {
+    "n_items": 40308,
+    "n_public": 34184,
+    "n_heldout": 2000,
+    "n_tasks": 1
+  },
+  "tasks": {
+    "target_element": {
+      "primitive": "choice",
+      "question_key": "target_element",
+      "ordinal": false,
+      "n_loaded": 42753,
+      "n_duplicates_dropped": 2445,
+      "n_items": 40308,
+      "n_public": 34184,
+      "n_heldout": 2000,
+      "option_counts_observed": [
+        2
+      ],
+      "strata_observed": [
+        "mod_multimodal",
+        "prim_choice",
+        "width_binary"
+      ],
+      "width_stratum": "width_binary",
+      "chance_mode": "uniform",
+      "chance_observed": 0.5,
+      "chance_declared": 0.5,
+      "n_distinct_labels": 12108,
+      "label_balance_top10": {
+        "push-button centred at (1.4%, 42.2%) of the screenshot": 189,
+        "push-button centred at (2.8%, 84.3%) of the screenshot": 174,
+        "push-button centred at (1.4%, 18.5%) of the screenshot": 150,
+        "menu centred at (97.6%, 0.9%) of the screenshot": 150,
+        "push-button centred at (1.4%, 13.9%) of the screenshot": 150,
+        "push-button centred at (1.4%, 28.0%) of the screenshot": 150,
+        "push-button centred at (1.4%, 37.4%) of the screenshot": 149,
+        "toggle-button centred at (1.4%, 97.6%) of the screenshot": 149,
+        "push-button centred at (1.4%, 9.1%) of the screenshot": 148,
+        "push-button centred at (1.4%, 4.4%) of the screenshot": 147
+      },
+      "majority_class_fraction": 0.004689,
+      "calibration_bearing": true,
+      "mean_state_chars": 36.1,
+      "max_state_chars": 331
+    }
+  },
+  "files": {
+    "public": {
+      "path": "data/public/os_atlas.jsonl.gz",
+      "sha256": "sha256:e1e619225fa3e5eaa19054cbdc286acae7fefc07b36712e2be8bbc9437007a4b",
+      "n": 34184,
+      "bytes": 4689655
+    },
+    "heldout": {
+      "path": "bench/heldout/os_atlas.jsonl.gz",
+      "sha256": "sha256:01b711a2307bd92a67824c60021bd8119b296c31521604f2be94c641640b535c",
+      "n": 2000,
+      "bytes": 277027
+    }
+  },
+  "images": {
+    "path": "bench/receipts/os_atlas.images.sha256.jsonl.gz",
+    "sha256": "sha256:5ffb7439b18f646f121ba21871cb1f0724661c93a7c194abc6d45099e8ab5963",
+    "n_distinct_images": 967
+  }
+}

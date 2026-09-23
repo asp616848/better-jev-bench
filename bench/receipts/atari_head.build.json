@@ -1,0 +1,93 @@
+{
+  "dataset": "atari_head",
+  "display_name": "Atari-HEAD (breakout)",
+  "domain": "multimodal",
+  "bjb_version": "0.1.0",
+  "built_on": "2026-09-23T21:23:49Z",
+  "build_seconds": 50.0,
+  "host": "localhost",
+  "loader": "better_jev_bench.datasets.atari_head:AtariHead",
+  "source": {
+    "kind": "http_archive",
+    "url": "https://zenodo.org/records/3451322/files/breakout.zip?download=1",
+    "doi": "10.5281/zenodo.3451322"
+  },
+  "source_url": "https://zenodo.org/records/3451322",
+  "license": {
+    "tier": "A",
+    "spdx": "CC-BY-4.0",
+    "obligations": [
+      "attribution"
+    ],
+    "verified_how": "Zenodo REST API: GET https://zenodo.org/api/records/3451322 -> metadata.license.id == 'cc-by-4.0', queried 2026-09-24 (better-jev-bench_PRD.md §13.3).",
+    "verified_on": "2026-09-24"
+  },
+  "split": {
+    "salt": "better-jev-bench/split/v1",
+    "heldout_fraction_declared": 0.15,
+    "heldout_fraction_realised": 0.116,
+    "public_cap": 40000,
+    "heldout_cap": 2000,
+    "heldout_label_commitment": "sha256:cb14040f298dfb1f1787e15222236c6c33a97f2d04a4e08e69cf7eb286704195"
+  },
+  "totals": {
+    "n_items": 10355,
+    "n_public": 9154,
+    "n_heldout": 1201,
+    "n_tasks": 1
+  },
+  "tasks": {
+    "action": {
+      "primitive": "choice",
+      "question_key": "action",
+      "ordinal": false,
+      "n_loaded": 10465,
+      "n_duplicates_dropped": 110,
+      "n_items": 10355,
+      "n_public": 9154,
+      "n_heldout": 1201,
+      "option_counts_observed": [
+        18
+      ],
+      "strata_observed": [
+        "mod_multimodal",
+        "prim_choice",
+        "width_medium"
+      ],
+      "width_stratum": "width_medium",
+      "chance_mode": "uniform",
+      "chance_observed": 0.055556,
+      "chance_declared": 0.055556,
+      "n_distinct_labels": 4,
+      "label_balance_top10": {
+        "NOOP": 8161,
+        "LEFT": 1098,
+        "RIGHT": 1068,
+        "FIRE": 28
+      },
+      "majority_class_fraction": 0.788122,
+      "calibration_bearing": true,
+      "mean_state_chars": 82.0,
+      "max_state_chars": 82
+    }
+  },
+  "files": {
+    "public": {
+      "path": "data/public/atari_head.jsonl.gz",
+      "sha256": "sha256:dd1a3d3a0c905247d9a5efb8c75f36d9347e7da4cbd5e8127be8fe26400b5b12",
+      "n": 9154,
+      "bytes": 1024114
+    },
+    "heldout": {
+      "path": "bench/heldout/atari_head.jsonl.gz",
+      "sha256": "sha256:b8ecf14f51351c282f6f92a0523b31eaf9c2ea2c3bf682dbcac48d9d081750ae",
+      "n": 1201,
+      "bytes": 125002
+    }
+  },
+  "images": {
+    "path": "bench/receipts/atari_head.images.sha256.jsonl.gz",
+    "sha256": "sha256:9f8db3ebcd2a69ab1fdfad9aa76663291f288c5e9b05f4b9244e5595f2a40eca",
+    "n_distinct_images": 10345
+  }
+}

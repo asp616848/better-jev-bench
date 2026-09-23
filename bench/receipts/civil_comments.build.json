@@ -3,8 +3,8 @@
   "display_name": "Civil Comments",
   "domain": "nlp",
   "bjb_version": "0.1.0",
-  "built_on": "2026-09-23T14:44:31Z",
-  "build_seconds": 25.1,
+  "built_on": "2026-09-23T21:24:42Z",
+  "build_seconds": 24.6,
   "host": "localhost",
   "loader": "better_jev_bench.datasets.civil_comments:CivilComments",
   "source": {

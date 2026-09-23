@@ -3,8 +3,8 @@
   "display_name": "LEDGAR (via LexGLUE)",
   "domain": "operational",
   "bjb_version": "0.1.0",
-  "built_on": "2026-09-23T14:45:25Z",
-  "build_seconds": 15.3,
+  "built_on": "2026-09-23T21:25:39Z",
+  "build_seconds": 17.3,
   "host": "localhost",
   "loader": "better_jev_bench.datasets.ledgar:Ledgar",
   "source": {
