@@ -14,6 +14,14 @@ the PRD's, with two additions made while writing the first eight:
   change and cards get edited; `[license].verified_on` makes that decay visible.
   `[source]` does the same job for the *data*, which on at least one entry
   (CFPB, republished daily) moves faster than the license does.
+* **`[images]`** (PRD §13.5) -- present only when `schema.modality != "text"`:
+  `kind` (`hf_repo` / `http_archive` / `zenodo`), `sources` (the upstream
+  URIs), and `sha256_manifest` (a path, written by `bjb build`, to a committed
+  gzipped list of every referenced image's content hash -- the corpus never
+  commits pixels, only hashes).
+* **`dataset.eval_only`** (PRD §13.3) -- an escape hatch for a dataset that
+  exists purely to be a third-party, zero-training-exposure eval
+  (ScreenSpot-v2). `bjb export`'s default public slice refuses it outright.
 
 Everything here raises `ManifestError` with a message naming the dataset and the
 offending field, because these errors are read in CI logs by contributors who
@@ -92,6 +100,14 @@ class Manifest:
     # source pinning
     source: dict[str, Any] = field(default_factory=dict)
     raw: dict[str, Any] = field(default_factory=dict)
+    # multimodal (PRD §13.5); empty for a text-only dataset
+    image_kind: str = ""
+    image_sha256_manifest: str = ""
+    image_sources: tuple[str, ...] = ()
+    # PRD §13.3 / dev-guidelines CLINC150 precedent: an eval-only dataset (e.g.
+    # ScreenSpot-v2) that `bjb export`'s default public/training slice must
+    # never emit, enforced in code rather than left to a consumer's discipline.
+    eval_only: bool = False
 
     @property
     def directory(self) -> Path:
@@ -132,6 +148,7 @@ def load_manifest(path: Path) -> Manifest:
     split = raw.get("split", {})
     axes = raw.get("axes", {})
     sens = raw.get("sensitivity", {})
+    images = raw.get("images", {})
 
     tasks = []
     for t in sch.get("tasks", []):
@@ -188,6 +205,10 @@ def load_manifest(path: Path) -> Manifest:
         responsible_use_note=sens.get("responsible_use_note", ""),
         source=raw.get("source", {}),
         raw=raw,
+        image_kind=images.get("kind", ""),
+        image_sha256_manifest=images.get("sha256_manifest", ""),
+        image_sources=tuple(images.get("sources", [])),
+        eval_only=bool(ds.get("eval_only", False)),
     )
     _static_checks(m)
     return m
@@ -272,6 +293,28 @@ def _static_checks(m: Manifest) -> None:
         )
     if not (0.0 < m.heldout_fraction < 1.0):
         raise ManifestError(f"{n}: split.heldout_fraction must be in (0, 1)")
+    # PRD §13.3: an eval-only dataset (ScreenSpot-v2) exists to be a third-party,
+    # zero-training-exposure eval -- the same role CLINC150 plays for the text
+    # corpus's own zero-shot-schema check, but enforced here rather than left to
+    # a consumer's discipline. `export.py` refuses it from the public slice
+    # outright; this just keeps the declared split honest with that intent.
+    if m.eval_only and m.heldout_fraction < 0.9:
+        raise ManifestError(
+            f"{n}: dataset.eval_only = true but split.heldout_fraction = {m.heldout_fraction} "
+            "(PRD §13.3) -- an eval-only dataset should reserve nearly all of itself for held-out"
+        )
+
+    # -- PRD §13.4/§13.7: multimodal schema/manifest agreement --
+    if m.modality != "text":
+        if not m.image_kind:
+            raise ManifestError(f"{n}: schema.modality = {m.modality!r} requires an [images] kind (PRD §13.5)")
+        if not m.image_sha256_manifest:
+            raise ManifestError(
+                f"{n}: schema.modality = {m.modality!r} requires images.sha256_manifest (PRD §13.5) -- "
+                "written by `bjb build`, then committed"
+            )
+    elif m.image_kind or m.image_sha256_manifest:
+        raise ManifestError(f"{n}: [images] is declared but schema.modality = 'text' -- one of the two is wrong")
 
     # -- axes --
     bad = set(m.evaluates) - set(AXES)
