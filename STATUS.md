@@ -6,7 +6,10 @@ Sibling project: **ekVachan / better-jev-for-all** (separate repo, separate PRD,
 
 Server clone: `abhijeet-labgpu:~/ekvachan/bench-repo` — this did not exist until 2026-09-23; before that, this repo had no server-side clone at all, which is worth remembering as a category of risk (see dev-guidelines rule 2/11).
 
-Last verified: 2026-09-24 (multimodal build — PRD §12.6. `mod_multimodal` is populated for real: 3 new datasets, 51,561 items, 4,059 held-out, calibration-bearing). Prior: 2026-09-24 planning pass (PRD §13, no items built); 2026-09-23 second pass — first real corpus build.
+Last verified: 2026-09-24 (**scoring-engine design pass — PRD §14**. No code written; §5's paper
+spec is now an implementation contract, and a real chance-floor defect was found in the shipped
+corpus — see "Scoring engine" below, which is the next milestone and is now fully specified).
+Prior: 2026-09-24 (multimodal build — PRD §12.6. `mod_multimodal` is populated for real: 3 new datasets, 51,561 items, 4,059 held-out, calibration-bearing). Prior: 2026-09-24 planning pass (PRD §13, no items built); 2026-09-23 second pass — first real corpus build.
 
 ## Done
 
@@ -57,9 +60,91 @@ Last verified: 2026-09-24 (multimodal build — PRD §12.6. `mod_multimodal` is 
 
 Run `bjb stats` for the live version of this table — it reads the receipts, not this file.
 
+### New 2026-09-24 (second pass) — scoring engine designed, not built (PRD §14)
+
+A design/planning pass only: **zero engine code was written, by intent.** What landed is PRD §14,
+which turns §5's paper design into a contract a Sonnet implementer can build from without making a
+design decision. Read §14 before writing any of it; the checklist below is §14.9 in checkbox form.
+
+- [x] **Three-level aggregation resolved** (§14.1, *amends* §5.3). The scoring unit is a **task**,
+      not a dataset — 11 datasets carry 14 tasks, and `civil_comments`/`cuad`/`massive` each mix
+      primitives or widths, so a dataset has no single primitive, width or chance floor.
+      `task → dataset → domain → axis`. Stated consequence: **CFPB alone carries 25% of
+      Intelligence**, being the only `finance` dataset; an Intelligence number published before the
+      rest of the Tier A finance slate is built is provisional and the result field says so.
+- [x] **Four per-item outcomes frozen** (§14.3): `correct` / `incorrect` / `out_of_schema` /
+      `declined`. Exact string equality after `strip()` and nothing else; no repair, no retry
+      (§5.5 rule 3); Coverage's denominator is every item in the slice, so declining can never
+      raise a score (§5.5 rule 9).
+- [x] **Breadth restructured into three families** (§14.5, *amends* §5.3). A stratum's value is the
+      macro mean of per-task `I_t` (a stratum has no chance floor of its own — `prim_noul` spans a
+      0.9207 floor and a 0.5 floor), and the outer geometric mean runs over `{width, primitive,
+      modality}`, not over nine flat buckets that triple-count every item and weight width 4/9 by
+      accident.
+- [x] **Every remaining axis mechanic pinned** (§14.6): pooled-ECE definition and the exact
+      15-bin equal-mass algorithm (ported from the sibling's `eval/metrics.py`), the HCS accuracy
+      term, frozen log-anchored Speed/Cost reference scales, the `cost_model: null` →
+      `score_no_cost` path, ordinal-safe option shuffling, and the abstention sub-metric.
+- [x] **`POST /v1/evaluate` specified to exact field names and types** (§14.7) — full request
+      table, full response body, error codes, and the rule that `bjb evaluate` and the server are
+      the same code path.
+- [x] **Bring-your-own-model surface defined** (§14.8): speak `/v1/systemone` and there is no
+      integration code at all; a `ModelBackend` protocol for local checkpoints; explicitly no
+      schema-repair hook.
+
+**Real defect found while doing this, and it is the reason item 0 exists (PRD §14.2).** All four
+`chance_mode = "majority"` tasks **ship items whose `chance` field carries the uniform
+`1/|options|` value, not the declared majority floor** — found by reading `bench/heldout/*.jsonl.gz`
+directly rather than trusting the receipts:
+
+| Task | manifest / receipt | **shipped item JSON** |
+|---|---|---|
+| `civil_comments/is_toxic` | 0.920729 | **0.5** |
+| `civil_comments/toxicity_level` | 0.792774 | **0.2** |
+| `cfpb_complaints/product` | 0.541100 | **0.1** |
+| `go_emotions/emotion` | 0.353100 | **0.035714** |
+
+Root cause, traced in code: `types.py`'s `Item.chance` docstring claims `build.py` resolves it from
+the manifest; `build.py` never does. It writes `chance_observed` into the receipt and back into
+`manifest.toml`, and CI gate 3 then checks those two derived copies against *each other* — never
+against the field consumers actually read. §6.1 puts `chance` inside the item, so the obvious
+implementation reads the wrong number: the all-"No" model on `civil_comments/is_toxic` would score
+**0.841 chance-adjusted instead of 0.0**, i.e. the exact demonstration §12.2 uses to justify the
+axis would silently come out flattering.
+
+## Scoring engine — the next milestone, fully specified (PRD §14.9)
+
+Ordered; each step verifiable before the next. **Nothing here is started.**
+
+- [ ] **0. Fix the chance defect first.** Stamp `Item.chance` from the manifest in `build.py`;
+      rebuild all 11 datasets; regenerate receipts. `bjb build --verify` must show every
+      `heldout_label_commitment` **unchanged** (it hashes `(item_id, label)`; `chance` is in
+      neither) while slice SHA-256s do change. Add CI gate 12: shipped item `chance` == manifest
+      `chance`. Do not start step 1 until `bjb validate` is green.
+- [ ] **1. `better_jev_bench/score.py`** — pure functions, no I/O. Unit-test against hand-computed
+      values, including `I = 0` for the all-"No" model at chance 0.920729.
+- [ ] **2. `better_jev_bench/backend.py`** — the `ModelBackend` protocol, `HTTPBackend`, `Declined`,
+      and the §14.3 outcome classifier, tested exhaustively on all four outcomes.
+- [ ] **3. `better_jev_bench/evaluate.py`** — the run loop. No scoring arithmetic here; it calls
+      `score.py`. Deterministic given `(slice, filters, shuffle_seed)`.
+- [ ] **4. Evidence bundle** (rule 10, §8.2): `results/<run_id>/manifest.json` + `raw.jsonl.gz`.
+- [ ] **5. `bjb evaluate` CLI** — must run to completion against a mock backend with no network.
+- [ ] **6. `POST /v1/evaluate`** + §6.3's `GET /v1/catalogue`, `GET /v1/items` (public slice only,
+      asserted in code and tested), `GET /v1/runs/{run_id}`. `POST /v1/submit` stays unbuilt.
+- [ ] **7. First real run** against the sibling's checkpoint. Expect `prim_noul`/`prim_score` to
+      return `model_declined` against `serve/server.py` as it stands — it returns **501 for every
+      non-`choice` primitive**, so that first run measures the *wire contract*, not the weights
+      (the decoder behind it reports 95.48% `noul` on its own eval). The result's `notes` must say
+      so. **The Generality = 0 line stays a prediction until this run's manifest is on disk.**
+- [ ] **8. Optional after 7**: `abstention_options = ["oos"]` on `clinc150/intent`;
+      `bjb score --from-raw <run_id>` so a spec bump can rescore an old run's raw rows.
+
+Deliberately out of scope for this milestone: leaderboard, submission rate limiting (§5.5 rule 4),
+gated held-out slice, Elo/win-rate secondary view. None blocks a first real score.
+
 ## Not started
 
-- [ ] **No scoring implementation.** §5's five axes, the HCS formula, the pooled-ECE rule and the floor penalty are still spec. `POST /v1/evaluate` (§6.2) does not exist. This is the single thing between "a corpus with a frozen eval slice" and "a benchmark", and it is next.
+- [ ] **No scoring implementation.** §5's five axes, the HCS formula, the pooled-ECE rule and the floor penalty are still spec. `POST /v1/evaluate` (§6.2) does not exist. This is the single thing between "a corpus with a frozen eval slice" and "a benchmark", and it is next. **It is now fully designed — follow PRD §14.9's ordered checklist; do not re-derive the design.** See the "Scoring engine" section below for the checklist in checkbox form.
 - [ ] **Never run any ekVachan checkpoint against this corpus.** Now possible for the first time — the held-out slices are committed and every item is a request body — but not done. The Generality = 0 line below remains a *prediction*.
 - [ ] ~40 remaining Tier A entries, the ~12 Tier B research-tier entries, the 3 Tier C pointer-only loaders
 - [ ] **`request.images` not yet agreed with the sibling's `/v1/systemone` server contract** (PRD §13.4 point 2). §6.1's claim that an item *is* a request body needs the sibling's serving side to accept the same `images` extension; that is the sibling repo's own work, tracked there.
