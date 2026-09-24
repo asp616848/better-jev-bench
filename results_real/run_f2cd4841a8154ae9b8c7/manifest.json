@@ -1,0 +1,459 @@
+{
+  "run_id": "run_f2cd4841a8154ae9b8c7",
+  "spec_version": "bjb-score-1.0",
+  "corpus_version": "bjb-corpus-1.0",
+  "model": "ekvachan-decoder-qwen-vision@13a.11",
+  "endpoint": "http://127.0.0.1:8123",
+  "started_at": "2026-09-24T08:03:29Z",
+  "duration_s": 2.109,
+  "score": null,
+  "score_no_cost": null,
+  "floor_penalty_applied": true,
+  "is_leaderboard_eligible": true,
+  "axes": {
+    "intelligence": 0.0,
+    "calibration": null,
+    "generality": 0.0,
+    "speed": null,
+    "cost": null,
+    "speed_multimodal": null
+  },
+  "coverage": {
+    "attempted": 1400,
+    "answered": 0,
+    "out_of_schema": 0,
+    "declined": 1400,
+    "fraction": 0.0
+  },
+  "intelligence_detail": {
+    "by_task": {
+      "atari_head/action": {
+        "n": 100,
+        "acc": 0.0,
+        "chance": 0.055556,
+        "i": 0.0,
+        "chance_source": "manifest",
+        "calibration_bearing": false
+      },
+      "banking77/intent": {
+        "n": 100,
+        "acc": 0.0,
+        "chance": 0.012987,
+        "i": 0.0,
+        "chance_source": "manifest",
+        "calibration_bearing": false
+      },
+      "cfpb_complaints/product": {
+        "n": 100,
+        "acc": 0.0,
+        "chance": 0.541103,
+        "i": 0.0,
+        "chance_source": "manifest",
+        "calibration_bearing": false
+      },
+      "civil_comments/is_toxic": {
+        "n": 100,
+        "acc": 0.0,
+        "chance": 0.920729,
+        "i": 0.0,
+        "chance_source": "manifest",
+        "calibration_bearing": false
+      },
+      "civil_comments/toxicity_level": {
+        "n": 100,
+        "acc": 0.0,
+        "chance": 0.792774,
+        "i": 0.0,
+        "chance_source": "manifest",
+        "calibration_bearing": false
+      },
+      "clinc150/intent": {
+        "n": 100,
+        "acc": 0.0,
+        "chance": 0.006623,
+        "i": 0.0,
+        "chance_source": "manifest",
+        "calibration_bearing": false
+      },
+      "cuad/clause_present": {
+        "n": 100,
+        "acc": 0.0,
+        "chance": 0.5,
+        "i": 0.0,
+        "chance_source": "manifest",
+        "calibration_bearing": false
+      },
+      "cuad/clause_type": {
+        "n": 100,
+        "acc": 0.0,
+        "chance": 0.02439,
+        "i": 0.0,
+        "chance_source": "manifest",
+        "calibration_bearing": false
+      },
+      "go_emotions/emotion": {
+        "n": 100,
+        "acc": 0.0,
+        "chance": 0.353104,
+        "i": 0.0,
+        "chance_source": "manifest",
+        "calibration_bearing": false
+      },
+      "ledgar/provision_type": {
+        "n": 100,
+        "acc": 0.0,
+        "chance": 0.01,
+        "i": 0.0,
+        "chance_source": "manifest",
+        "calibration_bearing": false
+      },
+      "massive/intent": {
+        "n": 100,
+        "acc": 0.0,
+        "chance": 0.016667,
+        "i": 0.0,
+        "chance_source": "manifest",
+        "calibration_bearing": false
+      },
+      "massive/scenario": {
+        "n": 100,
+        "acc": 0.0,
+        "chance": 0.055556,
+        "i": 0.0,
+        "chance_source": "manifest",
+        "calibration_bearing": false
+      },
+      "os_atlas/target_element": {
+        "n": 100,
+        "acc": 0.0,
+        "chance": 0.5,
+        "i": 0.0,
+        "chance_source": "manifest",
+        "calibration_bearing": false
+      },
+      "screenspot_v2/target_element": {
+        "n": 100,
+        "acc": 0.0,
+        "chance": 0.5,
+        "i": 0.0,
+        "chance_source": "manifest",
+        "calibration_bearing": false
+      }
+    },
+    "by_dataset": {
+      "atari_head": 0.0,
+      "banking77": 0.0,
+      "cfpb_complaints": 0.0,
+      "civil_comments": 0.0,
+      "clinc150": 0.0,
+      "cuad": 0.0,
+      "go_emotions": 0.0,
+      "ledgar": 0.0,
+      "massive": 0.0,
+      "os_atlas": 0.0,
+      "screenspot_v2": 0.0
+    },
+    "by_domain": {
+      "multimodal": 0.0,
+      "nlp": 0.0,
+      "finance": 0.0,
+      "operational": 0.0
+    }
+  },
+  "strata": {
+    "mod_multimodal": {
+      "family": "modality",
+      "items": 300,
+      "answered": 300,
+      "tasks": 3,
+      "value": 0.0,
+      "status": "model_declined"
+    },
+    "mod_text": {
+      "family": "modality",
+      "items": 1100,
+      "answered": 1100,
+      "tasks": 11,
+      "value": 0.0,
+      "status": "model_declined"
+    },
+    "prim_choice": {
+      "family": "primitive",
+      "items": 1100,
+      "answered": 1100,
+      "tasks": 11,
+      "value": 0.0,
+      "status": "model_declined"
+    },
+    "prim_noul": {
+      "family": "primitive",
+      "items": 200,
+      "answered": 200,
+      "tasks": 2,
+      "value": null,
+      "status": "excluded"
+    },
+    "prim_score": {
+      "family": "primitive",
+      "items": 100,
+      "answered": 100,
+      "tasks": 1,
+      "value": null,
+      "status": "excluded"
+    },
+    "width_binary": {
+      "family": "width",
+      "items": 400,
+      "answered": 400,
+      "tasks": 4,
+      "value": 0.0,
+      "status": "model_declined"
+    },
+    "width_medium": {
+      "family": "width",
+      "items": 500,
+      "answered": 500,
+      "tasks": 5,
+      "value": 0.0,
+      "status": "model_declined"
+    },
+    "width_small": {
+      "family": "width",
+      "items": 100,
+      "answered": 100,
+      "tasks": 1,
+      "value": null,
+      "status": "excluded"
+    },
+    "width_wide": {
+      "family": "width",
+      "items": 400,
+      "answered": 400,
+      "tasks": 4,
+      "value": 0.0,
+      "status": "model_declined"
+    }
+  },
+  "families": {
+    "width": 0.0,
+    "primitive": 0.0,
+    "modality": 0.0
+  },
+  "breadth": 0.0,
+  "excluded_strata": [
+    {
+      "stratum": "prim_noul",
+      "reason": "benchmark_underpopulated",
+      "items": 200
+    },
+    {
+      "stratum": "prim_score",
+      "reason": "benchmark_underpopulated",
+      "items": 100
+    },
+    {
+      "stratum": "width_small",
+      "reason": "benchmark_underpopulated",
+      "items": 100
+    }
+  ],
+  "diagnostics": {
+    "pooled_ece": null,
+    "pooled_accuracy": 0.0,
+    "ece_bins": 15,
+    "ece_binning": "equal_mass",
+    "per_dataset_ece": {
+      "atari_head": null,
+      "banking77": null,
+      "cfpb_complaints": null,
+      "civil_comments": null,
+      "clinc150": null,
+      "cuad": null,
+      "go_emotions": null,
+      "ledgar": null,
+      "massive": null,
+      "os_atlas": null,
+      "screenspot_v2": null
+    },
+    "per_stratum_ece": {
+      "mod_multimodal": null,
+      "mod_text": null,
+      "prim_choice": null,
+      "prim_noul": null,
+      "prim_score": null,
+      "width_binary": null,
+      "width_medium": null,
+      "width_small": null,
+      "width_wide": null
+    },
+    "ordinal_distance": null,
+    "abstention": null,
+    "position_sensitivity": {
+      "n": 1300,
+      "delta_accuracy": 0.0,
+      "flagged": false
+    },
+    "n_no_confidence": 0,
+    "chance_source_drift": [],
+    "latency_ms": {},
+    "http_status_counts": {
+      "404": 1400
+    },
+    "error_samples": [
+      {
+        "item_id": "atari_head-action-002ba00e4a146e77",
+        "status": 404,
+        "body": "{\"detail\":\"Not Found\"}"
+      },
+      {
+        "item_id": "atari_head-action-0040556e3a389853",
+        "status": 404,
+        "body": "{\"detail\":\"Not Found\"}"
+      },
+      {
+        "item_id": "atari_head-action-00c08ab289adc8a5",
+        "status": 404,
+        "body": "{\"detail\":\"Not Found\"}"
+      },
+      {
+        "item_id": "atari_head-action-011cf90c910602f9",
+        "status": 404,
+        "body": "{\"detail\":\"Not Found\"}"
+      },
+      {
+        "item_id": "atari_head-action-01322f552d0c33b7",
+        "status": 404,
+        "body": "{\"detail\":\"Not Found\"}"
+      },
+      {
+        "item_id": "atari_head-action-01628775aebb2c4a",
+        "status": 404,
+        "body": "{\"detail\":\"Not Found\"}"
+      },
+      {
+        "item_id": "atari_head-action-0166e51d309f258a",
+        "status": 404,
+        "body": "{\"detail\":\"Not Found\"}"
+      },
+      {
+        "item_id": "atari_head-action-01ccacf675cf4337",
+        "status": 404,
+        "body": "{\"detail\":\"Not Found\"}"
+      },
+      {
+        "item_id": "atari_head-action-0227a3a249ce0728",
+        "status": 404,
+        "body": "{\"detail\":\"Not Found\"}"
+      },
+      {
+        "item_id": "atari_head-action-026096d48acc69fa",
+        "status": 404,
+        "body": "{\"detail\":\"Not Found\"}"
+      },
+      {
+        "item_id": "atari_head-action-02674db4f9b44f4a",
+        "status": 404,
+        "body": "{\"detail\":\"Not Found\"}"
+      },
+      {
+        "item_id": "atari_head-action-029743082e278283",
+        "status": 404,
+        "body": "{\"detail\":\"Not Found\"}"
+      },
+      {
+        "item_id": "atari_head-action-02f6c346ae90ed9b",
+        "status": 404,
+        "body": "{\"detail\":\"Not Found\"}"
+      },
+      {
+        "item_id": "atari_head-action-033a9224d888fb09",
+        "status": 404,
+        "body": "{\"detail\":\"Not Found\"}"
+      },
+      {
+        "item_id": "atari_head-action-03aad4f91fa3d63a",
+        "status": 404,
+        "body": "{\"detail\":\"Not Found\"}"
+      },
+      {
+        "item_id": "atari_head-action-03ab8cdfabfef126",
+        "status": 404,
+        "body": "{\"detail\":\"Not Found\"}"
+      },
+      {
+        "item_id": "atari_head-action-03b3e28b38518a8c",
+        "status": 404,
+        "body": "{\"detail\":\"Not Found\"}"
+      },
+      {
+        "item_id": "atari_head-action-03b5ce7a7148bcfc",
+        "status": 404,
+        "body": "{\"detail\":\"Not Found\"}"
+      },
+      {
+        "item_id": "atari_head-action-03d5ff8dda13ae22",
+        "status": 404,
+        "body": "{\"detail\":\"Not Found\"}"
+      },
+      {
+        "item_id": "atari_head-action-03d61a7e18119e6c",
+        "status": 404,
+        "body": "{\"detail\":\"Not Found\"}"
+      }
+    ]
+  },
+  "notes": {
+    "provisional": true,
+    "domain_concentration": "finance is 1 dataset (cfpb_complaints) of 11 scored and carries 25% of Intelligence (PRD §14.1)"
+  },
+  "evidence_bundle": "results/run_f2cd4841a8154ae9b8c7/manifest.json",
+  "request": {
+    "model": "ekvachan-decoder-qwen-vision@13a.11",
+    "slice": "heldout",
+    "datasets": null,
+    "tasks": null,
+    "license_tiers": [
+      "A"
+    ],
+    "modalities": [
+      "text",
+      "image"
+    ],
+    "primitives": [
+      "choice",
+      "score",
+      "noul"
+    ],
+    "max_items_per_task": 100,
+    "shuffle_seed": 20260924,
+    "images": {
+      "mode": "reference"
+    },
+    "request": {
+      "timeout_s": 30.0,
+      "concurrency": 1,
+      "headers": {}
+    },
+    "cost_model": null,
+    "endpoint": "http://127.0.0.1:8123"
+  },
+  "model_info": {
+    "backend": "http",
+    "endpoint": "http://127.0.0.1:8123"
+  },
+  "corpus_receipts": {
+    "atari_head": "sha256:e5aa8eb421658c222fa4dab38533a68a9934c6b4875fefd8836e2a3342e0f1db",
+    "banking77": "sha256:40a9db1624df4c8edf3710f69bd56b4322d84f586cfbc595e65763457cd9d6f9",
+    "cfpb_complaints": "sha256:ba7c745a8ebd74450efe22414c7365a7379a63c7ea8a24b2abf153d6485b76c8",
+    "civil_comments": "sha256:bb53e207d76ae5c2203db4cfe88436fee4d15b585c64b6ac25da95fa4bcf50dd",
+    "clinc150": "sha256:3cd38f92e62dd242a99c40fd8b0b77d69dd93681adae9774dbc66d1b8c70fbdc",
+    "cuad": "sha256:29af109abacc537e2dbdb86bebd0b6ac079cb7e07ea8041536c6a3c5f8a8e3ff",
+    "go_emotions": "sha256:ff4a1eb4f7da896f062392582366938533f3cc40a0079457599a4a5ad7c6232b",
+    "ledgar": "sha256:53de9965645a8f62387911d13bd4e1f5e8152a8374650df21a580f68a3a65208",
+    "massive": "sha256:8063e6403727c0cf5e0d20d4de6de9485fa3c245e8d2ac159b67447961179070",
+    "os_atlas": "sha256:01b711a2307bd92a67824c60021bd8119b296c31521604f2be94c641640b535c",
+    "screenspot_v2": "sha256:b15f477f9f42701c78ca50a98b5c8bfde3db2c1bbc4a2f70cb40a5e5789230d3"
+  },
+  "host": "localhost",
+  "bjb_version": "0.1.0"
+}

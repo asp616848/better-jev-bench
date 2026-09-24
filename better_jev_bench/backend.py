@@ -195,7 +195,8 @@ class ClassifyResult:
     returned: str | None  # the raw (unstripped) `choice` the model sent, or None if absent/declined
 
 
-def classify(result: dict[str, Any] | None, *, options: tuple[str, ...], expected: str) -> ClassifyResult:
+def classify(result: dict[str, Any] | float | None, *, options: tuple[str, ...], expected: str,
+             question_type: str = "choice") -> ClassifyResult:
     """PRD §14.3's outcome table for one question-key's `results[key]` object.
 
     `result` is `None` when the response was a 200 but `results` was missing
@@ -204,14 +205,60 @@ def classify(result: dict[str, Any] | None, *, options: tuple[str, ...], expecte
     non-200/timeout/unparseable response never reach this function at all for
     that item.
 
-    Comparison is exact string equality after `str.strip()` on the *returned*
-    value only (PRD §14.3): no case folding, no punctuation normalisation, no
-    prefix matching. `options` and `expected` are assumed already-clean
-    corpus strings and are never themselves stripped or folded.
+    **Fixed 2026-09-24, found by the first real run against a live server**:
+    this originally assumed every `result` was a `choice`-shaped dict
+    (`{"choice": ..., "probabilities": {...}, "confidence": ...}`) and crashed
+    with `AttributeError: 'float' object has no attribute 'get'` on the first
+    real `noul` item -- ekVachan's `noul` returns a bare float (`P(true)`,
+    better-jev-for-all PRD.md 13a.14), matching Jev's own real wire contract,
+    not a dict. `score` returns `{"score": <continuous, probability-weighted
+    position>, "probabilities": {...}, "confidence": ...}` -- no `"choice"`
+    key at all. `question_type` now dispatches to the right shape; `choice`'s
+    own path is byte-identical to before.
+
+    Comparison is exact string equality after `str.strip()` on the *derived
+    predicted label* (for `choice`, the raw returned string; for `noul`, the
+    thresholded Yes/No; for `score`, the argmax-probability level name) --
+    PRD §14.3. `options` and `expected` are assumed already-clean corpus
+    strings and are never themselves stripped or folded.
     """
     if result is None:
         return ClassifyResult(Outcome.DECLINED, None, None)
 
+    if question_type == "noul":
+        if not isinstance(result, (int, float)) or isinstance(result, bool) or not (0.0 <= float(result) <= 1.0):
+            return ClassifyResult(Outcome.OUT_OF_SCHEMA, None, None if result is None else str(result))
+        p_yes = float(result)
+        # ekvachan's noul is trained/served as an internal 2-way Yes/No choice
+        # (better-jev-for-all PRD.md 13a.14) -- P(Yes) >= 0.5 predicts "Yes".
+        predicted = "Yes" if p_yes >= 0.5 else "No"
+        if predicted not in options:
+            return ClassifyResult(Outcome.OUT_OF_SCHEMA, None, predicted)
+        outcome = Outcome.CORRECT if predicted == expected else Outcome.INCORRECT
+        p = p_yes if predicted == "Yes" else (1.0 - p_yes)
+        return ClassifyResult(outcome, p, predicted)
+
+    if question_type == "score":
+        if not isinstance(result, dict):
+            return ClassifyResult(Outcome.OUT_OF_SCHEMA, None, None if result is None else str(result))
+        probs = result.get("probabilities")
+        if not isinstance(probs, dict) or not probs:
+            return ClassifyResult(Outcome.OUT_OF_SCHEMA, None, None)
+        # The discrete predicted level is the argmax of `probabilities`, not a
+        # round() of the continuous `score` -- this matches `confidence`,
+        # which RoutingDecoderModel already defines as the argmax level's own
+        # probability (see better-jev-for-all serve/inference.py predict_score).
+        predicted = max(probs, key=lambda level: probs[level])
+        if predicted not in options:
+            return ClassifyResult(Outcome.OUT_OF_SCHEMA, None, predicted)
+        outcome = Outcome.CORRECT if predicted == expected else Outcome.INCORRECT
+        p_val = probs.get(predicted)
+        p = float(p_val) if isinstance(p_val, (int, float)) else None
+        return ClassifyResult(outcome, p, predicted)
+
+    # question_type == "choice" -- unchanged from before the fix.
+    if not isinstance(result, dict):
+        return ClassifyResult(Outcome.OUT_OF_SCHEMA, None, None if result is None else str(result))
     choice = result.get("choice")
     if not isinstance(choice, str):
         return ClassifyResult(Outcome.OUT_OF_SCHEMA, None, choice if choice is None else str(choice))

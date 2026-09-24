@@ -188,7 +188,17 @@ def _build_request(
     image-bearing item (PRD §14.7: "scoring a vision item with the picture
     removed is not a vision result")."""
     q = item.question
-    question: dict[str, Any] = {"type": q.type, "instructions": q.instructions, "options": presented_options}
+    question: dict[str, Any] = {"type": q.type, "instructions": q.instructions}
+    # PRD §14.7 / better-jev-for-all's real wire contract: `score` questions carry
+    # their option list under `levels`, not `options` -- a different key name
+    # from `choice`/`noul`, matching Jev's own spec (§1.2's score example uses
+    # "levels": [...]). Found by the first real run against a live server: this
+    # previously always sent `options`, and the server correctly 422'd every
+    # score item with "score requires levels" rather than silently guessing.
+    if q.type == "score":
+        question["levels"] = presented_options
+    else:
+        question["options"] = presented_options
     if q.ordinal:
         question["ordinal"] = True
     body: dict[str, Any] = {"state": item.state, "questions": {q.key: question}}
@@ -321,7 +331,7 @@ def evaluate(
 
         key = item.question.key
         result = resp.get("results", {}).get(key)
-        cr: ClassifyResult = classify(result, options=item.question.options, expected=item.label)
+        cr: ClassifyResult = classify(result, options=item.question.options, expected=item.label, question_type=item.question.type)
 
         latency_ms = engine_latency_ms
         latency_source = "engine_wallclock"

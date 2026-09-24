@@ -1,0 +1,515 @@
+{
+  "run_id": "run_eaebeede34bf460b84d9",
+  "spec_version": "bjb-score-1.0",
+  "corpus_version": "bjb-corpus-1.0",
+  "model": "ekvachan-decoder-qwen-vision@13a.11",
+  "endpoint": "http://127.0.0.1:8123/v1/systemone",
+  "started_at": "2026-09-24T08:13:22Z",
+  "duration_s": 98.622,
+  "score": null,
+  "score_no_cost": 0.0,
+  "floor_penalty_applied": true,
+  "is_leaderboard_eligible": true,
+  "axes": {
+    "intelligence": 42.46306967265649,
+    "calibration": 88.52303949935808,
+    "generality": 0.0,
+    "speed": 47.18430192837238,
+    "cost": null,
+    "speed_multimodal": 47.58276607299654
+  },
+  "coverage": {
+    "attempted": 1400,
+    "answered": 800,
+    "out_of_schema": 0,
+    "declined": 600,
+    "fraction": 0.5714285714285714
+  },
+  "intelligence_detail": {
+    "by_task": {
+      "atari_head/action": {
+        "n": 100,
+        "acc": 0.66,
+        "chance": 0.055556,
+        "i": 0.6399998305881556,
+        "chance_source": "manifest",
+        "calibration_bearing": false
+      },
+      "banking77/intent": {
+        "n": 100,
+        "acc": 0.0,
+        "chance": 0.012987,
+        "i": 0.0,
+        "chance_source": "manifest",
+        "calibration_bearing": false
+      },
+      "cfpb_complaints/product": {
+        "n": 100,
+        "acc": 0.9,
+        "chance": 0.541103,
+        "i": 0.7820861762007597,
+        "chance_source": "manifest",
+        "calibration_bearing": false
+      },
+      "civil_comments/is_toxic": {
+        "n": 100,
+        "acc": 0.92,
+        "chance": 0.920729,
+        "i": 0.0,
+        "chance_source": "manifest",
+        "calibration_bearing": false
+      },
+      "civil_comments/toxicity_level": {
+        "n": 100,
+        "acc": 0.84,
+        "chance": 0.792774,
+        "i": 0.22789611342206087,
+        "chance_source": "manifest",
+        "calibration_bearing": false
+      },
+      "clinc150/intent": {
+        "n": 100,
+        "acc": 0.0,
+        "chance": 0.006623,
+        "i": 0.0,
+        "chance_source": "manifest",
+        "calibration_bearing": false
+      },
+      "cuad/clause_present": {
+        "n": 100,
+        "acc": 0.98,
+        "chance": 0.5,
+        "i": 0.96,
+        "chance_source": "manifest",
+        "calibration_bearing": false
+      },
+      "cuad/clause_type": {
+        "n": 100,
+        "acc": 0.0,
+        "chance": 0.02439,
+        "i": 0.0,
+        "chance_source": "manifest",
+        "calibration_bearing": false
+      },
+      "go_emotions/emotion": {
+        "n": 100,
+        "acc": 0.0,
+        "chance": 0.353104,
+        "i": 0.0,
+        "chance_source": "manifest",
+        "calibration_bearing": false
+      },
+      "ledgar/provision_type": {
+        "n": 100,
+        "acc": 0.0,
+        "chance": 0.01,
+        "i": 0.0,
+        "chance_source": "manifest",
+        "calibration_bearing": false
+      },
+      "massive/intent": {
+        "n": 100,
+        "acc": 0.0,
+        "chance": 0.016667,
+        "i": 0.0,
+        "chance_source": "manifest",
+        "calibration_bearing": false
+      },
+      "massive/scenario": {
+        "n": 100,
+        "acc": 0.94,
+        "chance": 0.055556,
+        "i": 0.9364705583390862,
+        "chance_source": "manifest",
+        "calibration_bearing": false
+      },
+      "os_atlas/target_element": {
+        "n": 100,
+        "acc": 0.88,
+        "chance": 0.5,
+        "i": 0.76,
+        "chance_source": "manifest",
+        "calibration_bearing": false
+      },
+      "screenspot_v2/target_element": {
+        "n": 100,
+        "acc": 0.64,
+        "chance": 0.5,
+        "i": 0.28,
+        "chance_source": "manifest",
+        "calibration_bearing": false
+      }
+    },
+    "by_dataset": {
+      "atari_head": 0.6399998305881556,
+      "banking77": 0.0,
+      "cfpb_complaints": 0.7820861762007597,
+      "civil_comments": 0.11394805671103043,
+      "clinc150": 0.0,
+      "cuad": 0.48,
+      "go_emotions": 0.0,
+      "ledgar": 0.0,
+      "massive": 0.4682352791695431,
+      "os_atlas": 0.76,
+      "screenspot_v2": 0.28
+    },
+    "by_domain": {
+      "multimodal": 0.5599999435293852,
+      "nlp": 0.11643666717611471,
+      "finance": 0.7820861762007597,
+      "operational": 0.24
+    }
+  },
+  "strata": {
+    "mod_multimodal": {
+      "family": "modality",
+      "items": 300,
+      "answered": 300,
+      "tasks": 3,
+      "value": 0.5599999435293852,
+      "status": "scored"
+    },
+    "mod_text": {
+      "family": "modality",
+      "items": 1100,
+      "answered": 1100,
+      "tasks": 11,
+      "value": 0.26422298617835516,
+      "status": "scored"
+    },
+    "prim_choice": {
+      "family": "primitive",
+      "items": 1100,
+      "answered": 1100,
+      "tasks": 11,
+      "value": 0.3089596877389092,
+      "status": "scored"
+    },
+    "prim_noul": {
+      "family": "primitive",
+      "items": 200,
+      "answered": 200,
+      "tasks": 2,
+      "value": null,
+      "status": "excluded"
+    },
+    "prim_score": {
+      "family": "primitive",
+      "items": 100,
+      "answered": 100,
+      "tasks": 1,
+      "value": null,
+      "status": "excluded"
+    },
+    "width_binary": {
+      "family": "width",
+      "items": 400,
+      "answered": 400,
+      "tasks": 4,
+      "value": 0.5,
+      "status": "scored"
+    },
+    "width_medium": {
+      "family": "width",
+      "items": 500,
+      "answered": 500,
+      "tasks": 5,
+      "value": 0.47171131302560027,
+      "status": "scored"
+    },
+    "width_small": {
+      "family": "width",
+      "items": 100,
+      "answered": 100,
+      "tasks": 1,
+      "value": null,
+      "status": "excluded"
+    },
+    "width_wide": {
+      "family": "width",
+      "items": 400,
+      "answered": 400,
+      "tasks": 4,
+      "value": 0.0,
+      "status": "model_declined"
+    }
+  },
+  "families": {
+    "width": 0.0,
+    "primitive": 0.3089596877389092,
+    "modality": 0.3846620040230701
+  },
+  "breadth": 0.0,
+  "excluded_strata": [
+    {
+      "stratum": "prim_noul",
+      "reason": "benchmark_underpopulated",
+      "items": 200
+    },
+    {
+      "stratum": "prim_score",
+      "reason": "benchmark_underpopulated",
+      "items": 100
+    },
+    {
+      "stratum": "width_small",
+      "reason": "benchmark_underpopulated",
+      "items": 100
+    }
+  ],
+  "diagnostics": {
+    "pooled_ece": 0.07051697887669432,
+    "pooled_accuracy": 0.845,
+    "ece_bins": 15,
+    "ece_binning": "equal_mass",
+    "per_dataset_ece": {
+      "atari_head": 0.3795100596547127,
+      "banking77": null,
+      "cfpb_complaints": 0.0963533456623554,
+      "civil_comments": 0.04693480760324746,
+      "clinc150": null,
+      "cuad": 0.01710324004874566,
+      "go_emotions": null,
+      "ledgar": null,
+      "massive": 0.04620892047882081,
+      "os_atlas": 0.09348266243934633,
+      "screenspot_v2": 0.16292358040809635
+    },
+    "per_stratum_ece": {
+      "mod_multimodal": 0.1723127024372419,
+      "mod_text": 0.03228156036441215,
+      "prim_choice": 0.10806857296824454,
+      "prim_noul": 0.03069596343499144,
+      "prim_score": 0.07518508315086363,
+      "width_binary": 0.046920650903193736,
+      "width_medium": 0.16216231539845466,
+      "width_small": 0.07518508315086363,
+      "width_wide": null
+    },
+    "ordinal_distance": {
+      "civil_comments/toxicity_level": {
+        "mean_abs_distance": 0.26,
+        "off_by_one_rate": 0.08,
+        "confusion": [
+          [
+            80,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            4,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            4,
+            0,
+            2,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            2,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            1,
+            0
+          ]
+        ]
+      }
+    },
+    "abstention": null,
+    "position_sensitivity": {
+      "n": 1300,
+      "delta_accuracy": -0.002308,
+      "flagged": false
+    },
+    "n_no_confidence": 0,
+    "chance_source_drift": [],
+    "latency_ms": {
+      "text": {
+        "p50": 113.845,
+        "p95": 159.40949999999987,
+        "n": 500,
+        "source": "server_reported"
+      },
+      "multimodal": {
+        "p50": 111.775,
+        "p95": 140.42450000000002,
+        "n": 300,
+        "source": "server_reported"
+      }
+    },
+    "http_status_counts": {
+      "200": 800,
+      "422": 600
+    },
+    "error_samples": [
+      {
+        "item_id": "banking77-intent-00228210e4f87372",
+        "status": 422,
+        "body": "{\"detail\":\"question 'intent': choice supports 2-26 options, got 77\"}"
+      },
+      {
+        "item_id": "banking77-intent-003b6e8828aabcc6",
+        "status": 422,
+        "body": "{\"detail\":\"question 'intent': choice supports 2-26 options, got 77\"}"
+      },
+      {
+        "item_id": "banking77-intent-003dc8d75a93ebba",
+        "status": 422,
+        "body": "{\"detail\":\"question 'intent': choice supports 2-26 options, got 77\"}"
+      },
+      {
+        "item_id": "banking77-intent-00403d3e1a7aee20",
+        "status": 422,
+        "body": "{\"detail\":\"question 'intent': choice supports 2-26 options, got 77\"}"
+      },
+      {
+        "item_id": "banking77-intent-0057cb1cf4ebeb56",
+        "status": 422,
+        "body": "{\"detail\":\"question 'intent': choice supports 2-26 options, got 77\"}"
+      },
+      {
+        "item_id": "banking77-intent-00762a9f111ade70",
+        "status": 422,
+        "body": "{\"detail\":\"question 'intent': choice supports 2-26 options, got 77\"}"
+      },
+      {
+        "item_id": "banking77-intent-007f0bc7adba8234",
+        "status": 422,
+        "body": "{\"detail\":\"question 'intent': choice supports 2-26 options, got 77\"}"
+      },
+      {
+        "item_id": "banking77-intent-00b0b75a776b3554",
+        "status": 422,
+        "body": "{\"detail\":\"question 'intent': choice supports 2-26 options, got 77\"}"
+      },
+      {
+        "item_id": "banking77-intent-00c7082a3bb584a9",
+        "status": 422,
+        "body": "{\"detail\":\"question 'intent': choice supports 2-26 options, got 77\"}"
+      },
+      {
+        "item_id": "banking77-intent-00d06838d9b46377",
+        "status": 422,
+        "body": "{\"detail\":\"question 'intent': choice supports 2-26 options, got 77\"}"
+      },
+      {
+        "item_id": "banking77-intent-00d853058f8124e5",
+        "status": 422,
+        "body": "{\"detail\":\"question 'intent': choice supports 2-26 options, got 77\"}"
+      },
+      {
+        "item_id": "banking77-intent-00e1ecb53f9b55af",
+        "status": 422,
+        "body": "{\"detail\":\"question 'intent': choice supports 2-26 options, got 77\"}"
+      },
+      {
+        "item_id": "banking77-intent-00f2782aa953c6c4",
+        "status": 422,
+        "body": "{\"detail\":\"question 'intent': choice supports 2-26 options, got 77\"}"
+      },
+      {
+        "item_id": "banking77-intent-00fc715d8d047ef3",
+        "status": 422,
+        "body": "{\"detail\":\"question 'intent': choice supports 2-26 options, got 77\"}"
+      },
+      {
+        "item_id": "banking77-intent-0124afbc73fec707",
+        "status": 422,
+        "body": "{\"detail\":\"question 'intent': choice supports 2-26 options, got 77\"}"
+      },
+      {
+        "item_id": "banking77-intent-014575b6e1a69548",
+        "status": 422,
+        "body": "{\"detail\":\"question 'intent': choice supports 2-26 options, got 77\"}"
+      },
+      {
+        "item_id": "banking77-intent-0157c288ffb470d7",
+        "status": 422,
+        "body": "{\"detail\":\"question 'intent': choice supports 2-26 options, got 77\"}"
+      },
+      {
+        "item_id": "banking77-intent-0170f4020974bb8e",
+        "status": 422,
+        "body": "{\"detail\":\"question 'intent': choice supports 2-26 options, got 77\"}"
+      },
+      {
+        "item_id": "banking77-intent-01954b68c923efae",
+        "status": 422,
+        "body": "{\"detail\":\"question 'intent': choice supports 2-26 options, got 77\"}"
+      },
+      {
+        "item_id": "banking77-intent-01a69f21133e1d98",
+        "status": 422,
+        "body": "{\"detail\":\"question 'intent': choice supports 2-26 options, got 77\"}"
+      }
+    ]
+  },
+  "notes": {
+    "provisional": true,
+    "domain_concentration": "finance is 1 dataset (cfpb_complaints) of 11 scored and carries 25% of Intelligence (PRD §14.1)"
+  },
+  "evidence_bundle": "results/run_eaebeede34bf460b84d9/manifest.json",
+  "request": {
+    "model": "ekvachan-decoder-qwen-vision@13a.11",
+    "slice": "heldout",
+    "datasets": null,
+    "tasks": null,
+    "license_tiers": [
+      "A"
+    ],
+    "modalities": [
+      "text",
+      "image"
+    ],
+    "primitives": [
+      "choice",
+      "score",
+      "noul"
+    ],
+    "max_items_per_task": 100,
+    "shuffle_seed": 20260924,
+    "images": {
+      "mode": "reference"
+    },
+    "request": {
+      "timeout_s": 30.0,
+      "concurrency": 1,
+      "headers": {}
+    },
+    "cost_model": null,
+    "endpoint": "http://127.0.0.1:8123/v1/systemone"
+  },
+  "model_info": {
+    "backend": "http",
+    "endpoint": "http://127.0.0.1:8123/v1/systemone"
+  },
+  "corpus_receipts": {
+    "atari_head": "sha256:e5aa8eb421658c222fa4dab38533a68a9934c6b4875fefd8836e2a3342e0f1db",
+    "banking77": "sha256:40a9db1624df4c8edf3710f69bd56b4322d84f586cfbc595e65763457cd9d6f9",
+    "cfpb_complaints": "sha256:ba7c745a8ebd74450efe22414c7365a7379a63c7ea8a24b2abf153d6485b76c8",
+    "civil_comments": "sha256:bb53e207d76ae5c2203db4cfe88436fee4d15b585c64b6ac25da95fa4bcf50dd",
+    "clinc150": "sha256:3cd38f92e62dd242a99c40fd8b0b77d69dd93681adae9774dbc66d1b8c70fbdc",
+    "cuad": "sha256:29af109abacc537e2dbdb86bebd0b6ac079cb7e07ea8041536c6a3c5f8a8e3ff",
+    "go_emotions": "sha256:ff4a1eb4f7da896f062392582366938533f3cc40a0079457599a4a5ad7c6232b",
+    "ledgar": "sha256:53de9965645a8f62387911d13bd4e1f5e8152a8374650df21a580f68a3a65208",
+    "massive": "sha256:8063e6403727c0cf5e0d20d4de6de9485fa3c245e8d2ac159b67447961179070",
+    "os_atlas": "sha256:01b711a2307bd92a67824c60021bd8119b296c31521604f2be94c641640b535c",
+    "screenspot_v2": "sha256:b15f477f9f42701c78ca50a98b5c8bfde3db2c1bbc4a2f70cb40a5e5789230d3"
+  },
+  "host": "localhost",
+  "bjb_version": "0.1.0"
+}
