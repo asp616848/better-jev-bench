@@ -700,7 +700,7 @@
     "expected": {
       "clause_type": "Audit Rights"
     },
-    "chance": 0.024390243902439025,
+    "chance": 0.02439,
     "source": "cuad_TELEGLOBEINTERNATIONALHOLDINGSLTD_03_29_",
     "state_hash": "84bd25ea34ace94ad3dc85feaaac61d9ca01b205a9a99614884bfcfbb818aa10"
   },
@@ -776,7 +776,7 @@
     "expected": {
       "clause_type": "Rofr/Rofo/Rofn"
     },
-    "chance": 0.024390243902439025,
+    "chance": 0.02439,
     "source": "cuad_XENCORINC_10_25_2013-EX-10.24-COLLABORAT",
     "state_hash": "7cf58b9752dcbe4c41098966d68d9faff03089536420bef8c2641fd5bf867ca8"
   },
@@ -852,7 +852,7 @@
     "expected": {
       "clause_type": "Anti-Assignment"
     },
-    "chance": 0.024390243902439025,
+    "chance": 0.02439,
     "source": "cuad_TICKETSCOMINC_06_22_1999-EX-10.22-SPONSO",
     "state_hash": "cf52d2ac34df46dae806fddb2b04940627dcb3e658daac4117f904951c9e3a96"
   },
@@ -928,7 +928,7 @@
     "expected": {
       "clause_type": "Ip Ownership Assignment"
     },
-    "chance": 0.024390243902439025,
+    "chance": 0.02439,
     "source": "cuad_FOUNDATIONMEDICINE,INC_02_02_2015-EX-10.",
     "state_hash": "0d8ed5ce8d5646e856e82ae89b28d9ba41c1fd862f48c8ce0c6c77ce0d9b7b50"
   },
@@ -1004,7 +1004,7 @@
     "expected": {
       "clause_type": "Insurance"
     },
-    "chance": 0.024390243902439025,
+    "chance": 0.02439,
     "source": "cuad_TRUENORTHENERGYCORP_02_08_2007-EX-10.1-D",
     "state_hash": "ce8394de9d2c9a834645f5ab7e27f2df5532f28823492d0a1e49d5d923777428"
   },
@@ -1080,7 +1080,7 @@
     "expected": {
       "clause_type": "Parties"
     },
-    "chance": 0.024390243902439025,
+    "chance": 0.02439,
     "source": "cuad_MANUFACTURERSSERVICESLTD_06_05_2000-EX-1",
     "state_hash": "30e43f2d84a8724ba85ec6cb396de7621d83c91b6f3c55c3990940f7c3e20a86"
   },
@@ -1156,7 +1156,7 @@
     "expected": {
       "clause_type": "Anti-Assignment"
     },
-    "chance": 0.024390243902439025,
+    "chance": 0.02439,
     "source": "cuad_ElPolloLocoHoldingsInc_20200306_10-K_EX-",
     "state_hash": "1f5293ff5aedb3a39b6727d06a0ddf539378d72668c3f197d458727fb5be3d26"
   }

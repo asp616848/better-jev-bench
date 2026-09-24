@@ -9,13 +9,25 @@ authors = [{ name = "Niyati Singh" }]
 dependencies = [
     "datasets>=3.0",
     "huggingface-hub>=0.25",
+    # better_jev_bench/score.py's pooled_ece() ports the sibling project's
+    # numpy-based algorithm verbatim (PRD §14.6) -- listed explicitly rather
+    # than left as a transitive dependency of `datasets`, since the scoring
+    # engine depends on it directly and would break silently if that stopped
+    # being true.
+    "numpy>=1.26",
 ]
 
 [project.optional-dependencies]
-# Nothing here yet. Kept as the seam for the scoring/serving extra (PRD 6.2),
-# which is the next milestone and deliberately not a hard dependency of the
-# corpus tooling -- `bjb build` and `bjb export` must work without a web stack.
-serve = []
+# PRD §14.9 item 6: `POST /v1/evaluate` + the read-only supporting endpoints.
+# `bjb build`, `bjb export` and `bjb evaluate` (the CLI, scored against a
+# ModelBackend directly) all still work with none of this installed -- the
+# scoring engine (`evaluate.py`/`score.py`) has no dependency on a web stack,
+# only the HTTP wrapper (`server.py`) does.
+serve = [
+    "fastapi>=0.110",
+    "pydantic>=2.0",
+    "uvicorn>=0.30",
+]
 
 [project.scripts]
 bjb = "better_jev_bench.cli:main"

@@ -40,7 +40,7 @@
     "expected": {
       "product": "Vehicle loan or lease"
     },
-    "chance": 0.1,
+    "chance": 0.541103,
     "source": "cfpb_complaints_has_text",
     "state_hash": "f78bcb051afddd11c688e4a2b5b32795275f1e25e42235cd85d00395f5ec9cfb"
   },
@@ -85,7 +85,7 @@
     "expected": {
       "product": "Credit reporting or other personal consumer reports"
     },
-    "chance": 0.1,
+    "chance": 0.541103,
     "source": "cfpb_complaints_has_text",
     "state_hash": "e0e4ce208a9c244dc621a69df247132d47e8882aaddbdc1773a7614008c449cc"
   },
@@ -130,7 +130,7 @@
     "expected": {
       "product": "Credit reporting or other personal consumer reports"
     },
-    "chance": 0.1,
+    "chance": 0.541103,
     "source": "cfpb_complaints_has_text",
     "state_hash": "7072fc84961c65988b88d3b6e1a14c279b381fa3c3207d3504847be21580b5ff"
   },
@@ -175,7 +175,7 @@
     "expected": {
       "product": "Credit reporting or other personal consumer reports"
     },
-    "chance": 0.1,
+    "chance": 0.541103,
     "source": "cfpb_complaints_has_text",
     "state_hash": "ad611708047b55eab615389a1882dce8c39b85752eb7be2ae6285900157ea69e"
   },
@@ -220,7 +220,7 @@
     "expected": {
       "product": "Vehicle loan or lease"
     },
-    "chance": 0.1,
+    "chance": 0.541103,
     "source": "cfpb_complaints_has_text",
     "state_hash": "156ae689b29b28a3776440c598d3f6fe8b7fb1f126757e9c96847943d21e4b1c"
   },
@@ -265,7 +265,7 @@
     "expected": {
       "product": "Credit card or prepaid card"
     },
-    "chance": 0.1,
+    "chance": 0.541103,
     "source": "cfpb_complaints_has_text",
     "state_hash": "e48f868d661ba8c0e4478fbb264a46ab1cca4938f20a840b0b7c858ebfa53ca6"
   },
@@ -310,7 +310,7 @@
     "expected": {
       "product": "Debt collection"
     },
-    "chance": 0.1,
+    "chance": 0.541103,
     "source": "cfpb_complaints_has_text",
     "state_hash": "5a4c1fdda6a74ac41db8f4913a6258737db96458d1d7e131e865591667123882"
   },
@@ -355,7 +355,7 @@
     "expected": {
       "product": "Credit reporting or other personal consumer reports"
     },
-    "chance": 0.1,
+    "chance": 0.541103,
     "source": "cfpb_complaints_has_text",
     "state_hash": "24db664b48b4df238f83f2f4d60b9e572cda0a65144059c81b783950a237ae76"
   },
@@ -400,7 +400,7 @@
     "expected": {
       "product": "Mortgage"
     },
-    "chance": 0.1,
+    "chance": 0.541103,
     "source": "cfpb_complaints_has_text",
     "state_hash": "c082683cadadafcd8ec8b509fdbc6f4185fa73cfe2ecec5b212799f0f7819fb7"
   },
@@ -445,7 +445,7 @@
     "expected": {
       "product": "Credit reporting or other personal consumer reports"
     },
-    "chance": 0.1,
+    "chance": 0.541103,
     "source": "cfpb_complaints_has_text",
     "state_hash": "2e7de0abf7fa20500e8d79034e96894d75920d0482d06f4b346ae3261b08861a"
   },
@@ -490,7 +490,7 @@
     "expected": {
       "product": "Credit reporting or other personal consumer reports"
     },
-    "chance": 0.1,
+    "chance": 0.541103,
     "source": "cfpb_complaints_has_text",
     "state_hash": "deff6c6188c3a875bf8494bd403eb97ff4487a1514cc347eda7c67e04cefc716"
   },
@@ -535,7 +535,7 @@
     "expected": {
       "product": "Debt collection"
     },
-    "chance": 0.1,
+    "chance": 0.541103,
     "source": "cfpb_complaints_has_text",
     "state_hash": "1a61ba09461631f3c36db7627969bf064a815578501fcfaf52bffbfd706866d2"
   },
@@ -580,7 +580,7 @@
     "expected": {
       "product": "Credit reporting or other personal consumer reports"
     },
-    "chance": 0.1,
+    "chance": 0.541103,
     "source": "cfpb_complaints_has_text",
     "state_hash": "a831d8c3736f0886fb0cc21db8e8a849eecce92ee8660418a1a287483074b47e"
   },
@@ -625,7 +625,7 @@
     "expected": {
       "product": "Credit reporting or other personal consumer reports"
     },
-    "chance": 0.1,
+    "chance": 0.541103,
     "source": "cfpb_complaints_has_text",
     "state_hash": "ceb5a8cc84f5c35092b944f3313ab454551b6ec10976281081b7519ce5fc8117"
   },
@@ -670,7 +670,7 @@
     "expected": {
       "product": "Credit reporting or other personal consumer reports"
     },
-    "chance": 0.1,
+    "chance": 0.541103,
     "source": "cfpb_complaints_has_text",
     "state_hash": "753abacfa07ca06bdaf574fb5685d3b8b5098239516b4ff0f0bd8858634302b9"
   },
@@ -715,7 +715,7 @@
     "expected": {
       "product": "Credit reporting or other personal consumer reports"
     },
-    "chance": 0.1,
+    "chance": 0.541103,
     "source": "cfpb_complaints_has_text",
     "state_hash": "759554b126a1777555aa09f02a08ddfefadabaf2b18ec0656e38703bc9cb55ab"
   },
@@ -760,7 +760,7 @@
     "expected": {
       "product": "Debt collection"
     },
-    "chance": 0.1,
+    "chance": 0.541103,
     "source": "cfpb_complaints_has_text",
     "state_hash": "5854416a9d8a06412c36e55f2edee55c01520472d825fd6232fdcb0f30ea2602"
   },
@@ -805,7 +805,7 @@
     "expected": {
       "product": "Debt collection"
     },
-    "chance": 0.1,
+    "chance": 0.541103,
     "source": "cfpb_complaints_has_text",
     "state_hash": "0c9b781c4a0a1b34dfaf6b674557bd8b33dfd4e64a5a063550d1bae371331a4e"
   },
@@ -850,7 +850,7 @@
     "expected": {
       "product": "Money transfer, virtual currency, or money service"
     },
-    "chance": 0.1,
+    "chance": 0.541103,
     "source": "cfpb_complaints_has_text",
     "state_hash": "b807cbc066969214c5bc1c1b5a3997dce77648aab1811c8741ef828482456579"
   },
@@ -895,7 +895,7 @@
     "expected": {
       "product": "Debt collection"
     },
-    "chance": 0.1,
+    "chance": 0.541103,
     "source": "cfpb_complaints_has_text",
     "state_hash": "f102b9922bd72acbd2f9613db09ffae42f4fc9d53c36cddf45cb0044a8881eab"
   },
@@ -940,7 +940,7 @@
     "expected": {
       "product": "Credit reporting or other personal consumer reports"
     },
-    "chance": 0.1,
+    "chance": 0.541103,
     "source": "cfpb_complaints_has_text",
     "state_hash": "50e3504117c606d85aab1f02e2b927975e39be74fca8d2cc476ce201b593084f"
   },
@@ -985,7 +985,7 @@
     "expected": {
       "product": "Credit reporting or other personal consumer reports"
     },
-    "chance": 0.1,
+    "chance": 0.541103,
     "source": "cfpb_complaints_has_text",
     "state_hash": "1e478836f8388b2ad60560ce7920679470b3abb244568663eef8e0704bf27d85"
   },
@@ -1030,7 +1030,7 @@
     "expected": {
       "product": "Credit reporting or other personal consumer reports"
     },
-    "chance": 0.1,
+    "chance": 0.541103,
     "source": "cfpb_complaints_has_text",
     "state_hash": "bc4262bd378d66b58b1d259a2ba9046c9311c5d8110194850fa47dbe404e438b"
   },
@@ -1075,7 +1075,7 @@
     "expected": {
       "product": "Credit reporting or other personal consumer reports"
     },
-    "chance": 0.1,
+    "chance": 0.541103,
     "source": "cfpb_complaints_has_text",
     "state_hash": "282ed21d517b31ef7fdaaed07331d186981201982ddbd71349f32740d99dc2df"
   }

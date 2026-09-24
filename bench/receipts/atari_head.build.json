@@ -3,8 +3,8 @@
   "display_name": "Atari-HEAD (breakout)",
   "domain": "multimodal",
   "bjb_version": "0.1.0",
-  "built_on": "2026-09-23T21:23:49Z",
-  "build_seconds": 50.0,
+  "built_on": "2026-09-24T02:52:17Z",
+  "build_seconds": 57.5,
   "host": "localhost",
   "loader": "better_jev_bench.datasets.atari_head:AtariHead",
   "source": {
@@ -74,15 +74,15 @@
   "files": {
     "public": {
       "path": "data/public/atari_head.jsonl.gz",
-      "sha256": "sha256:dd1a3d3a0c905247d9a5efb8c75f36d9347e7da4cbd5e8127be8fe26400b5b12",
+      "sha256": "sha256:ac1139e8565e8a626d94719a8cade0352d08ebba4769c73c416c07aad98f4a2c",
       "n": 9154,
-      "bytes": 1024114
+      "bytes": 1022831
     },
     "heldout": {
       "path": "bench/heldout/atari_head.jsonl.gz",
-      "sha256": "sha256:b8ecf14f51351c282f6f92a0523b31eaf9c2ea2c3bf682dbcac48d9d081750ae",
+      "sha256": "sha256:e5aa8eb421658c222fa4dab38533a68a9934c6b4875fefd8836e2a3342e0f1db",
       "n": 1201,
-      "bytes": 125002
+      "bytes": 124809
     }
   },
   "images": {

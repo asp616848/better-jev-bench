@@ -1,0 +1,159 @@
+{
+  "run_id": "run_29764784ff6f4f748f63",
+  "spec_version": "bjb-score-1.0",
+  "corpus_version": "bjb-corpus-1.0",
+  "model": "always-no-mock@harness-selftest-1",
+  "endpoint": null,
+  "started_at": "2026-09-24T03:03:29Z",
+  "duration_s": 1.004,
+  "score": null,
+  "score_no_cost": 0.49539875572528697,
+  "floor_penalty_applied": true,
+  "is_leaderboard_eligible": true,
+  "axes": {
+    "intelligence": 6.018594441851334,
+    "calibration": 92.55,
+    "generality": 24.53282381188789,
+    "speed": 100.0,
+    "cost": null,
+    "speed_multimodal": null
+  },
+  "coverage": {
+    "attempted": 2000,
+    "answered": 2000,
+    "out_of_schema": 0,
+    "declined": 0,
+    "fraction": 1.0
+  },
+  "intelligence_detail": {
+    "by_task": {
+      "civil_comments/is_toxic": {
+        "n": 2000,
+        "acc": 0.9255,
+        "chance": 0.920729,
+        "i": 0.06018594441851334,
+        "chance_source": "manifest",
+        "calibration_bearing": true
+      }
+    },
+    "by_dataset": {
+      "civil_comments": 0.06018594441851334
+    },
+    "by_domain": {
+      "nlp": 0.06018594441851334
+    }
+  },
+  "strata": {
+    "mod_text": {
+      "family": "modality",
+      "items": 2000,
+      "answered": 2000,
+      "tasks": 1,
+      "value": 0.06018594441851334,
+      "status": "scored"
+    },
+    "prim_noul": {
+      "family": "primitive",
+      "items": 2000,
+      "answered": 2000,
+      "tasks": 1,
+      "value": 0.06018594441851334,
+      "status": "scored"
+    },
+    "width_binary": {
+      "family": "width",
+      "items": 2000,
+      "answered": 2000,
+      "tasks": 1,
+      "value": 0.06018594441851334,
+      "status": "scored"
+    }
+  },
+  "families": {
+    "width": 0.06018594441851334,
+    "primitive": 0.06018594441851334,
+    "modality": 0.06018594441851334
+  },
+  "breadth": 0.06018594441851335,
+  "excluded_strata": [],
+  "diagnostics": {
+    "pooled_ece": 0.07450000000000001,
+    "pooled_accuracy": 0.9255,
+    "ece_bins": 15,
+    "ece_binning": "equal_mass",
+    "per_dataset_ece": {
+      "civil_comments": 0.07450000000000001
+    },
+    "per_stratum_ece": {
+      "mod_text": 0.07450000000000001,
+      "prim_noul": 0.07450000000000001,
+      "width_binary": 0.07450000000000001
+    },
+    "ordinal_distance": null,
+    "abstention": null,
+    "position_sensitivity": null,
+    "n_no_confidence": 0,
+    "chance_source_drift": [],
+    "latency_ms": {
+      "text": {
+        "p50": 1.0,
+        "p95": 1.0,
+        "n": 2000,
+        "source": "server_reported"
+      }
+    },
+    "http_status_counts": {
+      "200": 2000
+    },
+    "error_samples": []
+  },
+  "notes": {
+    "provisional": true
+  },
+  "evidence_bundle": "results/run_29764784ff6f4f748f63/manifest.json",
+  "request": {
+    "model": "always-no-mock@harness-selftest-1",
+    "slice": "heldout",
+    "datasets": null,
+    "tasks": [
+      "civil_comments/is_toxic"
+    ],
+    "license_tiers": [
+      "A"
+    ],
+    "modalities": [
+      "text",
+      "image"
+    ],
+    "primitives": [
+      "choice",
+      "score",
+      "noul"
+    ],
+    "max_items_per_task": null,
+    "shuffle_seed": 20260924,
+    "images": {
+      "mode": "reference"
+    },
+    "request": {
+      "timeout_s": 30.0,
+      "concurrency": 1,
+      "headers": {}
+    },
+    "cost_model": null,
+    "position_sensitivity": null,
+    "endpoint": null
+  },
+  "model_info": {
+    "backend": "mock",
+    "fixed_answers": {
+      "is_toxic": "No"
+    },
+    "harness_selftest": true
+  },
+  "corpus_receipts": {
+    "civil_comments": "sha256:bb53e207d76ae5c2203db4cfe88436fee4d15b585c64b6ac25da95fa4bcf50dd"
+  },
+  "host": "localhost",
+  "bjb_version": "0.1.0"
+}

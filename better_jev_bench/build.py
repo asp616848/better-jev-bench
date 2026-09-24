@@ -39,6 +39,7 @@ into evidence (dev-guidelines rule 10).
 from __future__ import annotations
 
 import collections
+import dataclasses
 import gzip
 import json
 import platform
@@ -195,6 +196,28 @@ def build_dataset(
             )
 
         te = m.task(task)
+
+        # PRD §14.2: stamp the manifest's declared, frozen chance floor onto
+        # every item *before* it is split or written. Previously nothing did
+        # this -- `Item.chance` stayed `None` for every loader (no loader sets
+        # it itself; see `types.py`'s docstring, which described this as
+        # `build.py`'s job and was wrong that `build.py` did it), so
+        # `to_bench_json()` fell through to `Question.uniform_chance` on every
+        # item regardless of `chance_mode`. That is invisible for a uniform
+        # task (the fallback *is* correct there) but silently wrong for the
+        # four `chance_mode = "majority"` tasks, which shipped `1/n_options`
+        # instead of their declared majority floor -- e.g.
+        # `civil_comments/is_toxic` shipped 0.5 instead of 0.920729. `te.chance`
+        # is the frozen, CI-checked, human-reviewed number (`_static_checks`
+        # in `manifest.py` already asserts `0 < chance < 1`, and for uniform
+        # tasks that it equals `1/option_count`); `_observed_chance` below
+        # remains a receipt-only diagnostic used to detect drift and to sync
+        # a majority task's declared value forward, exactly as before -- it is
+        # deliberately not what gets stamped onto an item, so a single build's
+        # sampling noise can never move the frozen number a score is computed
+        # against out from under a published result.
+        items = [dataclasses.replace(it, chance=te.chance) for it in items]
+
         ho = [it for it in items if side(it, m.heldout_fraction) == "heldout"]
         pu = [it for it in items if side(it, m.heldout_fraction) == "public"]
         ho, pu = ho[:heldout_cap], pu[:public_cap]

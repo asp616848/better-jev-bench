@@ -240,6 +240,23 @@ def validate_repo(repo_root: Path, *, run_loaders: bool = False, only: list[str]
                 bad = [it for it in items if it.license_tier != m.tier]
                 if bad:
                     rep.fail(f"gate 3 [{m.name}/{task}]: {len(bad)} items carry a license_tier != {m.tier!r}")
+
+                # -- gate 12 (PRD §14.2/§14.9 item 0): every shipped item's own
+                # `chance` field equals its task's manifest `chance` -- checked
+                # against the field a scoring engine actually reads, not against
+                # a second derived copy of the same number (that comparison is
+                # what let the majority-mode defect ship undetected: gate 3
+                # above compared the receipt's `chance_observed` against the
+                # manifest and never looked at `item["chance"]` at all).
+                rep.checks_run += 1
+                bad_chance = [it for it in items if it.chance is None or abs(it.chance - te.chance) > 1e-9]
+                if bad_chance:
+                    rep.fail(
+                        f"gate 12 [{m.name}/{task}]: {len(bad_chance)} of {len(items)} shipped items carry "
+                        f"chance != manifest chance {te.chance} (e.g. item {bad_chance[0].item_id} has "
+                        f"chance={bad_chance[0].chance!r}) -- the field a scoring engine reads is wrong (PRD §14.2)"
+                    )
+
                 if te.primitive == "score":
                     orders = {tuple(it.question.options) for it in items}
                     if len(orders) != 1:

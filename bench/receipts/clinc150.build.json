@@ -3,8 +3,8 @@
   "display_name": "CLINC150 (clinc_oos, plus)",
   "domain": "nlp",
   "bjb_version": "0.1.0",
-  "built_on": "2026-09-23T21:24:59Z",
-  "build_seconds": 8.5,
+  "built_on": "2026-09-24T02:53:36Z",
+  "build_seconds": 8.6,
   "host": "localhost",
   "loader": "better_jev_bench.datasets.clinc150:ClincIntents",
   "source": {
@@ -81,15 +81,15 @@
   "files": {
     "public": {
       "path": "data/public/clinc150.jsonl.gz",
-      "sha256": "sha256:f846127e5b7d761ea5229fac0270482a785ddb4b96e9816abfe7330c198ca973",
+      "sha256": "sha256:8c240993c76de77384a63550aa1377a08455c78a052aafc514a8c6f20bb2670c",
       "n": 20304,
-      "bytes": 2089114
+      "bytes": 2112270
     },
     "heldout": {
       "path": "bench/heldout/clinc150.jsonl.gz",
-      "sha256": "sha256:6df59a390d4005ebc6fb55b5617226ebd1fff6665da34e41171249ca4b9a0621",
+      "sha256": "sha256:3cd38f92e62dd242a99c40fd8b0b77d69dd93681adae9774dbc66d1b8c70fbdc",
       "n": 2000,
-      "bytes": 208105
+      "bytes": 210407
     }
   }
 }

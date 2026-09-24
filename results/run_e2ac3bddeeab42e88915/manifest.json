@@ -1,0 +1,282 @@
+{
+  "run_id": "run_e2ac3bddeeab42e88915",
+  "spec_version": "bjb-score-1.0",
+  "corpus_version": "bjb-corpus-1.0",
+  "model": "choice-only-mock@harness-selftest-3",
+  "endpoint": null,
+  "started_at": "2026-09-24T03:03:59Z",
+  "duration_s": 0.961,
+  "score": null,
+  "score_no_cost": 0.0,
+  "floor_penalty_applied": true,
+  "is_leaderboard_eligible": true,
+  "axes": {
+    "intelligence": 0.18640416421398026,
+    "calibration": 1.666666666666675,
+    "generality": 0.0,
+    "speed": 100.0,
+    "cost": null,
+    "speed_multimodal": null
+  },
+  "coverage": {
+    "attempted": 900,
+    "answered": 300,
+    "out_of_schema": 0,
+    "declined": 600,
+    "fraction": 0.3333333333333333
+  },
+  "intelligence_detail": {
+    "by_task": {
+      "banking77/intent": {
+        "n": 300,
+        "acc": 0.016666666666666666,
+        "chance": 0.012987,
+        "i": 0.003728083284279605,
+        "chance_source": "manifest",
+        "calibration_bearing": true
+      },
+      "civil_comments/is_toxic": {
+        "n": 300,
+        "acc": 0.0,
+        "chance": 0.920729,
+        "i": 0.0,
+        "chance_source": "manifest",
+        "calibration_bearing": false
+      },
+      "civil_comments/toxicity_level": {
+        "n": 300,
+        "acc": 0.0,
+        "chance": 0.792774,
+        "i": 0.0,
+        "chance_source": "manifest",
+        "calibration_bearing": false
+      }
+    },
+    "by_dataset": {
+      "banking77": 0.003728083284279605,
+      "civil_comments": 0.0
+    },
+    "by_domain": {
+      "nlp": 0.0018640416421398026
+    }
+  },
+  "strata": {
+    "mod_text": {
+      "family": "modality",
+      "items": 900,
+      "answered": 900,
+      "tasks": 3,
+      "value": 0.0012426944280932016,
+      "status": "scored"
+    },
+    "prim_choice": {
+      "family": "primitive",
+      "items": 300,
+      "answered": 300,
+      "tasks": 1,
+      "value": 0.003728083284279605,
+      "status": "scored"
+    },
+    "prim_noul": {
+      "family": "primitive",
+      "items": 300,
+      "answered": 300,
+      "tasks": 1,
+      "value": 0.0,
+      "status": "model_declined"
+    },
+    "prim_score": {
+      "family": "primitive",
+      "items": 300,
+      "answered": 300,
+      "tasks": 1,
+      "value": 0.0,
+      "status": "model_declined"
+    },
+    "width_binary": {
+      "family": "width",
+      "items": 300,
+      "answered": 300,
+      "tasks": 1,
+      "value": 0.0,
+      "status": "model_declined"
+    },
+    "width_small": {
+      "family": "width",
+      "items": 300,
+      "answered": 300,
+      "tasks": 1,
+      "value": 0.0,
+      "status": "model_declined"
+    },
+    "width_wide": {
+      "family": "width",
+      "items": 300,
+      "answered": 300,
+      "tasks": 1,
+      "value": 0.003728083284279605,
+      "status": "scored"
+    }
+  },
+  "families": {
+    "width": 0.0,
+    "primitive": 0.0,
+    "modality": 0.0012426944280932016
+  },
+  "breadth": 0.0,
+  "excluded_strata": [],
+  "diagnostics": {
+    "pooled_ece": 0.9833333333333332,
+    "pooled_accuracy": 0.016666666666666666,
+    "ece_bins": 15,
+    "ece_binning": "equal_mass",
+    "per_dataset_ece": {
+      "banking77": 0.9833333333333332,
+      "civil_comments": null
+    },
+    "per_stratum_ece": {
+      "mod_text": 0.9833333333333332,
+      "prim_choice": 0.9833333333333332,
+      "prim_noul": null,
+      "prim_score": null,
+      "width_binary": null,
+      "width_small": null,
+      "width_wide": 0.9833333333333332
+    },
+    "ordinal_distance": null,
+    "abstention": null,
+    "position_sensitivity": null,
+    "n_no_confidence": 0,
+    "chance_source_drift": [],
+    "latency_ms": {
+      "text": {
+        "p50": 5.0,
+        "p95": 5.0,
+        "n": 300,
+        "source": "server_reported"
+      }
+    },
+    "http_status_counts": {
+      "200": 300,
+      "501": 600
+    },
+    "error_samples": [
+      {
+        "item_id": "civil_comments-is_toxic-0005f5cf6ec167cf",
+        "status": 501,
+        "body": "primitive 'noul' not implemented in Phase 1"
+      },
+      {
+        "item_id": "civil_comments-is_toxic-000c45921e86cf09",
+        "status": 501,
+        "body": "primitive 'noul' not implemented in Phase 1"
+      },
+      {
+        "item_id": "civil_comments-is_toxic-000cbb1544d6287f",
+        "status": 501,
+        "body": "primitive 'noul' not implemented in Phase 1"
+      },
+      {
+        "item_id": "civil_comments-is_toxic-001e55624b463115",
+        "status": 501,
+        "body": "primitive 'noul' not implemented in Phase 1"
+      },
+      {
+        "item_id": "civil_comments-is_toxic-001ea5a3e1ecbc07",
+        "status": 501,
+        "body": "primitive 'noul' not implemented in Phase 1"
+      },
+      {
+        "item_id": "civil_comments-is_toxic-0022fab6288053fe",
+        "status": 501,
+        "body": "primitive 'noul' not implemented in Phase 1"
+      },
+      {
+        "item_id": "civil_comments-is_toxic-002499cda9eaf14a",
+        "status": 501,
+        "body": "primitive 'noul' not implemented in Phase 1"
+      },
+      {
+        "item_id": "civil_comments-is_toxic-00266c0458e40cee",
+        "status": 501,
+        "body": "primitive 'noul' not implemented in Phase 1"
+      },
+      {
+        "item_id": "civil_comments-is_toxic-00277b49d044678b",
+        "status": 501,
+        "body": "primitive 'noul' not implemented in Phase 1"
+      },
+      {
+        "item_id": "civil_comments-is_toxic-002c2be56bdf8919",
+        "status": 501,
+        "body": "primitive 'noul' not implemented in Phase 1"
+      },
+      {
+        "item_id": "civil_comments-is_toxic-002c452a3cbe8d48",
+        "status": 501,
+        "body": "primitive 'noul' not implemented in Phase 1"
+      },
+      {
+        "item_id": "civil_comments-is_toxic-002f563e3a6035e5",
+        "status": 501,
+        "body": "primitive 'noul' not implemented in Phase 1"
+      },
+      {
+        "item_id": "civil_comments-is_toxic-003c65c9c671360f",
+        "status": 501,
+        "body": "primitive 'noul' not implemented in Phase 1"
+      },
+      {
+        "item_id": "civil_comments-is_toxic-003ece0fe336fd97",
+        "status": 501,
+        "body": "primitive 'noul' not implemented in Phase 1"
+      },
+      {
+        "item_id": "civil_comments-is_toxic-004b0145eb85db09",
+        "status": 501,
+        "body": "primitive 'noul' not implemented in Phase 1"
+      },
+      {
+        "item_id": "civil_comments-is_toxic-004d98e24456bef5",
+        "status": 501,
+        "body": "primitive 'noul' not implemented in Phase 1"
+      },
+      {
+        "item_id": "civil_comments-is_toxic-0064aa59a5a44aa7",
+        "status": 501,
+        "body": "primitive 'noul' not implemented in Phase 1"
+      },
+      {
+        "item_id": "civil_comments-is_toxic-0065c69582647b64",
+        "status": 501,
+        "body": "primitive 'noul' not implemented in Phase 1"
+      },
+      {
+        "item_id": "civil_comments-is_toxic-006f70b253d2c197",
+        "status": 501,
+        "body": "primitive 'noul' not implemented in Phase 1"
+      },
+      {
+        "item_id": "civil_comments-is_toxic-0075a1d206a1f49f",
+        "status": 501,
+        "body": "primitive 'noul' not implemented in Phase 1"
+      }
+    ]
+  },
+  "notes": {
+    "provisional": true,
+    "primitive_unsupported_by_endpoint": [
+      "noul",
+      "score"
+    ]
+  },
+  "evidence_bundle": "results/run_e2ac3bddeeab42e88915/manifest.json",
+  "request": {},
+  "model_info": {
+    "backend": "choice_only_mock",
+    "harness_selftest": true
+  },
+  "corpus_receipts": {},
+  "host": "localhost",
+  "bjb_version": "0.1.0"
+}

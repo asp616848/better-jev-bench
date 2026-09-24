@@ -56,6 +56,28 @@ def main(argv: list[str] | None = None) -> int:
 
     sub.add_parser("stats", help="what actually landed, from the committed receipts")
 
+    ev = sub.add_parser("evaluate", help="score a model against the corpus (PRD §14.7)")
+    ev.add_argument("--endpoint", default=None, help="a /v1/systemone-speaking URL (PRD §14.8 point 1)")
+    ev.add_argument("--mock", action="store_true", help="use the built-in MockBackend -- no network, no ML stack (PRD §14.9 item 5)")
+    ev.add_argument("--mock-fixed-answer", nargs=2, metavar=("QUESTION_KEY", "ANSWER"), action="append", default=None)
+    ev.add_argument("--model", required=True, help="<name>@<git-sha|weight-hash>")
+    ev.add_argument("--slice", dest="slice_name", default="heldout", choices=["public", "heldout"])
+    ev.add_argument("--datasets", nargs="*", default=None)
+    ev.add_argument("--tasks", nargs="*", default=None)
+    ev.add_argument("--tiers", dest="license_tiers", nargs="*", default=["A"])
+    ev.add_argument("--modalities", nargs="*", default=["text", "image"])
+    ev.add_argument("--primitives", nargs="*", default=["choice", "score", "noul"])
+    ev.add_argument("--max-items-per-task", type=int, default=None)
+    ev.add_argument("--shuffle-seed", type=int, default=None)
+    ev.add_argument("--no-position-sensitivity", action="store_true")
+    ev.add_argument("--images-mode", default="reference", choices=["reference", "inline_base64", "omit"])
+    ev.add_argument("--timeout-s", type=float, default=30.0)
+    ev.add_argument("--concurrency", type=int, default=1)
+    ev.add_argument("--cost-hourly-rate", type=float, default=None)
+    ev.add_argument("--cost-currency", default="usd")
+    ev.add_argument("--cost-hardware", default=None)
+    ev.add_argument("--out", default=None, help="evidence bundle dir (default: <repo>/results)")
+
     args = p.parse_args(argv)
     root = _repo_root(args.repo)
 
@@ -160,6 +182,56 @@ def main(argv: list[str] | None = None) -> int:
         for k, v in corpus["strata_population"].items():
             print(f"  {k:18} items={v['items']:>9,}  heldout={v['heldout']:>7,}  "
                   f"{'calibration-bearing' if v['calibration_bearing'] else 'EXCLUDED (<250)'}")
+        return 0
+
+    if args.cmd == "evaluate":
+        from .backend import HTTPBackend, MockBackend
+        from .evaluate import DEFAULT_SHUFFLE_SEED, EvaluateError, evaluate, write_evidence_bundle
+
+        if bool(args.endpoint) == bool(args.mock):
+            print("evaluate: pass exactly one of --endpoint or --mock", file=sys.stderr)
+            return 2
+
+        if args.mock:
+            fixed = dict(args.mock_fixed_answer) if args.mock_fixed_answer else None
+            backend = MockBackend(fixed_answers=fixed)
+        else:
+            backend = HTTPBackend(args.endpoint)
+
+        cost_model = (
+            {"currency": args.cost_currency, "hourly_rate": args.cost_hourly_rate, "hardware": args.cost_hardware}
+            if args.cost_hourly_rate is not None
+            else None
+        )
+        request_kwargs = dict(
+            model=args.model,
+            slice=args.slice_name,
+            datasets=args.datasets,
+            tasks=args.tasks,
+            license_tiers=args.license_tiers,
+            modalities=args.modalities,
+            primitives=args.primitives,
+            max_items_per_task=args.max_items_per_task,
+            shuffle_seed=args.shuffle_seed if args.shuffle_seed is not None else DEFAULT_SHUFFLE_SEED,
+            images={"mode": args.images_mode},
+            request={"timeout_s": args.timeout_s, "concurrency": args.concurrency, "headers": {}},
+            cost_model=cost_model,
+        )
+        if args.no_position_sensitivity:
+            request_kwargs["position_sensitivity"] = None  # explicit null -- disables (PRD §14.7)
+        # else: omit the key entirely so `evaluate()`'s own enabled-by-default applies.
+        try:
+            result = evaluate(root, backend, **request_kwargs)
+        except EvaluateError as exc:
+            print(f"evaluate: {exc}", file=sys.stderr)
+            return 2
+
+        out_dir = Path(args.out) if args.out else root / "results"
+        paths = write_evidence_bundle(result, {**request_kwargs, "endpoint": args.endpoint}, out_dir, repo_root=root)
+        for k in ("_raw_rows", "_model_info", "_datasets_used"):
+            result.pop(k, None)
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+        print(f"\nevidence bundle: {paths['manifest']}", file=sys.stderr)
         return 0
 
     return 1

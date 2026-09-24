@@ -3,8 +3,8 @@
   "display_name": "MASSIVE (en-US)",
   "domain": "nlp",
   "bjb_version": "0.1.0",
-  "built_on": "2026-09-23T21:25:57Z",
-  "build_seconds": 10.1,
+  "built_on": "2026-09-24T02:54:36Z",
+  "build_seconds": 11.1,
   "host": "localhost",
   "loader": "better_jev_bench.datasets.massive:MassiveIntents",
   "source": {
@@ -125,15 +125,15 @@
   "files": {
     "public": {
       "path": "data/public/massive.jsonl.gz",
-      "sha256": "sha256:94857ef9fbfbd75cde2a4340ac461e8a6c944c07cf247c78a35bc9c4b5683414",
+      "sha256": "sha256:cd88f3da728dc66594b4a9fa4573ab2680224de0977ea1550433fbac0adc8339",
       "n": 28085,
-      "bytes": 2391143
+      "bytes": 2391925
     },
     "heldout": {
       "path": "bench/heldout/massive.jsonl.gz",
-      "sha256": "sha256:bffafe53a5f5b859eef1577783713ab16ea9a976dfda85620915b322f50cb5f2",
+      "sha256": "sha256:8063e6403727c0cf5e0d20d4de6de9485fa3c245e8d2ac159b67447961179070",
       "n": 4000,
-      "bytes": 344296
+      "bytes": 344140
     }
   }
 }

@@ -1,0 +1,395 @@
+{
+  "run_id": "run_6baceddeb9ce4342b6dc",
+  "spec_version": "bjb-score-1.0",
+  "corpus_version": "bjb-corpus-1.0",
+  "model": "firstoption-mock@harness-selftest-2",
+  "endpoint": null,
+  "started_at": "2026-09-24T03:03:47Z",
+  "duration_s": 1.252,
+  "score": null,
+  "score_no_cost": 0.0,
+  "floor_penalty_applied": true,
+  "is_leaderboard_eligible": true,
+  "axes": {
+    "intelligence": 0.7116947132136842,
+    "calibration": 22.78571428571429,
+    "generality": 0.0,
+    "speed": 100.0,
+    "cost": null,
+    "speed_multimodal": 100.0
+  },
+  "coverage": {
+    "attempted": 4200,
+    "answered": 4200,
+    "out_of_schema": 0,
+    "declined": 0,
+    "fraction": 1.0
+  },
+  "intelligence_detail": {
+    "by_task": {
+      "atari_head/action": {
+        "n": 300,
+        "acc": 0.08,
+        "chance": 0.055556,
+        "i": 0.02588189453265625,
+        "chance_source": "manifest",
+        "calibration_bearing": true
+      },
+      "banking77/intent": {
+        "n": 300,
+        "acc": 0.016666666666666666,
+        "chance": 0.012987,
+        "i": 0.003728083284279605,
+        "chance_source": "manifest",
+        "calibration_bearing": true
+      },
+      "cfpb_complaints/product": {
+        "n": 300,
+        "acc": 0.08333333333333333,
+        "chance": 0.541103,
+        "i": 0.0,
+        "chance_source": "manifest",
+        "calibration_bearing": true
+      },
+      "civil_comments/is_toxic": {
+        "n": 300,
+        "acc": 0.54,
+        "chance": 0.920729,
+        "i": 0.0,
+        "chance_source": "manifest",
+        "calibration_bearing": true
+      },
+      "civil_comments/toxicity_level": {
+        "n": 300,
+        "acc": 0.7866666666666666,
+        "chance": 0.792774,
+        "i": 0.0,
+        "chance_source": "manifest",
+        "calibration_bearing": true
+      },
+      "clinc150/intent": {
+        "n": 300,
+        "acc": 0.0,
+        "chance": 0.006623,
+        "i": 0.0,
+        "chance_source": "manifest",
+        "calibration_bearing": true
+      },
+      "cuad/clause_present": {
+        "n": 300,
+        "acc": 0.52,
+        "chance": 0.5,
+        "i": 0.040000000000000036,
+        "chance_source": "manifest",
+        "calibration_bearing": true
+      },
+      "cuad/clause_type": {
+        "n": 300,
+        "acc": 0.03,
+        "chance": 0.02439,
+        "i": 0.00575024856243786,
+        "chance_source": "manifest",
+        "calibration_bearing": true
+      },
+      "go_emotions/emotion": {
+        "n": 300,
+        "acc": 0.04666666666666667,
+        "chance": 0.353104,
+        "i": 0.0,
+        "chance_source": "manifest",
+        "calibration_bearing": true
+      },
+      "ledgar/provision_type": {
+        "n": 300,
+        "acc": 0.013333333333333334,
+        "chance": 0.01,
+        "i": 0.0033670033670033677,
+        "chance_source": "manifest",
+        "calibration_bearing": true
+      },
+      "massive/intent": {
+        "n": 300,
+        "acc": 0.006666666666666667,
+        "chance": 0.016667,
+        "i": 0.0,
+        "chance_source": "manifest",
+        "calibration_bearing": true
+      },
+      "massive/scenario": {
+        "n": 300,
+        "acc": 0.07,
+        "chance": 0.055556,
+        "i": 0.015293654255837303,
+        "chance_source": "manifest",
+        "calibration_bearing": true
+      },
+      "os_atlas/target_element": {
+        "n": 300,
+        "acc": 0.5066666666666667,
+        "chance": 0.5,
+        "i": 0.01333333333333342,
+        "chance_source": "manifest",
+        "calibration_bearing": true
+      },
+      "screenspot_v2/target_element": {
+        "n": 300,
+        "acc": 0.49,
+        "chance": 0.5,
+        "i": 0.0,
+        "chance_source": "manifest",
+        "calibration_bearing": true
+      }
+    },
+    "by_dataset": {
+      "atari_head": 0.02588189453265625,
+      "banking77": 0.003728083284279605,
+      "cfpb_complaints": 0.0,
+      "civil_comments": 0.0,
+      "clinc150": 0.0,
+      "cuad": 0.022875124281218948,
+      "go_emotions": 0.0,
+      "ledgar": 0.0033670033670033677,
+      "massive": 0.0076468271279186515,
+      "os_atlas": 0.01333333333333342,
+      "screenspot_v2": 0.0
+    },
+    "by_domain": {
+      "multimodal": 0.013071742621996557,
+      "nlp": 0.0022749820824396515,
+      "finance": 0.0,
+      "operational": 0.013121063824111158
+    }
+  },
+  "strata": {
+    "mod_multimodal": {
+      "family": "modality",
+      "items": 900,
+      "answered": 900,
+      "tasks": 3,
+      "value": 0.013071742621996557,
+      "status": "scored"
+    },
+    "mod_text": {
+      "family": "modality",
+      "items": 3300,
+      "answered": 3300,
+      "tasks": 11,
+      "value": 0.006194453588141652,
+      "status": "scored"
+    },
+    "prim_choice": {
+      "family": "primitive",
+      "items": 3300,
+      "answered": 3300,
+      "tasks": 11,
+      "value": 0.006123110666867982,
+      "status": "scored"
+    },
+    "prim_noul": {
+      "family": "primitive",
+      "items": 600,
+      "answered": 600,
+      "tasks": 2,
+      "value": 0.020000000000000018,
+      "status": "scored"
+    },
+    "prim_score": {
+      "family": "primitive",
+      "items": 300,
+      "answered": 300,
+      "tasks": 1,
+      "value": 0.0,
+      "status": "model_declined"
+    },
+    "width_binary": {
+      "family": "width",
+      "items": 1200,
+      "answered": 1200,
+      "tasks": 4,
+      "value": 0.013333333333333364,
+      "status": "scored"
+    },
+    "width_medium": {
+      "family": "width",
+      "items": 1500,
+      "answered": 1500,
+      "tasks": 5,
+      "value": 0.009385159470186283,
+      "status": "scored"
+    },
+    "width_small": {
+      "family": "width",
+      "items": 300,
+      "answered": 300,
+      "tasks": 1,
+      "value": 0.0,
+      "status": "model_declined"
+    },
+    "width_wide": {
+      "family": "width",
+      "items": 1200,
+      "answered": 1200,
+      "tasks": 4,
+      "value": 0.0017737716628207431,
+      "status": "scored"
+    }
+  },
+  "families": {
+    "width": 0.0,
+    "primitive": 0.0,
+    "modality": 0.008998461145556542
+  },
+  "breadth": 0.0,
+  "excluded_strata": [],
+  "diagnostics": {
+    "pooled_ece": 0.7721428571428571,
+    "pooled_accuracy": 0.22785714285714287,
+    "ece_bins": 15,
+    "ece_binning": "equal_mass",
+    "per_dataset_ece": {
+      "atari_head": 0.92,
+      "banking77": 0.9833333333333332,
+      "cfpb_complaints": 0.9166666666666669,
+      "civil_comments": 0.33666666666666667,
+      "clinc150": 0.9999999999999999,
+      "cuad": 0.7249999999999999,
+      "go_emotions": 0.9533333333333334,
+      "ledgar": 0.9866666666666665,
+      "massive": 0.9616666666666667,
+      "os_atlas": 0.4933333333333333,
+      "screenspot_v2": 0.51
+    },
+    "per_stratum_ece": {
+      "mod_multimodal": 0.641111111111111,
+      "mod_text": 0.8078787878787878,
+      "prim_choice": 0.8778787878787878,
+      "prim_noul": 0.4700000000000001,
+      "prim_score": 0.21333333333333337,
+      "width_binary": 0.4858333333333333,
+      "width_medium": 0.938,
+      "width_small": 0.21333333333333337,
+      "width_wide": 0.9908333333333331
+    },
+    "ordinal_distance": {
+      "civil_comments/toxicity_level": {
+        "mean_abs_distance": 0.4066666666666667,
+        "off_by_one_rate": 0.09666666666666666,
+        "confusion": [
+          [
+            236,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            29,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            16,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            15,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            4,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    "abstention": null,
+    "position_sensitivity": null,
+    "n_no_confidence": 0,
+    "chance_source_drift": [],
+    "latency_ms": {
+      "text": {
+        "p50": 1.0,
+        "p95": 1.0,
+        "n": 3300,
+        "source": "server_reported"
+      },
+      "multimodal": {
+        "p50": 1.0,
+        "p95": 1.0,
+        "n": 900,
+        "source": "server_reported"
+      }
+    },
+    "http_status_counts": {
+      "200": 4200
+    },
+    "error_samples": []
+  },
+  "notes": {
+    "provisional": true,
+    "domain_concentration": "finance is 1 dataset (cfpb_complaints) of 11 scored and carries 25% of Intelligence (PRD §14.1)"
+  },
+  "evidence_bundle": "results/run_6baceddeb9ce4342b6dc/manifest.json",
+  "request": {
+    "model": "firstoption-mock@harness-selftest-2",
+    "slice": "heldout",
+    "datasets": null,
+    "tasks": null,
+    "license_tiers": [
+      "A"
+    ],
+    "modalities": [
+      "text",
+      "image"
+    ],
+    "primitives": [
+      "choice",
+      "score",
+      "noul"
+    ],
+    "max_items_per_task": 300,
+    "shuffle_seed": 20260924,
+    "images": {
+      "mode": "reference"
+    },
+    "request": {
+      "timeout_s": 30.0,
+      "concurrency": 1,
+      "headers": {}
+    },
+    "cost_model": null,
+    "position_sensitivity": null,
+    "endpoint": null
+  },
+  "model_info": {
+    "backend": "mock",
+    "fixed_answers": {},
+    "harness_selftest": true
+  },
+  "corpus_receipts": {
+    "atari_head": "sha256:e5aa8eb421658c222fa4dab38533a68a9934c6b4875fefd8836e2a3342e0f1db",
+    "banking77": "sha256:40a9db1624df4c8edf3710f69bd56b4322d84f586cfbc595e65763457cd9d6f9",
+    "cfpb_complaints": "sha256:ba7c745a8ebd74450efe22414c7365a7379a63c7ea8a24b2abf153d6485b76c8",
+    "civil_comments": "sha256:bb53e207d76ae5c2203db4cfe88436fee4d15b585c64b6ac25da95fa4bcf50dd",
+    "clinc150": "sha256:3cd38f92e62dd242a99c40fd8b0b77d69dd93681adae9774dbc66d1b8c70fbdc",
+    "cuad": "sha256:29af109abacc537e2dbdb86bebd0b6ac079cb7e07ea8041536c6a3c5f8a8e3ff",
+    "go_emotions": "sha256:ff4a1eb4f7da896f062392582366938533f3cc40a0079457599a4a5ad7c6232b",
+    "ledgar": "sha256:53de9965645a8f62387911d13bd4e1f5e8152a8374650df21a580f68a3a65208",
+    "massive": "sha256:8063e6403727c0cf5e0d20d4de6de9485fa3c245e8d2ac159b67447961179070",
+    "os_atlas": "sha256:01b711a2307bd92a67824c60021bd8119b296c31521604f2be94c641640b535c",
+    "screenspot_v2": "sha256:b15f477f9f42701c78ca50a98b5c8bfde3db2c1bbc4a2f70cb40a5e5789230d3"
+  },
+  "host": "localhost",
+  "bjb_version": "0.1.0"
+}

@@ -2052,7 +2052,7 @@ Coverage axis exists to report it (§5.5 rule 3).
 ### 14.9 Implementation checklist, in order
 
 Ordered so each step is verifiable before the next begins. Items 0–6 are the milestone §12.5 and
-§10 both name as "the single thing between a corpus and a benchmark."
+§10 both name as "the single thing between a corpus and a benchmark." **Items 0-6 are done, 2026-09-24** -- `better_jev_bench/{score,backend,evaluate,server}.py` built and real, `bjb evaluate` CLI real, 70 unit checks passing (`scripts/check_{outcome_classifier,score_engine,server_endpoints}.py`), a real mock-backed end-to-end run produced a committed evidence bundle. Item 7 (a real run against a real trained checkpoint) is still open -- deferred until the model repo's GPU is free (a vision training run is in progress as of this writing).
 
 **0. Fix the chance defect first (§14.2).** Set `Item.chance` from the manifest in `build.py`'s
 normalise step; rebuild all 11 datasets; regenerate receipts. Verify with `bjb build --verify`
@@ -2060,6 +2060,8 @@ that **every `heldout_label_commitment` is unchanged** (it hashes `(item_id, lab
 `chance` is in neither) while the slice SHA-256s do change. Add CI gate 12: every shipped item's
 `chance` equals its task's manifest `chance`. **Do not start item 1 until `bjb validate` is green
 again.** Evidence: the `bjb build --verify` output, committed.
+
+**RESOLVED, 2026-09-24, real evidence**: fixed in `build.py` (stamps the manifest's frozen `chance` onto every item at build time, before this fix `Item.chance` stayed `None` for every loader and silently fell through to a uniform fallback). Rebuilt all 11 datasets; `bjb validate` green at **73 checks** (up from 59 -- CI gate 12 added, checking every shipped item's `chance` matches its task's manifest value). Verified directly, not just asserted: the always-"No" baseline on `civil_comments/is_toxic` now scores **0.0602** chance-adjusted (correct: near-zero, since guessing the majority class should earn almost nothing) against the real chance floor 0.920729 -- versus **0.8510** under the old bug's chance=0.5 fallback. That 0.85-point difference is the entire defect, made concrete.
 
 **1. `better_jev_bench/score.py` — pure functions, no I/O.** `chance_adjusted(acc, chance)`,
 `task_intelligence`, `aggregate_intelligence` (§14.1's three levels), `pooled_ece` (ported

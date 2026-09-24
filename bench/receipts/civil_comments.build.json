@@ -3,8 +3,8 @@
   "display_name": "Civil Comments",
   "domain": "nlp",
   "bjb_version": "0.1.0",
-  "built_on": "2026-09-23T21:24:42Z",
-  "build_seconds": 24.6,
+  "built_on": "2026-09-24T02:53:18Z",
+  "build_seconds": 28.6,
   "host": "localhost",
   "loader": "better_jev_bench.datasets.civil_comments:CivilComments",
   "source": {
@@ -104,15 +104,15 @@
   "files": {
     "public": {
       "path": "data/public/civil_comments.jsonl.gz",
-      "sha256": "sha256:cdd08817005cbaa419330632087518bc1167aa8bdf5b46f37fec46257066d416",
+      "sha256": "sha256:c66dd6273e5a36e4dfb15c964e1fd78d0924fb7f7d10ba53417f1660a7de5317",
       "n": 80000,
-      "bytes": 17440237
+      "bytes": 17455265
     },
     "heldout": {
       "path": "bench/heldout/civil_comments.jsonl.gz",
-      "sha256": "sha256:16a5be85e38bc0c10f5199c4368c9ce19a45cf65decddc20695f505b0d258450",
+      "sha256": "sha256:bb53e207d76ae5c2203db4cfe88436fee4d15b585c64b6ac25da95fa4bcf50dd",
       "n": 4000,
-      "bytes": 877939
+      "bytes": 878735
     }
   }
 }

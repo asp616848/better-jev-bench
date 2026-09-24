@@ -107,7 +107,7 @@
     "expected": {
       "intent": "declined_cash_withdrawal"
     },
-    "chance": 0.012987012987012988,
+    "chance": 0.012987,
     "source": "banking77_test",
     "state_hash": "c4dbb53486329bed07de35c8766f225bc777e1ed2873f17092eeeea0250cebea"
   },
@@ -219,7 +219,7 @@
     "expected": {
       "intent": "exchange_rate"
     },
-    "chance": 0.012987012987012988,
+    "chance": 0.012987,
     "source": "banking77_train",
     "state_hash": "f628dda6c3e477f71b3ff8a8fe491f44d96bae3a3643bff6f5b42ef8edcb3ffb"
   },
@@ -331,7 +331,7 @@
     "expected": {
       "intent": "extra_charge_on_statement"
     },
-    "chance": 0.012987012987012988,
+    "chance": 0.012987,
     "source": "banking77_train",
     "state_hash": "ad461ffc24074976e505b8ce4921cb4ce02a01b346f52f01f517d46f4b4b7308"
   },
@@ -443,7 +443,7 @@
     "expected": {
       "intent": "top_up_by_card_charge"
     },
-    "chance": 0.012987012987012988,
+    "chance": 0.012987,
     "source": "banking77_train",
     "state_hash": "9a1978fbdeefaf85ae5c6b9f63fd0dd899e42be50b8fa1a35b90698096f0287a"
   },
@@ -555,7 +555,7 @@
     "expected": {
       "intent": "cash_withdrawal_charge"
     },
-    "chance": 0.012987012987012988,
+    "chance": 0.012987,
     "source": "banking77_train",
     "state_hash": "60ba0c3966a2726cc43a7dd7b21f2794ac56eb81316cbd27499002565fbd34cf"
   },
@@ -667,7 +667,7 @@
     "expected": {
       "intent": "pending_cash_withdrawal"
     },
-    "chance": 0.012987012987012988,
+    "chance": 0.012987,
     "source": "banking77_train",
     "state_hash": "c36581b57f425ec4cd03644b52ac8dfc724acf963d5931ecd7e638de6ce7c033"
   },
@@ -779,7 +779,7 @@
     "expected": {
       "intent": "exchange_charge"
     },
-    "chance": 0.012987012987012988,
+    "chance": 0.012987,
     "source": "banking77_train",
     "state_hash": "be918a3fc68f0945051e93ebd3d97521c718d8b3213fbfc395ef100431e553fa"
   },
@@ -891,7 +891,7 @@
     "expected": {
       "intent": "contactless_not_working"
     },
-    "chance": 0.012987012987012988,
+    "chance": 0.012987,
     "source": "banking77_train",
     "state_hash": "c2a1d776f9d0d8c5d59c9b601fc766887c91bf404b7c823eddf3d6c519ec9e91"
   },
@@ -1003,7 +1003,7 @@
     "expected": {
       "intent": "reverted_card_payment?"
     },
-    "chance": 0.012987012987012988,
+    "chance": 0.012987,
     "source": "banking77_train",
     "state_hash": "1c413499f1457f43a14497d2abecfbe0647e9d0e71efc4a2350d4da6efbbcdde"
   },
@@ -1115,7 +1115,7 @@
     "expected": {
       "intent": "balance_not_updated_after_bank_transfer"
     },
-    "chance": 0.012987012987012988,
+    "chance": 0.012987,
     "source": "banking77_test",
     "state_hash": "3de9695fde2b4c164c16d5743d199b884094cdfec2140a2e8c850143d49eac8b"
   },
@@ -1227,7 +1227,7 @@
     "expected": {
       "intent": "beneficiary_not_allowed"
     },
-    "chance": 0.012987012987012988,
+    "chance": 0.012987,
     "source": "banking77_test",
     "state_hash": "b7f0aebc9d5573d07d7c3dc5f23bae8460009d6efd766deb6b880697a07a57a4"
   },
@@ -1339,7 +1339,7 @@
     "expected": {
       "intent": "card_arrival"
     },
-    "chance": 0.012987012987012988,
+    "chance": 0.012987,
     "source": "banking77_test",
     "state_hash": "4d66f92e65bbcc89268b556344de6a0750c5d2104d37e8401651e31d64971935"
   },
@@ -1451,7 +1451,7 @@
     "expected": {
       "intent": "top_up_reverted"
     },
-    "chance": 0.012987012987012988,
+    "chance": 0.012987,
     "source": "banking77_train",
     "state_hash": "11a384c4f01033da211cfa3df66e55e6f88b72d02764f1eb6b117b1b21044860"
   },
@@ -1563,7 +1563,7 @@
     "expected": {
       "intent": "pending_top_up"
     },
-    "chance": 0.012987012987012988,
+    "chance": 0.012987,
     "source": "banking77_train",
     "state_hash": "845b26467202114dfa96e0f4497f3cea08ee197fc24ab07ad446ada1ff2a8ca5"
   },
@@ -1675,7 +1675,7 @@
     "expected": {
       "intent": "supported_cards_and_currencies"
     },
-    "chance": 0.012987012987012988,
+    "chance": 0.012987,
     "source": "banking77_train",
     "state_hash": "a2ab4449d23d7d755814b053b072224a91a7ec827d4316c832b66b7045e67545"
   },
@@ -1787,7 +1787,7 @@
     "expected": {
       "intent": "top_up_reverted"
     },
-    "chance": 0.012987012987012988,
+    "chance": 0.012987,
     "source": "banking77_train",
     "state_hash": "b014bf7f81f400535b820b78ee22fc7e84cb2d73810717779868fe4aa9ab3419"
   },
@@ -1899,7 +1899,7 @@
     "expected": {
       "intent": "balance_not_updated_after_bank_transfer"
     },
-    "chance": 0.012987012987012988,
+    "chance": 0.012987,
     "source": "banking77_train",
     "state_hash": "c2bd9fb459eba35b39253f700909d4fc2319d6bbe6a103c1d353af35fc93b1bf"
   },
@@ -2011,7 +2011,7 @@
     "expected": {
       "intent": "disposable_card_limits"
     },
-    "chance": 0.012987012987012988,
+    "chance": 0.012987,
     "source": "banking77_test",
     "state_hash": "5be9c316b8706ff373537f19aefd13c38d4a83ace4932b6411134f04c13b6cd2"
   },
@@ -2123,7 +2123,7 @@
     "expected": {
       "intent": "card_linking"
     },
-    "chance": 0.012987012987012988,
+    "chance": 0.012987,
     "source": "banking77_train",
     "state_hash": "fa4ae937e14b719a4e786b6382166fb7231c5e34b3069fa7c9c96048baaf6ef2"
   },
@@ -2235,7 +2235,7 @@
     "expected": {
       "intent": "card_payment_wrong_exchange_rate"
     },
-    "chance": 0.012987012987012988,
+    "chance": 0.012987,
     "source": "banking77_train",
     "state_hash": "843477c3d90f19dbf3ba504a0f1b391c60304143a4b85c4f26ae61619933121b"
   },
@@ -2347,7 +2347,7 @@
     "expected": {
       "intent": "passcode_forgotten"
     },
-    "chance": 0.012987012987012988,
+    "chance": 0.012987,
     "source": "banking77_train",
     "state_hash": "9721108a7802071b064511c22ed546ed6e0f5cb6d21915c27aa0c99daaa60607"
   },
@@ -2459,7 +2459,7 @@
     "expected": {
       "intent": "terminate_account"
     },
-    "chance": 0.012987012987012988,
+    "chance": 0.012987,
     "source": "banking77_test",
     "state_hash": "ee29b97a0c25510b4747f7d66a4bf3cc1554e3f2ef66e88eccaeda64fb9b1443"
   },
@@ -2571,7 +2571,7 @@
     "expected": {
       "intent": "activate_my_card"
     },
-    "chance": 0.012987012987012988,
+    "chance": 0.012987,
     "source": "banking77_test",
     "state_hash": "83b40688a783c5ce8ce31a7a760135407b0cbd0162e8ae021081b74ab7cd2241"
   },
@@ -2683,7 +2683,7 @@
     "expected": {
       "intent": "card_payment_fee_charged"
     },
-    "chance": 0.012987012987012988,
+    "chance": 0.012987,
     "source": "banking77_train",
     "state_hash": "df513f628add8c33dd1bcdb9d165427955336f919da8affd79bc4e58f719340f"
   }

@@ -1,6 +1,6 @@
 {
   "bjb_version": "0.1.0",
-  "built_on": "2026-09-23T21:26:15Z",
+  "built_on": "2026-09-24T02:54:52Z",
   "split_salt": "better-jev-bench/split/v1",
   "caps": {
     "public_per_task": 40000,
@@ -12,8 +12,8 @@
       "display_name": "Atari-HEAD (breakout)",
       "domain": "multimodal",
       "bjb_version": "0.1.0",
-      "built_on": "2026-09-23T21:23:49Z",
-      "build_seconds": 50.0,
+      "built_on": "2026-09-24T02:52:17Z",
+      "build_seconds": 57.5,
       "host": "localhost",
       "loader": "better_jev_bench.datasets.atari_head:AtariHead",
       "source": {
@@ -83,15 +83,15 @@
       "files": {
         "public": {
           "path": "data/public/atari_head.jsonl.gz",
-          "sha256": "sha256:dd1a3d3a0c905247d9a5efb8c75f36d9347e7da4cbd5e8127be8fe26400b5b12",
+          "sha256": "sha256:ac1139e8565e8a626d94719a8cade0352d08ebba4769c73c416c07aad98f4a2c",
           "n": 9154,
-          "bytes": 1024114
+          "bytes": 1022831
         },
         "heldout": {
           "path": "bench/heldout/atari_head.jsonl.gz",
-          "sha256": "sha256:b8ecf14f51351c282f6f92a0523b31eaf9c2ea2c3bf682dbcac48d9d081750ae",
+          "sha256": "sha256:e5aa8eb421658c222fa4dab38533a68a9934c6b4875fefd8836e2a3342e0f1db",
           "n": 1201,
-          "bytes": 125002
+          "bytes": 124809
         }
       },
       "images": {
@@ -105,7 +105,7 @@
       "display_name": "BANKING77",
       "domain": "nlp",
       "bjb_version": "0.1.0",
-      "built_on": "2026-09-23T21:23:51Z",
+      "built_on": "2026-09-24T02:52:19Z",
       "build_seconds": 1.1,
       "host": "localhost",
       "loader": "better_jev_bench.datasets.banking77:BankingIntents",
@@ -185,15 +185,15 @@
       "files": {
         "public": {
           "path": "data/public/banking77.jsonl.gz",
-          "sha256": "sha256:2ff4535d529c8cc70278e5273e63e51073ea91d56ea549f4773a32f23d491611",
+          "sha256": "sha256:8899934a1664fca1beb832527618682b7a1c798d4926e439b8c754e9c89f3193",
           "n": 11040,
-          "bytes": 1191279
+          "bytes": 1198522
         },
         "heldout": {
           "path": "bench/heldout/banking77.jsonl.gz",
-          "sha256": "sha256:6285410c4b45efb781c933e7aa9732422fd6a6e8814c4592bfa57c9d5d3ffab9",
+          "sha256": "sha256:40a9db1624df4c8edf3710f69bd56b4322d84f586cfbc595e65763457cd9d6f9",
           "n": 2000,
-          "bytes": 216685
+          "bytes": 217982
         }
       }
     },
@@ -202,8 +202,8 @@
       "display_name": "CFPB Consumer Complaints",
       "domain": "finance",
       "bjb_version": "0.1.0",
-      "built_on": "2026-09-23T21:24:13Z",
-      "build_seconds": 20.3,
+      "built_on": "2026-09-24T02:52:44Z",
+      "build_seconds": 23.0,
       "host": "localhost",
       "loader": "better_jev_bench.datasets.cfpb:CfpbComplaints",
       "source": {
@@ -281,15 +281,15 @@
       "files": {
         "public": {
           "path": "data/public/cfpb_complaints.jsonl.gz",
-          "sha256": "sha256:35b4dbd370c4b02d5de0ee398da577cb1728801e85ac0b055ed771da72517c3f",
+          "sha256": "sha256:c494a874a29c163ab2bc114048de26485a315d34b6c0f613959897540fc02d03",
           "n": 40000,
-          "bytes": 16087327
+          "bytes": 16077116
         },
         "heldout": {
           "path": "bench/heldout/cfpb_complaints.jsonl.gz",
-          "sha256": "sha256:d7295a5aae04af661c5037580e70ee82b70c128a1fba2ba5f5b472b77d7dd71f",
+          "sha256": "sha256:ba7c745a8ebd74450efe22414c7365a7379a63c7ea8a24b2abf153d6485b76c8",
           "n": 2000,
-          "bytes": 807004
+          "bytes": 806539
         }
       }
     },
@@ -298,8 +298,8 @@
       "display_name": "Civil Comments",
       "domain": "nlp",
       "bjb_version": "0.1.0",
-      "built_on": "2026-09-23T21:24:42Z",
-      "build_seconds": 24.6,
+      "built_on": "2026-09-24T02:53:18Z",
+      "build_seconds": 28.6,
       "host": "localhost",
       "loader": "better_jev_bench.datasets.civil_comments:CivilComments",
       "source": {
@@ -399,15 +399,15 @@
       "files": {
         "public": {
           "path": "data/public/civil_comments.jsonl.gz",
-          "sha256": "sha256:cdd08817005cbaa419330632087518bc1167aa8bdf5b46f37fec46257066d416",
+          "sha256": "sha256:c66dd6273e5a36e4dfb15c964e1fd78d0924fb7f7d10ba53417f1660a7de5317",
           "n": 80000,
-          "bytes": 17440237
+          "bytes": 17455265
         },
         "heldout": {
           "path": "bench/heldout/civil_comments.jsonl.gz",
-          "sha256": "sha256:16a5be85e38bc0c10f5199c4368c9ce19a45cf65decddc20695f505b0d258450",
+          "sha256": "sha256:bb53e207d76ae5c2203db4cfe88436fee4d15b585c64b6ac25da95fa4bcf50dd",
           "n": 4000,
-          "bytes": 877939
+          "bytes": 878735
         }
       }
     },
@@ -416,8 +416,8 @@
       "display_name": "CLINC150 (clinc_oos, plus)",
       "domain": "nlp",
       "bjb_version": "0.1.0",
-      "built_on": "2026-09-23T21:24:59Z",
-      "build_seconds": 8.5,
+      "built_on": "2026-09-24T02:53:36Z",
+      "build_seconds": 8.6,
       "host": "localhost",
       "loader": "better_jev_bench.datasets.clinc150:ClincIntents",
       "source": {
@@ -494,15 +494,15 @@
       "files": {
         "public": {
           "path": "data/public/clinc150.jsonl.gz",
-          "sha256": "sha256:f846127e5b7d761ea5229fac0270482a785ddb4b96e9816abfe7330c198ca973",
+          "sha256": "sha256:8c240993c76de77384a63550aa1377a08455c78a052aafc514a8c6f20bb2670c",
           "n": 20304,
-          "bytes": 2089114
+          "bytes": 2112270
         },
         "heldout": {
           "path": "bench/heldout/clinc150.jsonl.gz",
-          "sha256": "sha256:6df59a390d4005ebc6fb55b5617226ebd1fff6665da34e41171249ca4b9a0621",
+          "sha256": "sha256:3cd38f92e62dd242a99c40fd8b0b77d69dd93681adae9774dbc66d1b8c70fbdc",
           "n": 2000,
-          "bytes": 208105
+          "bytes": 210407
         }
       }
     },
@@ -511,8 +511,8 @@
       "display_name": "CUAD",
       "domain": "operational",
       "bjb_version": "0.1.0",
-      "built_on": "2026-09-23T21:25:03Z",
-      "build_seconds": 1.3,
+      "built_on": "2026-09-24T02:53:40Z",
+      "build_seconds": 1.8,
       "host": "localhost",
       "loader": "better_jev_bench.datasets.cuad:Cuad",
       "source": {
@@ -622,15 +622,15 @@
       "files": {
         "public": {
           "path": "data/public/cuad.jsonl.gz",
-          "sha256": "sha256:212dd272ee2b462f4f2060bc681863c8db950cf18d7a4710d3aa8239dd808b01",
+          "sha256": "sha256:5573daa247ff794e941440d10a2c7df656e78b4eb330df183b8cadb087de6046",
           "n": 20639,
-          "bytes": 4568522
+          "bytes": 4563944
         },
         "heldout": {
           "path": "bench/heldout/cuad.jsonl.gz",
-          "sha256": "sha256:254408d1af57eb8e69d166f72f979348fd7dfdaf04ee84e7d14ee27cd5f8313c",
+          "sha256": "sha256:29af109abacc537e2dbdb86bebd0b6ac079cb7e07ea8041536c6a3c5f8a8e3ff",
           "n": 3174,
-          "bytes": 722981
+          "bytes": 722207
         }
       }
     },
@@ -639,8 +639,8 @@
       "display_name": "GoEmotions (simplified)",
       "domain": "nlp",
       "bjb_version": "0.1.0",
-      "built_on": "2026-09-23T21:25:18Z",
-      "build_seconds": 10.0,
+      "built_on": "2026-09-24T02:53:55Z",
+      "build_seconds": 10.2,
       "host": "localhost",
       "loader": "better_jev_bench.datasets.go_emotions:GoEmotions",
       "source": {
@@ -715,15 +715,15 @@
       "files": {
         "public": {
           "path": "data/public/go_emotions.jsonl.gz",
-          "sha256": "sha256:640c8400c5566dbb20e1467c875da71b7278c60eea46413aa6e185e7ae73fe13",
+          "sha256": "sha256:5729e3b4c6134db9461d9a19056c31f948becab198e0f61f1cb93913453ea71a",
           "n": 38445,
-          "bytes": 4045083
+          "bytes": 4034874
         },
         "heldout": {
           "path": "bench/heldout/go_emotions.jsonl.gz",
-          "sha256": "sha256:cd535de03925a89e6b1cf1cda7a1758bdc82eb2dd5b691915dff317dbb2cf03f",
+          "sha256": "sha256:ff4a1eb4f7da896f062392582366938533f3cc40a0079457599a4a5ad7c6232b",
           "n": 2000,
-          "bytes": 211488
+          "bytes": 210901
         }
       }
     },
@@ -732,8 +732,8 @@
       "display_name": "LEDGAR (via LexGLUE)",
       "domain": "operational",
       "bjb_version": "0.1.0",
-      "built_on": "2026-09-23T21:25:39Z",
-      "build_seconds": 17.3,
+      "built_on": "2026-09-24T02:54:17Z",
+      "build_seconds": 17.6,
       "host": "localhost",
       "loader": "better_jev_bench.datasets.ledgar:Ledgar",
       "source": {
@@ -827,8 +827,8 @@
       "display_name": "MASSIVE (en-US)",
       "domain": "nlp",
       "bjb_version": "0.1.0",
-      "built_on": "2026-09-23T21:25:57Z",
-      "build_seconds": 10.1,
+      "built_on": "2026-09-24T02:54:36Z",
+      "build_seconds": 11.1,
       "host": "localhost",
       "loader": "better_jev_bench.datasets.massive:MassiveIntents",
       "source": {
@@ -949,15 +949,15 @@
       "files": {
         "public": {
           "path": "data/public/massive.jsonl.gz",
-          "sha256": "sha256:94857ef9fbfbd75cde2a4340ac461e8a6c944c07cf247c78a35bc9c4b5683414",
+          "sha256": "sha256:cd88f3da728dc66594b4a9fa4573ab2680224de0977ea1550433fbac0adc8339",
           "n": 28085,
-          "bytes": 2391143
+          "bytes": 2391925
         },
         "heldout": {
           "path": "bench/heldout/massive.jsonl.gz",
-          "sha256": "sha256:bffafe53a5f5b859eef1577783713ab16ea9a976dfda85620915b322f50cb5f2",
+          "sha256": "sha256:8063e6403727c0cf5e0d20d4de6de9485fa3c245e8d2ac159b67447961179070",
           "n": 4000,
-          "bytes": 344296
+          "bytes": 344140
         }
       }
     },
@@ -966,8 +966,8 @@
       "display_name": "OS-Atlas-data (desktop/linux subset)",
       "domain": "multimodal",
       "bjb_version": "0.1.0",
-      "built_on": "2026-09-23T21:26:08Z",
-      "build_seconds": 9.9,
+      "built_on": "2026-09-24T02:54:46Z",
+      "build_seconds": 8.7,
       "host": "localhost",
       "loader": "better_jev_bench.datasets.os_atlas:OSAtlasDesktopLinux",
       "source": {
@@ -1065,8 +1065,8 @@
       "display_name": "ScreenSpot-v2 (OS-Copilot)",
       "domain": "multimodal",
       "bjb_version": "0.1.0",
-      "built_on": "2026-09-23T21:26:15Z",
-      "build_seconds": 3.5,
+      "built_on": "2026-09-24T02:54:52Z",
+      "build_seconds": 3.3,
       "host": "localhost",
       "loader": "better_jev_bench.datasets.screenspot_v2:ScreenSpotV2",
       "source": {

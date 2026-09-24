@@ -32,7 +32,7 @@
     "expected": {
       "is_toxic": "No"
     },
-    "chance": 0.5,
+    "chance": 0.920729,
     "source": "civil_comments_train",
     "state_hash": "054c7bfd78e8e4299ce38e96f981487e3d338df69112de1e08e526d18a971940"
   },
@@ -69,7 +69,7 @@
     "expected": {
       "is_toxic": "No"
     },
-    "chance": 0.5,
+    "chance": 0.920729,
     "source": "civil_comments_train",
     "state_hash": "ca7ef83b8aa21a534d4eb36a44e1e38bd1da43222c1c1abdbffd20232a1f326b"
   },
@@ -106,7 +106,7 @@
     "expected": {
       "is_toxic": "No"
     },
-    "chance": 0.5,
+    "chance": 0.920729,
     "source": "civil_comments_train",
     "state_hash": "75ea7d66966eb49ae20dd97329bf80ce809a75a190d933d27f4d65167f8ddd75"
   },
@@ -143,7 +143,7 @@
     "expected": {
       "is_toxic": "No"
     },
-    "chance": 0.5,
+    "chance": 0.920729,
     "source": "civil_comments_test",
     "state_hash": "69e5475705d4f362a95366566af5af6e5752c2b5a018e6f6b27aad289874e2b9"
   },
@@ -180,7 +180,7 @@
     "expected": {
       "is_toxic": "No"
     },
-    "chance": 0.5,
+    "chance": 0.920729,
     "source": "civil_comments_train",
     "state_hash": "d05986068ce5ad200e9f4505243af51b67e52a671eb2e45ca7aeb23ad17074fe"
   },
@@ -217,7 +217,7 @@
     "expected": {
       "is_toxic": "No"
     },
-    "chance": 0.5,
+    "chance": 0.920729,
     "source": "civil_comments_train",
     "state_hash": "8c0f69a68e809dd6329ab340d31dd430244b7e6398930403bc714684c3c237af"
   },
@@ -254,7 +254,7 @@
     "expected": {
       "is_toxic": "No"
     },
-    "chance": 0.5,
+    "chance": 0.920729,
     "source": "civil_comments_train",
     "state_hash": "bfa132e8209c624b0dd79be43b920fd5a97a75c9047382114599f9f8ceb876fc"
   },
@@ -291,7 +291,7 @@
     "expected": {
       "is_toxic": "No"
     },
-    "chance": 0.5,
+    "chance": 0.920729,
     "source": "civil_comments_train",
     "state_hash": "d12c751c3d40ce485b5cac52ef5a73440065dbaf7ccac7559bbde0e998ccd82a"
   },
@@ -328,7 +328,7 @@
     "expected": {
       "is_toxic": "No"
     },
-    "chance": 0.5,
+    "chance": 0.920729,
     "source": "civil_comments_train",
     "state_hash": "328e4fc5241e50a302191eda3dc2fa6ea3dbb6ba0e793e0adc48136b072b52f1"
   },
@@ -365,7 +365,7 @@
     "expected": {
       "is_toxic": "No"
     },
-    "chance": 0.5,
+    "chance": 0.920729,
     "source": "civil_comments_train",
     "state_hash": "9ffa51f3031dec237cfedf1c44f8b8e09fd1764ebdf975b7e213744d73ac5c93"
   },
@@ -402,7 +402,7 @@
     "expected": {
       "is_toxic": "No"
     },
-    "chance": 0.5,
+    "chance": 0.920729,
     "source": "civil_comments_train",
     "state_hash": "74ec39c944d68a9a66eb1ed3814a514491bb9b1675d2b43a3d3da593cc39f4f0"
   },
@@ -439,7 +439,7 @@
     "expected": {
       "is_toxic": "No"
     },
-    "chance": 0.5,
+    "chance": 0.920729,
     "source": "civil_comments_train",
     "state_hash": "2ae99571ffd4c198ae8ca234de39ad24463a92250db0a1455c446f74a2f132e2"
   },
@@ -476,7 +476,7 @@
     "expected": {
       "is_toxic": "No"
     },
-    "chance": 0.5,
+    "chance": 0.920729,
     "source": "civil_comments_train",
     "state_hash": "1d30cbf9a4926b95dccf8aa2a1b57370849eaf63038513202be630b9146f9f1f"
   },
@@ -517,7 +517,7 @@
     "expected": {
       "toxicity": "not toxic"
     },
-    "chance": 0.2,
+    "chance": 0.792774,
     "source": "civil_comments_train",
     "state_hash": "40e0b697131733a54fdcb8060c90c28f60c6b24951a58942b6545f9dc5403741"
   },
@@ -558,7 +558,7 @@
     "expected": {
       "toxicity": "not toxic"
     },
-    "chance": 0.2,
+    "chance": 0.792774,
     "source": "civil_comments_train",
     "state_hash": "cd20de4c8d4a2128b9123a62f2f60468578dd102c81539cbbc79005ca720e775"
   },
@@ -599,7 +599,7 @@
     "expected": {
       "toxicity": "moderately toxic"
     },
-    "chance": 0.2,
+    "chance": 0.792774,
     "source": "civil_comments_train",
     "state_hash": "80745e39103e02d036595be9850192fec3835cfd1f4ce076f6878842da9366be"
   },
@@ -640,7 +640,7 @@
     "expected": {
       "toxicity": "not toxic"
     },
-    "chance": 0.2,
+    "chance": 0.792774,
     "source": "civil_comments_train",
     "state_hash": "61c543aa1ab984f21acabdd9a2df8d444fb5686266b8f37088d570bc03ed2cbc"
   },
@@ -681,7 +681,7 @@
     "expected": {
       "toxicity": "moderately toxic"
     },
-    "chance": 0.2,
+    "chance": 0.792774,
     "source": "civil_comments_train",
     "state_hash": "b5040377dbde319c05d0c4dc03a6fd355dfc35268deca025678ff3a18479d05c"
   },
@@ -722,7 +722,7 @@
     "expected": {
       "toxicity": "not toxic"
     },
-    "chance": 0.2,
+    "chance": 0.792774,
     "source": "civil_comments_validation",
     "state_hash": "22bedf7fa8eb6ecea22085f084bcc009a2c1ab0b18c8d096af8a75e84adef109"
   },
@@ -763,7 +763,7 @@
     "expected": {
       "toxicity": "not toxic"
     },
-    "chance": 0.2,
+    "chance": 0.792774,
     "source": "civil_comments_train",
     "state_hash": "04b3c591cb31fa1ad92b124222a9c8bb8f853f12ab6ed574f5d295abe51efd4a"
   },
@@ -804,7 +804,7 @@
     "expected": {
       "toxicity": "not toxic"
     },
-    "chance": 0.2,
+    "chance": 0.792774,
     "source": "civil_comments_train",
     "state_hash": "093b25183ce73abff6342c831a97077a6d0963dad22ecb2d829ff3d287ce39a6"
   },
@@ -845,7 +845,7 @@
     "expected": {
       "toxicity": "not toxic"
     },
-    "chance": 0.2,
+    "chance": 0.792774,
     "source": "civil_comments_train",
     "state_hash": "5ef892cdfb3434b600c2d9659285e124545ae9f72fad5543f73e4cb200354767"
   },
@@ -886,7 +886,7 @@
     "expected": {
       "toxicity": "slightly toxic"
     },
-    "chance": 0.2,
+    "chance": 0.792774,
     "source": "civil_comments_train",
     "state_hash": "fe5c99e1a6a72827b028ab5160a3063fec0d63be413ae932809a9eeb14e09a58"
   },
@@ -927,7 +927,7 @@
     "expected": {
       "toxicity": "slightly toxic"
     },
-    "chance": 0.2,
+    "chance": 0.792774,
     "source": "civil_comments_validation",
     "state_hash": "b5de54fa16fdf6a2b99a954de307a5856865f38491eb44c0bffa4828c0087fa7"
   }

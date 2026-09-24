@@ -58,7 +58,7 @@
     "expected": {
       "emotion": "caring"
     },
-    "chance": 0.03571428571428571,
+    "chance": 0.353104,
     "source": "go_emotions_simplified_train",
     "state_hash": "570b2a36590638d4befcaee66044387075e8548eeb5960f391fc3f82543098d7"
   },
@@ -121,7 +121,7 @@
     "expected": {
       "emotion": "approval"
     },
-    "chance": 0.03571428571428571,
+    "chance": 0.353104,
     "source": "go_emotions_simplified_train",
     "state_hash": "63a71fe35d6ebee5ef5d6deb3fd2d8fd18a0222c86324f34da601c904e9c1150"
   },
@@ -184,7 +184,7 @@
     "expected": {
       "emotion": "amusement"
     },
-    "chance": 0.03571428571428571,
+    "chance": 0.353104,
     "source": "go_emotions_simplified_train",
     "state_hash": "bcdbc1f61926330c8317020f7e61b7dc23a330395d50f377d04edc95ee93ce92"
   },
@@ -247,7 +247,7 @@
     "expected": {
       "emotion": "joy"
     },
-    "chance": 0.03571428571428571,
+    "chance": 0.353104,
     "source": "go_emotions_simplified_train",
     "state_hash": "897090522ae6a900413deadbeedf47fe4206039c44eaa650ca3625801e8d7971"
   },
@@ -310,7 +310,7 @@
     "expected": {
       "emotion": "admiration"
     },
-    "chance": 0.03571428571428571,
+    "chance": 0.353104,
     "source": "go_emotions_simplified_train",
     "state_hash": "da9be4aa5def08c08bc15c6e4cd8a74e11f53a9c087742aa5e6f5694cae72c55"
   },
@@ -373,7 +373,7 @@
     "expected": {
       "emotion": "curiosity"
     },
-    "chance": 0.03571428571428571,
+    "chance": 0.353104,
     "source": "go_emotions_simplified_train",
     "state_hash": "c1dd40fe1783c93155180f5d35f8fcf078fb41cf9d9b61f2aa8ebcb013e7e9a9"
   },
@@ -436,7 +436,7 @@
     "expected": {
       "emotion": "neutral"
     },
-    "chance": 0.03571428571428571,
+    "chance": 0.353104,
     "source": "go_emotions_simplified_validation",
     "state_hash": "a55968d113b2709a53497cc23cdff382666a048325f160117b5c1083ce5c7d84"
   },
@@ -499,7 +499,7 @@
     "expected": {
       "emotion": "confusion"
     },
-    "chance": 0.03571428571428571,
+    "chance": 0.353104,
     "source": "go_emotions_simplified_train",
     "state_hash": "e877c10ea67854fd6189282c16c1056ec2d43d7877b245de3099c9b0a46854ea"
   },
@@ -562,7 +562,7 @@
     "expected": {
       "emotion": "neutral"
     },
-    "chance": 0.03571428571428571,
+    "chance": 0.353104,
     "source": "go_emotions_simplified_validation",
     "state_hash": "a46034e62ecc6eb12747d9ed5f1f7758d8776c9d67e949bd83fefd6e542f0ab4"
   },
@@ -625,7 +625,7 @@
     "expected": {
       "emotion": "neutral"
     },
-    "chance": 0.03571428571428571,
+    "chance": 0.353104,
     "source": "go_emotions_simplified_train",
     "state_hash": "391a6ebe20ab871c88251a7138996c430cfb06f8c07e30131f5d25fb95862215"
   },
@@ -688,7 +688,7 @@
     "expected": {
       "emotion": "neutral"
     },
-    "chance": 0.03571428571428571,
+    "chance": 0.353104,
     "source": "go_emotions_simplified_train",
     "state_hash": "d8035b09d1ba42fc5dcf88baa2a7abe912fcb6fe807c83b01a54481b1ff44280"
   },
@@ -751,7 +751,7 @@
     "expected": {
       "emotion": "realization"
     },
-    "chance": 0.03571428571428571,
+    "chance": 0.353104,
     "source": "go_emotions_simplified_train",
     "state_hash": "29e98e76f51681fe55157a9fb02e6013cd95e9b57608cc33fe0a85072447e1ac"
   },
@@ -814,7 +814,7 @@
     "expected": {
       "emotion": "neutral"
     },
-    "chance": 0.03571428571428571,
+    "chance": 0.353104,
     "source": "go_emotions_simplified_train",
     "state_hash": "9a0de3145b93a785b49886834d991fa43cda4dbadf92dd2981344729f0dc128e"
   },
@@ -877,7 +877,7 @@
     "expected": {
       "emotion": "neutral"
     },
-    "chance": 0.03571428571428571,
+    "chance": 0.353104,
     "source": "go_emotions_simplified_train",
     "state_hash": "080245ff34f4e63dea514d103b9bc2953f5e6f6e65e283197dbaae0cfd023465"
   },
@@ -940,7 +940,7 @@
     "expected": {
       "emotion": "amusement"
     },
-    "chance": 0.03571428571428571,
+    "chance": 0.353104,
     "source": "go_emotions_simplified_train",
     "state_hash": "b61d7e3adbc1d2e5b589aa806d6438805d736618a79094e8ac4f30e64308939f"
   },
@@ -1003,7 +1003,7 @@
     "expected": {
       "emotion": "neutral"
     },
-    "chance": 0.03571428571428571,
+    "chance": 0.353104,
     "source": "go_emotions_simplified_test",
     "state_hash": "f67cbbb26412b3c169554b801d2201536ed83902f9d6778f15ece6eb40a6a5f1"
   },
@@ -1066,7 +1066,7 @@
     "expected": {
       "emotion": "amusement"
     },
-    "chance": 0.03571428571428571,
+    "chance": 0.353104,
     "source": "go_emotions_simplified_train",
     "state_hash": "ee3d9cd5ce7830dba5511a35d2ac259b992be547296b1bea81b2650c9a4b51f9"
   },
@@ -1129,7 +1129,7 @@
     "expected": {
       "emotion": "neutral"
     },
-    "chance": 0.03571428571428571,
+    "chance": 0.353104,
     "source": "go_emotions_simplified_validation",
     "state_hash": "288b8bc4bc53fa0fa17f854cc178ced9b2f9ddef1f0262aa59469b5d2cd997c3"
   },
@@ -1192,7 +1192,7 @@
     "expected": {
       "emotion": "love"
     },
-    "chance": 0.03571428571428571,
+    "chance": 0.353104,
     "source": "go_emotions_simplified_train",
     "state_hash": "0f438291bebf83ee3b0ea8d3138704ecc98d7eace1cf004ecc694f593c8871c4"
   },
@@ -1255,7 +1255,7 @@
     "expected": {
       "emotion": "neutral"
     },
-    "chance": 0.03571428571428571,
+    "chance": 0.353104,
     "source": "go_emotions_simplified_train",
     "state_hash": "f2792e3b675a3d78bc38609e46e948982a1201846e61059db814398b0f13fb85"
   },
@@ -1318,7 +1318,7 @@
     "expected": {
       "emotion": "neutral"
     },
-    "chance": 0.03571428571428571,
+    "chance": 0.353104,
     "source": "go_emotions_simplified_train",
     "state_hash": "e139e184b7a100117395584684521ffc68a3614825bbb244555cb67d6783fced"
   },
@@ -1381,7 +1381,7 @@
     "expected": {
       "emotion": "desire"
     },
-    "chance": 0.03571428571428571,
+    "chance": 0.353104,
     "source": "go_emotions_simplified_train",
     "state_hash": "4f41a505202414aa6cd753c057cbddf0f601f1fe6e1ba8a271f5906f6ad24410"
   },
@@ -1444,7 +1444,7 @@
     "expected": {
       "emotion": "neutral"
     },
-    "chance": 0.03571428571428571,
+    "chance": 0.353104,
     "source": "go_emotions_simplified_test",
     "state_hash": "db889f66487f707f96e9beca68fa790163c4a6ea824eade6e77a1c521bdae211"
   },
@@ -1507,7 +1507,7 @@
     "expected": {
       "emotion": "gratitude"
     },
-    "chance": 0.03571428571428571,
+    "chance": 0.353104,
     "source": "go_emotions_simplified_train",
     "state_hash": "723e02019f8647d5286b32a165bf90b905e99134f96b756854e8b4d2f1bb5878"
   }

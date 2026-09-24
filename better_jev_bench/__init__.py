@@ -33,8 +33,18 @@ from .types import (
 __version__ = "0.1.0"
 #: Frozen scoring-spec version (PRD §5.5 rule 8). Changing any frozen constant
 #: -- strata boundaries, beta, aggregation weights, the split salt -- is a bump
-#: here plus a migration note, never a silent recalculation.
+#: here plus a migration note, never a silent recalculation. `bjb-score-1.0`
+#: is frozen the moment the first `/v1/evaluate` result is published against
+#: it (PRD §14, epigraph) -- not before.
 SPEC_VERSION = "bjb-score-1.0"
+#: Identifies *what corpus* a result was scored against, independent of the
+#: `bjb` software version (`__version__` above) -- a `POST /v1/evaluate`
+#: response echoes this (PRD §14.7) so a result stays attributable even after
+#: the corpus grows. Bump on any change that could move a published number:
+#: a new dataset, a rebuild that changes held-out contents, a chance-floor
+#: fix. First value pinned 2026-09-24 at 11 datasets / 14 tasks / 474,439
+#: items (PRD §12.6) plus the PRD §14.2 chance-field fix.
+CORPUS_VERSION = "bjb-corpus-1.0"
 
 __all__ = [
     "BenchmarkDataset",
@@ -50,6 +60,7 @@ __all__ = [
     "MIN_ITEMS_TO_ACCEPT",
     "MIN_ITEMS_FOR_CALIBRATION",
     "SPEC_VERSION",
+    "CORPUS_VERSION",
     "__version__",
     "discover",
     "load_manifest",

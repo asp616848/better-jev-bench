@@ -181,7 +181,7 @@
     "expected": {
       "intent": "mpg"
     },
-    "chance": 0.006622516556291391,
+    "chance": 0.006623,
     "source": "clinc150_plus_train",
     "state_hash": "8ed949dac90d34a2b5497f4fc0e30b3d5cdc3504312fce91ca8573634ddfd734"
   },
@@ -367,7 +367,7 @@
     "expected": {
       "intent": "last_maintenance"
     },
-    "chance": 0.006622516556291391,
+    "chance": 0.006623,
     "source": "clinc150_plus_test",
     "state_hash": "cb6a7380cd1f15fd027f660ff1ae25fdfb0d5e5f70720fc62a67d5059de46b2a"
   },
@@ -553,7 +553,7 @@
     "expected": {
       "intent": "insurance"
     },
-    "chance": 0.006622516556291391,
+    "chance": 0.006623,
     "source": "clinc150_plus_train",
     "state_hash": "0d09f0da356b0a7c292a88026a181252068579838b869824e204127e80818c10"
   },
@@ -739,7 +739,7 @@
     "expected": {
       "intent": "jump_start"
     },
-    "chance": 0.006622516556291391,
+    "chance": 0.006623,
     "source": "clinc150_plus_train",
     "state_hash": "31ec3cc60bc48bd6ac4a4bf07755d820a80e687c99f80be75ff13bc913c5e8c2"
   },
@@ -925,7 +925,7 @@
     "expected": {
       "intent": "greeting"
     },
-    "chance": 0.006622516556291391,
+    "chance": 0.006623,
     "source": "clinc150_plus_train",
     "state_hash": "a991fd0b787169851070739bc4957ac5830625aa29f6a3449044862229d52f18"
   },
@@ -1111,7 +1111,7 @@
     "expected": {
       "intent": "insurance"
     },
-    "chance": 0.006622516556291391,
+    "chance": 0.006623,
     "source": "clinc150_plus_test",
     "state_hash": "cb1bde52334340bd89263a37826b8e3143e253e1bd8a24d51c729ee859efe2f5"
   },
@@ -1297,7 +1297,7 @@
     "expected": {
       "intent": "timezone"
     },
-    "chance": 0.006622516556291391,
+    "chance": 0.006623,
     "source": "clinc150_plus_test",
     "state_hash": "32af6c33b121ada28f5b7a197eeb02ac04a4db0163e6be74b4ce6bce58be1366"
   },
@@ -1483,7 +1483,7 @@
     "expected": {
       "intent": "report_fraud"
     },
-    "chance": 0.006622516556291391,
+    "chance": 0.006623,
     "source": "clinc150_plus_train",
     "state_hash": "b503e9c5ffcb4a16d30f4a9da114f6f145e95c16a5c3f6f060a24367e717fc5e"
   },
@@ -1669,7 +1669,7 @@
     "expected": {
       "intent": "find_phone"
     },
-    "chance": 0.006622516556291391,
+    "chance": 0.006623,
     "source": "clinc150_plus_validation",
     "state_hash": "a38b3ad5274a74f03faac29fd4c4db6523df6b94055adc1f6f0357a24e1a6367"
   },
@@ -1855,7 +1855,7 @@
     "expected": {
       "intent": "rollover_401k"
     },
-    "chance": 0.006622516556291391,
+    "chance": 0.006623,
     "source": "clinc150_plus_test",
     "state_hash": "2f9a66ecbada1cf3d249233d493aaf50ecadd2a6f780d2c4f6bfaecc6d8da925"
   },
@@ -2041,7 +2041,7 @@
     "expected": {
       "intent": "todo_list"
     },
-    "chance": 0.006622516556291391,
+    "chance": 0.006623,
     "source": "clinc150_plus_test",
     "state_hash": "b5a65c764fbc9cf418b8891bff355a9f2b3d8b8408564d268dbcfe9064883cc0"
   },
@@ -2227,7 +2227,7 @@
     "expected": {
       "intent": "mpg"
     },
-    "chance": 0.006622516556291391,
+    "chance": 0.006623,
     "source": "clinc150_plus_train",
     "state_hash": "af17da5f2f39d59e5afc113961cdf7544a395aa000b75fe82c12f1395d84f032"
   },
@@ -2413,7 +2413,7 @@
     "expected": {
       "intent": "schedule_meeting"
     },
-    "chance": 0.006622516556291391,
+    "chance": 0.006623,
     "source": "clinc150_plus_validation",
     "state_hash": "da553fdd0a9ec19a95a6cc7063c6d2ccee4a3f0382c4f1bc0bca7f789d574294"
   },
@@ -2599,7 +2599,7 @@
     "expected": {
       "intent": "pto_request"
     },
-    "chance": 0.006622516556291391,
+    "chance": 0.006623,
     "source": "clinc150_plus_train",
     "state_hash": "542d7e20f74d5d543381fcd0add83d670f43963acaffeb5ae81c053355b70baa"
   },
@@ -2785,7 +2785,7 @@
     "expected": {
       "intent": "todo_list"
     },
-    "chance": 0.006622516556291391,
+    "chance": 0.006623,
     "source": "clinc150_plus_validation",
     "state_hash": "f8ad4fa922ce16f1c3692a2a5057909f923a45349c93010413764a1f8e7236ae"
   },
@@ -2971,7 +2971,7 @@
     "expected": {
       "intent": "spelling"
     },
-    "chance": 0.006622516556291391,
+    "chance": 0.006623,
     "source": "clinc150_plus_test",
     "state_hash": "5a056a961365a9a899249b09fae2356927f2394c4d32bb40109f2a2780290006"
   },
@@ -3157,7 +3157,7 @@
     "expected": {
       "intent": "calendar"
     },
-    "chance": 0.006622516556291391,
+    "chance": 0.006623,
     "source": "clinc150_plus_train",
     "state_hash": "a86b521543f32f9e08860f634bf1d5e56ee46b0133bd9186debd52a211f27680"
   },
@@ -3343,7 +3343,7 @@
     "expected": {
       "intent": "spelling"
     },
-    "chance": 0.006622516556291391,
+    "chance": 0.006623,
     "source": "clinc150_plus_train",
     "state_hash": "91ca3e53f81a3be42553392c00c6008c968dfc9b0e7b2f89047e1c86ee8b9a22"
   },
@@ -3529,7 +3529,7 @@
     "expected": {
       "intent": "weather"
     },
-    "chance": 0.006622516556291391,
+    "chance": 0.006623,
     "source": "clinc150_plus_test",
     "state_hash": "a987e03263cdabe1581daec86a25abe5a384900138ebf49dcb53863032ac2fde"
   },
@@ -3715,7 +3715,7 @@
     "expected": {
       "intent": "meeting_schedule"
     },
-    "chance": 0.006622516556291391,
+    "chance": 0.006623,
     "source": "clinc150_plus_train",
     "state_hash": "a96b6db3693c1cb032f75b97c4a07ee3ff8a33d681b78c83a0d006f55a8559a9"
   },
@@ -3901,7 +3901,7 @@
     "expected": {
       "intent": "fun_fact"
     },
-    "chance": 0.006622516556291391,
+    "chance": 0.006623,
     "source": "clinc150_plus_validation",
     "state_hash": "d3128d8bae824371206088c413f7e95245fec3d815d84b06ce092d6f55beda51"
   },
@@ -4087,7 +4087,7 @@
     "expected": {
       "intent": "new_card"
     },
-    "chance": 0.006622516556291391,
+    "chance": 0.006623,
     "source": "clinc150_plus_test",
     "state_hash": "d4a0d0b8df4944e801cb30b9cd75a331ceec417f918a72a2361a3b1ce840343f"
   },
@@ -4273,7 +4273,7 @@
     "expected": {
       "intent": "restaurant_reviews"
     },
-    "chance": 0.006622516556291391,
+    "chance": 0.006623,
     "source": "clinc150_plus_train",
     "state_hash": "aea56287ea4d2ae574a676c83bf3a0dbbab285f12d3066904a63f9906b41191b"
   },
@@ -4459,7 +4459,7 @@
     "expected": {
       "intent": "roll_dice"
     },
-    "chance": 0.006622516556291391,
+    "chance": 0.006623,
     "source": "clinc150_plus_train",
     "state_hash": "ba87002102be3b7f675f00d20aec97302bd456afc74564064b6cc9a23724bb79"
   }

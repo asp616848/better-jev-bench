@@ -176,3 +176,10 @@ Anchor: sibling project's real Qwen3.5-4B LoRA runs took 65–75 min for 24k exa
 **Three catalogued datasets are script-based and unloadable under `datasets >= 3`** (BANKING77, MASSIVE, the official CFPB repo). MASSIVE has a Hub-generated parquet branch; BANKING77 does not, so its loader reads the same GitHub CSVs PolyAI's own script reads. Expect this for other older catalogue entries.
 
 **A dataset's own image files can lie about their format.** 111 of ScreenSpot-v2's 757 images in `screenspotv2_image.zip` are JPEG bytes behind a `.png` filename — found when the first build attempt failed a PNG-header parse, not by inspection. `imagecache.py` now sniffs the real container format from the file's own magic bytes and never trusts an extension; any future image loader inherits this for free. The same pull found 6 of OS-Atlas's 1,186 referenced filenames simply missing from its images zip (skipped, not fatal). Both are exactly the class of thing a catalogue-time license check cannot catch — they only show up at build time, against the real bytes.
+
+
+## Scoring engine: built and validated, 2026-09-24
+
+Per PRD §14's implementation-ready spec. Real code: `better_jev_bench/{score,backend,evaluate,server}.py`, `bjb evaluate` CLI. Real fix: the §14.2 chance-field defect (all four majority-chance tasks were shipping the wrong floor) -- corrected in `build.py`, rebuilt, verified with real numbers (always-"No" baseline on `is_toxic`: 0.0602 chance-adjusted now, was 0.8510 under the bug). `bjb validate`: 73 checks, 0 failures (up from 59 -- new CI gate 12 catches this bug class going forward). 70 unit checks across three new `scripts/check_*.py` files, all passing. A real mock-backed end-to-end `bjb evaluate` run produced a committed evidence bundle.
+
+**Still open**: a real run against a real trained ekVachan checkpoint (PRD §14.9 item 7) -- deferred until the sibling model repo's GPU is free.
