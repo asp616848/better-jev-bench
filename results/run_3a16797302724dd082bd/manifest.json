@@ -1,0 +1,408 @@
+{
+  "run_id": "run_3a16797302724dd082bd",
+  "spec_version": "bjb-score-1.0",
+  "corpus_version": "bjb-corpus-1.0",
+  "model": "ekvachan-decoder-qwen-stage3@9e2ca0a",
+  "endpoint": "http://localhost:8421/v1/systemone",
+  "started_at": "2026-09-25T03:53:24Z",
+  "duration_s": 303.823,
+  "score": null,
+  "score_no_cost": null,
+  "floor_penalty_applied": false,
+  "is_leaderboard_eligible": true,
+  "axes": {
+    "intelligence": 55.5719538864524,
+    "calibration": 84.04416057351943,
+    "generality": 69.88373926537597,
+    "speed": null,
+    "cost": null,
+    "speed_multimodal": 52.36522002065416
+  },
+  "coverage": {
+    "attempted": 2800,
+    "answered": 2800,
+    "out_of_schema": 0,
+    "declined": 0,
+    "fraction": 1.0
+  },
+  "intelligence_detail": {
+    "by_task": {
+      "atari_head/action": {
+        "n": 200,
+        "acc": 0.33,
+        "chance": 0.055556,
+        "i": 0.2905879014531301,
+        "chance_source": "manifest",
+        "calibration_bearing": false
+      },
+      "banking77/intent": {
+        "n": 200,
+        "acc": 0.675,
+        "chance": 0.012987,
+        "i": 0.6707236885431094,
+        "chance_source": "manifest",
+        "calibration_bearing": false
+      },
+      "cfpb_complaints/product": {
+        "n": 200,
+        "acc": 0.845,
+        "chance": 0.541103,
+        "i": 0.6622335731111774,
+        "chance_source": "manifest",
+        "calibration_bearing": false
+      },
+      "civil_comments/is_toxic": {
+        "n": 200,
+        "acc": 0.93,
+        "chance": 0.920729,
+        "i": 0.11695323636638912,
+        "chance_source": "manifest",
+        "calibration_bearing": false
+      },
+      "civil_comments/toxicity_level": {
+        "n": 200,
+        "acc": 0.825,
+        "chance": 0.792774,
+        "i": 0.15551137405537901,
+        "chance_source": "manifest",
+        "calibration_bearing": false
+      },
+      "clinc150/intent": {
+        "n": 200,
+        "acc": 0.76,
+        "chance": 0.006623,
+        "i": 0.7583998824212761,
+        "chance_source": "manifest",
+        "calibration_bearing": false
+      },
+      "cuad/clause_present": {
+        "n": 200,
+        "acc": 0.97,
+        "chance": 0.5,
+        "i": 0.94,
+        "chance_source": "manifest",
+        "calibration_bearing": false
+      },
+      "cuad/clause_type": {
+        "n": 200,
+        "acc": 0.83,
+        "chance": 0.02439,
+        "i": 0.825750043562489,
+        "chance_source": "manifest",
+        "calibration_bearing": false
+      },
+      "go_emotions/emotion": {
+        "n": 200,
+        "acc": 0.585,
+        "chance": 0.353104,
+        "i": 0.3584749326012218,
+        "chance_source": "manifest",
+        "calibration_bearing": false
+      },
+      "ledgar/provision_type": {
+        "n": 200,
+        "acc": 0.65,
+        "chance": 0.01,
+        "i": 0.6464646464646465,
+        "chance_source": "manifest",
+        "calibration_bearing": false
+      },
+      "massive/intent": {
+        "n": 200,
+        "acc": 0.805,
+        "chance": 0.016667,
+        "i": 0.801694848032152,
+        "chance_source": "manifest",
+        "calibration_bearing": false
+      },
+      "massive/scenario": {
+        "n": 200,
+        "acc": 0.945,
+        "chance": 0.055556,
+        "i": 0.9417646784774957,
+        "chance_source": "manifest",
+        "calibration_bearing": false
+      },
+      "os_atlas/target_element": {
+        "n": 200,
+        "acc": 0.615,
+        "chance": 0.5,
+        "i": 0.22999999999999998,
+        "chance_source": "manifest",
+        "calibration_bearing": false
+      },
+      "screenspot_v2/target_element": {
+        "n": 200,
+        "acc": 0.595,
+        "chance": 0.5,
+        "i": 0.18999999999999995,
+        "chance_source": "manifest",
+        "calibration_bearing": false
+      }
+    },
+    "by_dataset": {
+      "atari_head": 0.2905879014531301,
+      "banking77": 0.6707236885431094,
+      "cfpb_complaints": 0.6622335731111774,
+      "civil_comments": 0.13623230521088406,
+      "clinc150": 0.7583998824212761,
+      "cuad": 0.8828750217812444,
+      "go_emotions": 0.3584749326012218,
+      "ledgar": 0.6464646464646465,
+      "massive": 0.8717297632548238,
+      "os_atlas": 0.22999999999999998,
+      "screenspot_v2": 0.18999999999999995
+    },
+    "by_domain": {
+      "multimodal": 0.23686263381771,
+      "nlp": 0.5591121144062631,
+      "finance": 0.6622335731111774,
+      "operational": 0.7646698341229454
+    }
+  },
+  "strata": {
+    "mod_multimodal": {
+      "family": "modality",
+      "items": 600,
+      "answered": 600,
+      "tasks": 3,
+      "value": 0.23686263381771,
+      "status": "scored"
+    },
+    "mod_text": {
+      "family": "modality",
+      "items": 2200,
+      "answered": 2200,
+      "tasks": 11,
+      "value": 0.6252700821486669,
+      "status": "scored"
+    },
+    "prim_choice": {
+      "family": "primitive",
+      "items": 2200,
+      "answered": 2200,
+      "tasks": 11,
+      "value": 0.5796449267878816,
+      "status": "scored"
+    },
+    "prim_noul": {
+      "family": "primitive",
+      "items": 400,
+      "answered": 400,
+      "tasks": 2,
+      "value": 0.5284766181831946,
+      "status": "scored"
+    },
+    "prim_score": {
+      "family": "primitive",
+      "items": 200,
+      "answered": 200,
+      "tasks": 1,
+      "value": null,
+      "status": "excluded"
+    },
+    "width_binary": {
+      "family": "width",
+      "items": 800,
+      "answered": 800,
+      "tasks": 4,
+      "value": 0.36923830909159727,
+      "status": "scored"
+    },
+    "width_medium": {
+      "family": "width",
+      "items": 1000,
+      "answered": 1000,
+      "tasks": 5,
+      "value": 0.6157622258411027,
+      "status": "scored"
+    },
+    "width_small": {
+      "family": "width",
+      "items": 200,
+      "answered": 200,
+      "tasks": 1,
+      "value": null,
+      "status": "excluded"
+    },
+    "width_wide": {
+      "family": "width",
+      "items": 800,
+      "answered": 800,
+      "tasks": 4,
+      "value": 0.719320766365296,
+      "status": "scored"
+    }
+  },
+  "families": {
+    "width": 0.546865843028835,
+    "primitive": 0.5534697739316078,
+    "modality": 0.3848416797920271
+  },
+  "breadth": 0.4883737013711051,
+  "excluded_strata": [
+    {
+      "stratum": "prim_score",
+      "reason": "benchmark_underpopulated",
+      "items": 200
+    },
+    {
+      "stratum": "width_small",
+      "reason": "benchmark_underpopulated",
+      "items": 200
+    }
+  ],
+  "diagnostics": {
+    "pooled_ece": 0.02756840685521769,
+    "pooled_accuracy": 0.74,
+    "ece_bins": 15,
+    "ece_binning": "equal_mass",
+    "per_dataset_ece": {
+      "atari_head": 0.2224538674578071,
+      "banking77": 0.1279207441955805,
+      "cfpb_complaints": 0.030758804455399507,
+      "civil_comments": 0.040369645856990266,
+      "clinc150": 0.09471043787896635,
+      "cuad": 0.022322193454310774,
+      "go_emotions": 0.10375074766576292,
+      "ledgar": 0.1424475338310003,
+      "massive": 0.03704208426177503,
+      "os_atlas": 0.0944614762067795,
+      "screenspot_v2": 0.12585648924112317
+    },
+    "per_stratum_ece": {
+      "mod_multimodal": 0.13147667670001587,
+      "mod_text": 0.022663870951166093,
+      "prim_choice": 0.04450979961251674,
+      "prim_noul": 0.025745376243285142,
+      "prim_score": 0.05651142299175262,
+      "width_binary": 0.03614623516426946,
+      "width_medium": 0.05920009962469341,
+      "width_small": 0.05651142299175262,
+      "width_wide": 0.06596542244777083
+    },
+    "ordinal_distance": {
+      "civil_comments/toxicity_level": {
+        "mean_abs_distance": 0.255,
+        "off_by_one_rate": 0.115,
+        "confusion": [
+          [
+            159,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            13,
+            0,
+            3,
+            0,
+            0
+          ],
+          [
+            7,
+            0,
+            3,
+            1,
+            0
+          ],
+          [
+            3,
+            0,
+            2,
+            3,
+            1
+          ],
+          [
+            0,
+            0,
+            1,
+            3,
+            0
+          ]
+        ]
+      }
+    },
+    "abstention": null,
+    "position_sensitivity": {
+      "n": 2600,
+      "delta_accuracy": -0.005,
+      "flagged": false
+    },
+    "n_no_confidence": 0,
+    "chance_source_drift": [],
+    "latency_ms": {
+      "text": {
+        "p50": 100.675,
+        "p95": 150.5605,
+        "n": 2200,
+        "source": "server_reported"
+      },
+      "multimodal": {
+        "p50": 89.68,
+        "p95": 122.35399999999994,
+        "n": 600,
+        "source": "server_reported"
+      }
+    },
+    "http_status_counts": {
+      "200": 2800
+    },
+    "error_samples": []
+  },
+  "notes": {
+    "provisional": true,
+    "domain_concentration": "finance is 1 dataset (cfpb_complaints) of 11 scored and carries 25% of Intelligence (PRD §14.1)"
+  },
+  "evidence_bundle": "results/run_3a16797302724dd082bd/manifest.json",
+  "request": {
+    "model": "ekvachan-decoder-qwen-stage3@9e2ca0a",
+    "slice": "heldout",
+    "datasets": null,
+    "tasks": null,
+    "license_tiers": [
+      "A"
+    ],
+    "modalities": [
+      "text",
+      "image"
+    ],
+    "primitives": [
+      "choice",
+      "score",
+      "noul"
+    ],
+    "max_items_per_task": 200,
+    "shuffle_seed": 20260924,
+    "images": {
+      "mode": "reference"
+    },
+    "request": {
+      "timeout_s": 30.0,
+      "concurrency": 8,
+      "headers": {}
+    },
+    "cost_model": null,
+    "endpoint": "http://localhost:8421/v1/systemone"
+  },
+  "model_info": {
+    "backend": "http",
+    "endpoint": "http://localhost:8421/v1/systemone"
+  },
+  "corpus_receipts": {
+    "atari_head": "sha256:e5aa8eb421658c222fa4dab38533a68a9934c6b4875fefd8836e2a3342e0f1db",
+    "banking77": "sha256:40a9db1624df4c8edf3710f69bd56b4322d84f586cfbc595e65763457cd9d6f9",
+    "cfpb_complaints": "sha256:ba7c745a8ebd74450efe22414c7365a7379a63c7ea8a24b2abf153d6485b76c8",
+    "civil_comments": "sha256:bb53e207d76ae5c2203db4cfe88436fee4d15b585c64b6ac25da95fa4bcf50dd",
+    "clinc150": "sha256:3cd38f92e62dd242a99c40fd8b0b77d69dd93681adae9774dbc66d1b8c70fbdc",
+    "cuad": "sha256:29af109abacc537e2dbdb86bebd0b6ac079cb7e07ea8041536c6a3c5f8a8e3ff",
+    "go_emotions": "sha256:ff4a1eb4f7da896f062392582366938533f3cc40a0079457599a4a5ad7c6232b",
+    "ledgar": "sha256:53de9965645a8f62387911d13bd4e1f5e8152a8374650df21a580f68a3a65208",
+    "massive": "sha256:8063e6403727c0cf5e0d20d4de6de9485fa3c245e8d2ac159b67447961179070",
+    "os_atlas": "sha256:01b711a2307bd92a67824c60021bd8119b296c31521604f2be94c641640b535c",
+    "screenspot_v2": "sha256:b15f477f9f42701c78ca50a98b5c8bfde3db2c1bbc4a2f70cb40a5e5789230d3"
+  },
+  "host": "localhost",
+  "bjb_version": "0.1.0"
+}
