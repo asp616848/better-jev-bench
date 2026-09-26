@@ -18,6 +18,8 @@ distribution of option-set shapes a deployed decision layer meets. That corpus i
 
 Full reasoning, with sources: [`better-jev-bench_PRD.md`](better-jev-bench_PRD.md).
 Current state, honestly: [`STATUS.md`](STATUS.md).
+The full research catalogue — all **99 candidate datasets** surveyed for this project, with
+license, tier, size and label space for each: [`CATALOGUE.md`](CATALOGUE.md).
 
 ---
 
@@ -55,10 +57,13 @@ this table.
 ```bash
 pip install -e .
 
-bjb catalogue          # the corpus as data, filterable by license tier
+bjb catalogue          # the *built* corpus as data, filterable by license tier
 bjb validate           # the PRD §7.4 CI gates, offline, seconds
 bjb stats              # what actually landed
 ```
+
+`bjb catalogue` only lists datasets that are actually loaded (the 8 above). The full 99-entry
+research catalogue — every candidate dataset surveyed, built or not — is [`CATALOGUE.md`](CATALOGUE.md).
 
 ### Benchmark a model
 
@@ -145,8 +150,8 @@ framework, including the two-reviewer minimum and the acceptance criteria.
 
 ## Licensing is enforced, not advisory
 
-Roughly half the 99-entry catalogue in the PRD is **not** cleanly redistributable, and a
-benchmark that quietly ignores that ships a legal problem to everyone who adopts it. So every
+Roughly half the [99-entry research catalogue](CATALOGUE.md) is **not** cleanly redistributable,
+and a benchmark that quietly ignores that ships a legal problem to everyone who adopts it. So every
 dataset declares a tier, `verified_how` is a required non-empty field naming the page the claim
 was read from, and CI refuses to merge `tier = "D"`.
 
