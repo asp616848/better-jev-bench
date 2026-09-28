@@ -1,0 +1,397 @@
+{
+  "run_id": "run_95002aa5fa254d179b97",
+  "spec_version": "bjb-score-1.0",
+  "corpus_version": "bjb-corpus-1.0",
+  "model": "RoutingDecoderModel@stage3",
+  "endpoint": "http://localhost:8002/v1/systemone",
+  "started_at": "2026-09-25T16:14:31Z",
+  "duration_s": 2307.021,
+  "score": null,
+  "score_no_cost": 68.08085739893588,
+  "floor_penalty_applied": false,
+  "is_leaderboard_eligible": true,
+  "axes": {
+    "intelligence": 67.9970186843114,
+    "calibration": 89.85072257474339,
+    "generality": 62.06753365759204,
+    "speed": 56.65315911341803,
+    "cost": null,
+    "speed_multimodal": 64.72819767073747
+  },
+  "coverage": {
+    "attempted": 25233,
+    "answered": 25233,
+    "out_of_schema": 0,
+    "declined": 0,
+    "fraction": 1.0
+  },
+  "intelligence_detail": {
+    "by_task": {
+      "atari_head/action": {
+        "n": 1201,
+        "acc": 0.697751873438801,
+        "chance": 0.055556,
+        "i": 0.679972421275164,
+        "chance_source": "manifest",
+        "calibration_bearing": true
+      },
+      "banking77/intent": {
+        "n": 2000,
+        "acc": 0.8945,
+        "chance": 0.012987,
+        "i": 0.8931118435116863,
+        "chance_source": "manifest",
+        "calibration_bearing": true
+      },
+      "cfpb_complaints/product": {
+        "n": 2000,
+        "acc": 0.855,
+        "chance": 0.541103,
+        "i": 0.6840249554911014,
+        "chance_source": "manifest",
+        "calibration_bearing": true
+      },
+      "civil_comments/is_toxic": {
+        "n": 2000,
+        "acc": 0.9495,
+        "chance": 0.920729,
+        "i": 0.3629448348071804,
+        "chance_source": "manifest",
+        "calibration_bearing": true
+      },
+      "civil_comments/toxicity_level": {
+        "n": 2000,
+        "acc": 0.8015,
+        "chance": 0.792774,
+        "i": 0.0421086157142444,
+        "chance_source": "manifest",
+        "calibration_bearing": true
+      },
+      "clinc150/intent": {
+        "n": 2000,
+        "acc": 0.862,
+        "chance": 0.006623,
+        "i": 0.8610799323922338,
+        "chance_source": "manifest",
+        "calibration_bearing": true
+      },
+      "cuad/clause_present": {
+        "n": 2000,
+        "acc": 0.967,
+        "chance": 0.5,
+        "i": 0.9339999999999999,
+        "chance_source": "manifest",
+        "calibration_bearing": true
+      },
+      "cuad/clause_type": {
+        "n": 1174,
+        "acc": 0.8798977853492334,
+        "chance": 0.02439,
+        "i": 0.876895260759149,
+        "chance_source": "manifest",
+        "calibration_bearing": true
+      },
+      "go_emotions/emotion": {
+        "n": 2000,
+        "acc": 0.609,
+        "chance": 0.353104,
+        "i": 0.39557517746283793,
+        "chance_source": "manifest",
+        "calibration_bearing": true
+      },
+      "ledgar/provision_type": {
+        "n": 2000,
+        "acc": 0.786,
+        "chance": 0.01,
+        "i": 0.7838383838383839,
+        "chance_source": "manifest",
+        "calibration_bearing": true
+      },
+      "massive/intent": {
+        "n": 2000,
+        "acc": 0.879,
+        "chance": 0.016667,
+        "i": 0.8769491108302071,
+        "chance_source": "manifest",
+        "calibration_bearing": true
+      },
+      "massive/scenario": {
+        "n": 2000,
+        "acc": 0.9185,
+        "chance": 0.055556,
+        "i": 0.9137058417439256,
+        "chance_source": "manifest",
+        "calibration_bearing": true
+      },
+      "os_atlas/target_element": {
+        "n": 2000,
+        "acc": 0.8525,
+        "chance": 0.5,
+        "i": 0.7050000000000001,
+        "chance_source": "manifest",
+        "calibration_bearing": true
+      },
+      "screenspot_v2/target_element": {
+        "n": 858,
+        "acc": 0.62004662004662,
+        "chance": 0.5,
+        "i": 0.24009324009324007,
+        "chance_source": "manifest",
+        "calibration_bearing": true
+      }
+    },
+    "by_dataset": {
+      "atari_head": 0.679972421275164,
+      "banking77": 0.8931118435116863,
+      "cfpb_complaints": 0.6840249554911014,
+      "civil_comments": 0.20252672526071241,
+      "clinc150": 0.8610799323922338,
+      "cuad": 0.9054476303795744,
+      "go_emotions": 0.39557517746283793,
+      "ledgar": 0.7838383838383839,
+      "massive": 0.8953274762870663,
+      "os_atlas": 0.7050000000000001,
+      "screenspot_v2": 0.24009324009324007
+    },
+    "by_domain": {
+      "multimodal": 0.5416885537894681,
+      "nlp": 0.6495242309829073,
+      "finance": 0.6840249554911014,
+      "operational": 0.8446430071089792
+    }
+  },
+  "strata": {
+    "mod_multimodal": {
+      "family": "modality",
+      "items": 4059,
+      "answered": 4059,
+      "tasks": 3,
+      "value": 0.5416885537894681,
+      "status": "scored"
+    },
+    "mod_text": {
+      "family": "modality",
+      "items": 21174,
+      "answered": 21174,
+      "tasks": 11,
+      "value": 0.6931121778682682,
+      "status": "scored"
+    },
+    "prim_choice": {
+      "family": "primitive",
+      "items": 19233,
+      "answered": 19233,
+      "tasks": 11,
+      "value": 0.7191132879452663,
+      "status": "scored"
+    },
+    "prim_noul": {
+      "family": "primitive",
+      "items": 4000,
+      "answered": 4000,
+      "tasks": 2,
+      "value": 0.6484724174035902,
+      "status": "scored"
+    },
+    "prim_score": {
+      "family": "primitive",
+      "items": 2000,
+      "answered": 2000,
+      "tasks": 1,
+      "value": 0.0421086157142444,
+      "status": "scored"
+    },
+    "width_binary": {
+      "family": "width",
+      "items": 6858,
+      "answered": 6858,
+      "tasks": 4,
+      "value": 0.5605095187251051,
+      "status": "scored"
+    },
+    "width_medium": {
+      "family": "width",
+      "items": 8375,
+      "answered": 8375,
+      "tasks": 5,
+      "value": 0.7100347313464356,
+      "status": "scored"
+    },
+    "width_small": {
+      "family": "width",
+      "items": 2000,
+      "answered": 2000,
+      "tasks": 1,
+      "value": 0.0421086157142444,
+      "status": "scored"
+    },
+    "width_wide": {
+      "family": "width",
+      "items": 8000,
+      "answered": 8000,
+      "tasks": 4,
+      "value": 0.8537448176431277,
+      "status": "scored"
+    }
+  },
+  "families": {
+    "width": 0.34585209242229553,
+    "primitive": 0.269786322896378,
+    "modality": 0.6127405105289928
+  },
+  "breadth": 0.385237873433632,
+  "excluded_strata": [],
+  "diagnostics": {
+    "pooled_ece": 0.03192458138256983,
+    "pooled_accuracy": 0.8382673483137162,
+    "ece_bins": 15,
+    "ece_binning": "equal_mass",
+    "per_dataset_ece": {
+      "atari_head": 0.2977335919671809,
+      "banking77": 0.016394867680966863,
+      "cfpb_complaints": 0.034416887894272837,
+      "civil_comments": 0.015354062453552624,
+      "clinc150": 0.021800950519740573,
+      "cuad": 0.015752218413568282,
+      "go_emotions": 0.03645850785821675,
+      "ledgar": 0.032862936079502116,
+      "massive": 0.01348747674003245,
+      "os_atlas": 0.033810595661401766,
+      "screenspot_v2": 0.18773895418727313
+    },
+    "per_stratum_ece": {
+      "mod_multimodal": 0.14021666764287882,
+      "mod_text": 0.01393352278663213,
+      "prim_choice": 0.03674488885350737,
+      "prim_noul": 0.01603261422479411,
+      "prim_score": 0.019989219561219223,
+      "width_binary": 0.04067908510585176,
+      "width_medium": 0.054009866607722945,
+      "width_small": 0.019989219561219223,
+      "width_wide": 0.010400266431272003
+    },
+    "ordinal_distance": {
+      "civil_comments/toxicity_level": {
+        "mean_abs_distance": 0.278,
+        "off_by_one_rate": 0.1315,
+        "confusion": [
+          [
+            1529,
+            0,
+            37,
+            1,
+            0
+          ],
+          [
+            157,
+            2,
+            38,
+            2,
+            0
+          ],
+          [
+            57,
+            0,
+            49,
+            9,
+            0
+          ],
+          [
+            20,
+            0,
+            46,
+            17,
+            2
+          ],
+          [
+            2,
+            0,
+            15,
+            11,
+            6
+          ]
+        ]
+      }
+    },
+    "abstention": null,
+    "position_sensitivity": {
+      "n": 2600,
+      "delta_accuracy": 0.002308,
+      "flagged": false
+    },
+    "n_no_confidence": 0,
+    "chance_source_drift": [],
+    "latency_ms": {
+      "text": {
+        "p50": 73.61,
+        "p95": 170.37699999999998,
+        "n": 21174,
+        "source": "server_reported"
+      },
+      "multimodal": {
+        "p50": 50.75,
+        "p95": 112.276,
+        "n": 4059,
+        "source": "server_reported"
+      }
+    },
+    "http_status_counts": {
+      "200": 25233
+    },
+    "error_samples": []
+  },
+  "notes": {
+    "provisional": true,
+    "domain_concentration": "finance is 1 dataset (cfpb_complaints) of 11 scored and carries 25% of Intelligence (PRD §14.1)"
+  },
+  "evidence_bundle": "results/run_95002aa5fa254d179b97/manifest.json",
+  "request": {
+    "model": "RoutingDecoderModel@stage3",
+    "slice": "heldout",
+    "datasets": null,
+    "tasks": null,
+    "license_tiers": [
+      "A"
+    ],
+    "modalities": [
+      "text",
+      "image"
+    ],
+    "primitives": [
+      "choice",
+      "score",
+      "noul"
+    ],
+    "max_items_per_task": null,
+    "shuffle_seed": 20260924,
+    "images": {
+      "mode": "reference"
+    },
+    "request": {
+      "timeout_s": 30.0,
+      "concurrency": 1,
+      "headers": {}
+    },
+    "cost_model": null,
+    "endpoint": "http://localhost:8002/v1/systemone"
+  },
+  "model_info": {
+    "backend": "http",
+    "endpoint": "http://localhost:8002/v1/systemone"
+  },
+  "corpus_receipts": {
+    "atari_head": "sha256:e5aa8eb421658c222fa4dab38533a68a9934c6b4875fefd8836e2a3342e0f1db",
+    "banking77": "sha256:40a9db1624df4c8edf3710f69bd56b4322d84f586cfbc595e65763457cd9d6f9",
+    "cfpb_complaints": "sha256:ba7c745a8ebd74450efe22414c7365a7379a63c7ea8a24b2abf153d6485b76c8",
+    "civil_comments": "sha256:bb53e207d76ae5c2203db4cfe88436fee4d15b585c64b6ac25da95fa4bcf50dd",
+    "clinc150": "sha256:3cd38f92e62dd242a99c40fd8b0b77d69dd93681adae9774dbc66d1b8c70fbdc",
+    "cuad": "sha256:29af109abacc537e2dbdb86bebd0b6ac079cb7e07ea8041536c6a3c5f8a8e3ff",
+    "go_emotions": "sha256:ff4a1eb4f7da896f062392582366938533f3cc40a0079457599a4a5ad7c6232b",
+    "ledgar": "sha256:53de9965645a8f62387911d13bd4e1f5e8152a8374650df21a580f68a3a65208",
+    "massive": "sha256:8063e6403727c0cf5e0d20d4de6de9485fa3c245e8d2ac159b67447961179070",
+    "os_atlas": "sha256:01b711a2307bd92a67824c60021bd8119b296c31521604f2be94c641640b535c",
+    "screenspot_v2": "sha256:b15f477f9f42701c78ca50a98b5c8bfde3db2c1bbc4a2f70cb40a5e5789230d3"
+  },
+  "host": "localhost",
+  "bjb_version": "0.1.0"
+}
